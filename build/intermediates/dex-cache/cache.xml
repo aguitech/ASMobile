@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/hectoraguilar/Git/AscendMobile/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
+        <dex dex="/Users/hectoraguilar/Git/AscendMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_0da77991d39cd7e846b3537ff3cb32f52198c16f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/hectoraguilar/Git/AscendMobile/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="affa8fdab0d548d54a09997600c95651be3d3f93">
+        <dex dex="/Users/hectoraguilar/Git/AscendMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_837356b74da239ffa32c019c0d5aca5d5f2f4105/classes.dex" />
+    </item>
+
+</items>

@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_agendarcita_citas"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ascend.app.Agendarcita_citas">
+
+    <!--Comienza el menu-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/header_menu"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            android:drawableBottom="@android:color/black"
+            android:background="@drawable/fondo_header"
+            android:layout_height="70dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="0.12"
+                android:paddingTop="5dp"
+                android:gravity="center"
+                android:onClick="goMenu"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:src="@drawable/menu_dos_"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="0.20"
+                android:gravity="center"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_width="50dp"
+                    android:src="@drawable/gato"
+                    android:layout_height="50dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:gravity="center"
+                android:layout_weight="0.42"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/blanco"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:text="Citas"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="0.25"
+                android:gravity="right"
+                android:layout_height="match_parent">
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!--Contenido hjo-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_height="match_parent">
+
+
+                    <!--Fin Tabs-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:weightSum="1"
+                        android:layout_marginTop="15dp"
+                        android:gravity="center"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="0.90"
+                            android:layout_height="wrap_content">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:orientation="horizontal"
+                                android:weightSum="1"
+                                android:gravity="center"
+                                android:layout_height="wrap_content">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_weight="0.50"
+                                    android:gravity="center"
+                                    android:layout_height="30dp">
+
+                                    <Button
+                                        android:layout_width="match_parent"
+                                        android:text="Agregar cita"
+                                        android:textAllCaps="false"
+                                        android:textColor="@color/blanco"
+                                        android:background="@drawable/tab_verde"
+                                        android:layout_height="match_parent" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_weight="0.50"
+                                    android:gravity="center"
+                                    android:layout_height="30dp">
+                                    <Button
+                                        android:layout_width="match_parent"
+                                        android:text="Calendario"
+                                        android:textAllCaps="false"
+                                        android:textColor="@color/gris_fuerte"
+                                        android:background="@drawable/tab_border_negro"
+                                        android:layout_height="match_parent"
+                                        android:id="@+id/btnCalendario"
+                                        android:onClick="goCalendario" />
+                                </LinearLayout>
+
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <!--Fin Tabs-->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:focusableInTouchMode="true"
+                        android:weightSum="1"
+                        android:gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="0.80"
+                            android:layout_height="30dp">
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:drawableRight="@drawable/flecha_menu"
+                                android:drawableLeft="@drawable/cita_verde_"
+                                android:drawablePadding="@dimen/txtDrwblPadding"
+                                android:paddingRight="10dp"
+                                android:paddingLeft="10dp"
+                                android:background="@drawable/border_verde_radius"
+                                android:layout_height="match_parent"
+                                android:id="@+id/seleccionVeterinario"
+                                android:onClick="showDoctorList"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <!--Fin del select-->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:weightSum="1"
+                        android:gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="0.80"
+                            android:background="@color/verde_claro"
+                            android:layout_height="1dp">
+                        </LinearLayout>
+                    </LinearLayout>
+                    <!--Termina la linea verde-->
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:weightSum="1"
+                        android:gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="0.60"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_height="wrap_content">
+
+                            <Button
+                                android:id="@+id/button1"
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:textAllCaps="false"
+                                android:textSize="12dp"
+                                android:textColor="@color/blanco"
+                                android:background="@drawable/btn_datos"
+                                android:onClick="setDate"
+                                android:text="@string/date_button_set"
+                                android:elevation="13dp" />
+
+                            <TextView
+                                android:id="@+id/textView3"
+                                android:layout_width="wrap_content"
+                                android:gravity="center"
+                                android:text="15/08/2016"
+                                android:layout_marginTop="10dp"
+                                android:textSize="15dp"
+                                android:textColor="@color/gris_fuerte"
+                                android:layout_height="match_parent"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <!--Termina el plugin-->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:weightSum="1"
+                        android:gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="0.80"
+                            android:background="@color/verde_claro"
+                            android:layout_height="1dp">
+                        </LinearLayout>
+                    </LinearLayout>
+                    <!--Termina la linea verde-->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:weightSum="1"
+                        android:gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="0.80"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:gravity="center"
+                                android:text="Motivo de la cita:"
+                                android:textSize="15dp"
+                                android:textStyle="bold"
+                                android:textColor="@color/gris_fuerte"
+                                android:layout_height="match_parent" />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:weightSum="1"
+                        android:gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="0.80"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_height="wrap_content">
+                            <RadioGroup
+                                android:layout_width="wrap_content"
+                                android:orientation="vertical"
+                                android:gravity="left"
+                                android:layout_height="wrap_content">
+
+                                <RadioButton
+                                    android:id="@+id/radio0"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="15dp"
+                                    android:textColor="@color/gris_fuerte"
+                                    android:text="Revisión Mensual"
+                                    android:onClick="cambiarRadio1" />
+
+                                <RadioButton
+                                    android:id="@+id/radio1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="15dp"
+                                    android:textColor="@color/gris_fuerte"
+                                    android:text="Servicio de Estética"
+                                    android:onClick="cambiarRadio2" />
+
+                                <RadioButton
+                                    android:id="@+id/radio2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="15dp"
+                                    android:textColor="@color/gris_fuerte"
+                                    android:text="Vacunación"
+                                    android:onClick="cambiarRadio3" />
+
+                                <RadioButton
+                                    android:id="@+id/radio3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="15dp"
+                                    android:textColor="@color/gris_fuerte"
+                                    android:text="Cirugía mayor"
+                                    android:onClick="cambiarRadio4" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:orientation="horizontal"
+                                    android:weightSum="1"
+                                    android:gravity="center"
+                                    android:layout_height="wrap_content">
+                                    <RadioButton
+                                        android:id="@+id/radio4"
+                                        android:layout_width="0dp"
+                                        android:layout_weight="0.50"
+                                        android:layout_height="wrap_content"
+                                        android:textSize="15dp"
+                                        android:textColor="@color/gris_fuerte"
+                                        android:text="Otro"
+                                        android:onClick="cambiarRadio5" />
+                                    <EditText
+                                        android:layout_width="0dp"
+                                        android:layout_weight="0.50"
+                                        android:background="@drawable/border_verde_radius"
+                                        android:layout_height="20dp"
+                                        android:id="@+id/txtOtro"/>
+                                </LinearLayout>
+
+                            </RadioGroup>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:weightSum="1"
+                        android:layout_marginTop="15dp"
+                        android:gravity="center"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="0.40"
+                            android:layout_height="wrap_content">
+                            <Button
+                                android:layout_width="match_parent"
+                                android:background="@drawable/btn_datos"
+                                android:text="Continuar"
+                                android:textAllCaps="false"
+                                android:textColor="@color/blanco"
+                                android:textSize="12dp"
+                                android:layout_height="30dp"
+                                android:onClick="guardarCita"
+                                android:id="@+id/btnGuardar" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                    <!--Termina Contenido hjo-->
+
+                </LinearLayout>
+
+            </RelativeLayout>
+        </ScrollView>
+
+    </LinearLayout>
+    <!--Termina el menu comienza el contenido-->
+
+</RelativeLayout>
