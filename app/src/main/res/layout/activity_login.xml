@@ -4,6 +4,7 @@
     android:id="@+id/activity_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/fondo_login"
     tools:context="com.ascend.app.Login">
 
     <RelativeLayout
@@ -23,7 +24,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.80"
-                android:src="@drawable/titulo_iniciar_sesion"/>
+                android:src="@drawable/ascend"/>
 
         </LinearLayout>
 
@@ -45,7 +46,7 @@
                 android:gravity="center"
                 android:textStyle="bold"
                 android:textSize="20dp"
-                android:textColor="@color/verde_claro"/>
+                android:textColor="@color/blanco"/>
 
         </LinearLayout>
 
@@ -149,7 +150,7 @@
                 android:background="?android:attr/selectableItemBackground"
                 />
         </LinearLayout>
-
+        <!--
         <LinearLayout
             android:layout_below="@+id/olvide_password"
             android:id="@+id/separador"
@@ -184,6 +185,7 @@
                 android:layout_weight="0.43">
             </LinearLayout>
         </LinearLayout>
+        -->
 
         <!--
         <LinearLayout

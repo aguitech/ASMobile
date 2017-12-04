@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#541784</color>
+    <color name="colorPrimaryDark">#FF541E</color>
     <!--
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
@@ -13,6 +13,10 @@
     <!--<color name="fondo_input">#87C848</color>-->
     <!--<color name="fondo_input">#003b93</color>-->
     <color name="fondo_input">#6ac9c5</color>
+
+    <!-- Estilos Ascend -->
+    <color name="fondo_login">#FF541E</color>
+
 
 
     <color name="btn_registro">#00DC49</color>
