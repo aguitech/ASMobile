@@ -65,6 +65,8 @@ public class Home extends AppCompatActivity {
         Intent i = new Intent(Home.this, Lista_contratos.class);
         startActivity(i);
         */
+        Intent i = new Intent(Home.this, Principal.class);
+        startActivity(i);
 
 
         prefManager = new PrefManager(this);

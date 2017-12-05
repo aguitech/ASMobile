@@ -60,6 +60,12 @@
         <activity android:name="com.ascend.app.Detalle_contrato"
             android:screenOrientation="portrait"></activity>
 
+        <activity android:name="com.ascend.app.Inicio"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name="com.ascend.app.Principal"
+            android:screenOrientation="portrait"></activity>
+
     </application>
 
 
