@@ -52,6 +52,17 @@ public class Principal extends AppCompatActivity {
         Intent i = new Intent(Principal.this, Menu.class);
         startActivity(i);
     }
+    public void goDeudores(View v){
+        Intent i = new Intent(Principal.this, Lista_deudores.class);
+        startActivity(i);
+    }
+    public void goEscanear(View v){
+        Intent i = new Intent(Principal.this, Detalle_escanear.class);
+        startActivity(i);
+    }
+
+
+
     /*
     public void goMenu(View v){
         Intent i = new Intent(Lista_veterinarios.this, Menu.class);
