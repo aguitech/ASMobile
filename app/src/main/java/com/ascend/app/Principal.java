@@ -4,16 +4,24 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 
 import com.ascend.app.adapters.ContratosAdapter;
+import com.google.zxing.Result;
+
+import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 /**
  * Created by hectoraguilar on 07/03/17.
  */
 
-public class Principal extends AppCompatActivity {
+public class Principal extends AppCompatActivity implements ZXingScannerView.ResultHandler {
+
+    private ZXingScannerView mScannerView;
+
     Context context;
     private String _url;
 
@@ -46,6 +54,41 @@ public class Principal extends AppCompatActivity {
         //_url = "http://hyperion.init-code.com/zungu/app/vt_get_veterinarios.php?idp=" + Integer.toString(valueID);
         //_url = "http://thekrakensolutions.com/cobradores/android_get_clientes.php?id=" + Integer.toString(valueID);
 
+    }
+
+    public void QrScanner(View view){
+        mScannerView = new ZXingScannerView(this);   // Programmatically initialize the scanner view<br />
+        setContentView(mScannerView);
+        mScannerView.setResultHandler(this); // Register ourselves as a handler for scan results.<br />
+        mScannerView.startCamera();         // Start camera<br />
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+        mScannerView.stopCamera();   // Stop camera on pause<br />
+    }
+
+    @Override
+    public void handleResult(Result rawResult) {
+        // Do something with the result here</p>
+        Log.e("handler", rawResult.getText()); // Prints scan results<br />
+        Log.e("handler", rawResult.getBarcodeFormat().toString()); // Prints the scan format (qrcode)</p>
+        // show the scanner result into dialog box.<br />
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Scan Result");
+        builder.setMessage(rawResult.getText());
+        AlertDialog alert1 = builder.create();
+        alert1.show();
+
+
+        Intent i = new Intent(Principal.this, Resultado_escanear.class);
+        //i.putExtra("idcliente", _listaIdVeterinarios.get(i));
+        //i.putExtra("idcliente", idString);
+        i.putExtra("resultado_qr", rawResult.getText());
+
+        startActivity(i);
+        // If you would like to resume scanning, call this method below:<br />
+        // mScannerView.resumeCameraPreview(this);<br />
     }
 
     public void goMenu(View v){

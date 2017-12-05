@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ascend.app.Detalle_contrato;
+import com.ascend.app.Detalle_deudor;
 import com.ascend.app.Lista_deudores;
 import com.ascend.app.R;
 import com.squareup.picasso.Callback;
@@ -120,7 +121,8 @@ public class DeudoresAdapter extends BaseAdapter {
                 Log.d("click", _listaIdVeterinarios.get(i));
 
                 //Intent intent = new Intent(context, Detalle_cliente.class);
-                Intent intent = new Intent(context, Detalle_contrato.class);
+                //Intent intent = new Intent(context, Detalle_contrato.class);
+                Intent intent = new Intent(context, Detalle_deudor.class);
                 //intent.putExtra("idveterinario", _listaIdVeterinarios.get(i));
                 //intent.putExtra("idcliente", _listaIdVeterinarios.get(i));
                 intent.putExtra("idcontrato", _listaIdVeterinarios.get(i));

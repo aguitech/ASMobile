@@ -36,7 +36,7 @@
             android:layout_weight="0.60"
             android:layout_height="match_parent">
             <ImageView
-                android:src="@drawable/titulo_samemoon"
+                android:src="@drawable/logo_ascend"
                 android:layout_width="100dp"
                 android:layout_height="match_parent" />
         </LinearLayout>
@@ -70,7 +70,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:weightSum="1"
-        android:background="@color/azul_kraken"
+        android:background="@color/naranja"
         android:id="@+id/header_verde"
         android:layout_height="40dp"
         android:layout_below="@+id/header">
@@ -93,7 +93,7 @@
             -->
             <TextView
                 android:layout_width="wrap_content"
-                android:text="Detalle de contrato"
+                android:text="Detalle deudor"
                 android:gravity="center"
                 android:textColor="@color/blanco"
                 android:textSize="15dp"

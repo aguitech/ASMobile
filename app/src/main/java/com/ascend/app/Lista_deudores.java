@@ -99,7 +99,8 @@ public class Lista_deudores extends AppCompatActivity {
 
         //_url = "http://hyperion.init-code.com/zungu/app/vt_get_veterinarios.php?idp=" + Integer.toString(valueID);
         //_url = "http://thekrakensolutions.com/cobradores/android_get_clientes.php?id=" + Integer.toString(valueID);
-        _url = "http://thekrakensolutions.com/cobradores/android_get_contratos.php?id=" + Integer.toString(valueID);
+        //_url = "http://thekrakensolutions.com/cobradores/android_get_contratos.php?id=" + Integer.toString(valueID);
+        _url = "http://ascendsystem.net/ejecutivo/app_deudores_hoy.php?id=" + Integer.toString(valueID);
         Log.d("url_contratos", _url);
         new Lista_deudores.RetrieveFeedTask().execute();
     }
@@ -188,12 +189,20 @@ public class Lista_deudores extends AppCompatActivity {
 
                         listaImagenVeterinarios.add(jsonobject.getString("imagen"));
                         listaIdVeterinario.add(jsonobject.getString("id_cliente"));
-                        */
+
+
                         listaNombreVeterinarios.add(jsonobject.getString("numero_contrato"));
 
                         listaImagenVeterinarios.add(jsonobject.getString("cantidad"));
                         //listaIdVeterinario.add(jsonobject.getString("total"));
                         listaIdVeterinario.add(jsonobject.getString("id_contrato"));
+                        */
+                        listaNombreVeterinarios.add(jsonobject.getString("id_documento"));
+
+                        //listaImagenVeterinarios.add(jsonobject.getString("cantidad"));
+                        listaImagenVeterinarios.add(jsonobject.getString("id_documento"));
+                        //listaIdVeterinario.add(jsonobject.getString("total"));
+                        listaIdVeterinario.add(jsonobject.getString("id_documento"));
 
                     }
 
