@@ -99,6 +99,9 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
 
         showMsg(resultado_qr);
 
+        //_urlGet = "http://thekrakensolutions.com/cobradores/android_get_contrato.php?id_editar=" + idString + "&idv=" + valueID + "&accion=true&resultado=" + resultado_qr;
+        _urlGet = "http://ascendsystem.net/ejecutivo/app_escanear_qr.php?id_editar=" + idString + "&idv=" + valueID + "&accion=true&resultado=" + resultado_qr;
+        new Resultado_escanear.RetrieveFeedTaskGet().execute();
         /*
 
         _urlGet = "http://thekrakensolutions.com/cobradores/android_get_contrato.php?id_editar=" + idString + "&idv=" + valueID + "&accion=true";

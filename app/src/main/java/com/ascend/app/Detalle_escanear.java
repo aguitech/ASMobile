@@ -184,6 +184,7 @@ public class Detalle_escanear extends AppCompatActivity implements ZXingScannerV
         //i.putExtra("idcliente", _listaIdVeterinarios.get(i));
         //i.putExtra("idcliente", idString);
         i.putExtra("resultado_qr", rawResult.getText());
+
         startActivity(i);
         // If you would like to resume scanning, call this method below:<br />
         // mScannerView.resumeCameraPreview(this);<br />
