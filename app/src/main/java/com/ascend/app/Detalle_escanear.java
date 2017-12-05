@@ -117,6 +117,7 @@ public class Detalle_escanear extends AppCompatActivity implements ZXingScannerV
         new Detalle_contrato.RetrieveFeedTask().execute();
         */
 
+
     }
 
 
@@ -177,9 +178,33 @@ public class Detalle_escanear extends AppCompatActivity implements ZXingScannerV
         builder.setMessage(rawResult.getText());
         AlertDialog alert1 = builder.create();
         alert1.show();
+
+
+        Intent i = new Intent(Detalle_escanear.this, Resultado_escanear.class);
+        //i.putExtra("idcliente", _listaIdVeterinarios.get(i));
+        //i.putExtra("idcliente", idString);
+        i.putExtra("resultado_qr", rawResult.getText());
+        startActivity(i);
         // If you would like to resume scanning, call this method below:<br />
         // mScannerView.resumeCameraPreview(this);<br />
     }
+    /*
+    @Override
+    public void handleResult(Result rawResult) {
+        // Do something with the result here</p>
+        Log.e("handler", rawResult.getText()); // Prints scan results<br />
+        Log.e("handler", rawResult.getBarcodeFormat().toString()); // Prints the scan format (qrcode)</p>
+        // show the scanner result into dialog box.<br />
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Scan Result");
+        builder.setMessage(rawResult.getText());
+        AlertDialog alert1 = builder.create();
+        alert1.show();
+        // If you would like to resume scanning, call this method below:<br />
+        // mScannerView.resumeCameraPreview(this);<br />
+    }
+
+    */
     private void showMsg(CharSequence text){
         Context context = getApplicationContext();
         int duration = Toast.LENGTH_SHORT;

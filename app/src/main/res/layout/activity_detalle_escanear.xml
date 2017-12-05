@@ -93,7 +93,7 @@
             -->
             <TextView
                 android:layout_width="wrap_content"
-                android:text="Detalle de contrato"
+                android:text="Escanear QR"
                 android:gravity="center"
                 android:textColor="@color/blanco"
                 android:textSize="15dp"
