@@ -39,7 +39,7 @@
                 android:layout_weight="0.60"
                 android:layout_height="match_parent">
                 <ImageView
-                    android:src="@drawable/titulo_samemoon"
+                    android:src="@drawable/logo_ascend"
                     android:layout_width="100dp"
                     android:layout_height="match_parent" />
             </LinearLayout>

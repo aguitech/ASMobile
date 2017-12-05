@@ -61,9 +61,11 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         /*
         Intent para la siguiente version
-        */
+
         Intent i = new Intent(Home.this, Lista_contratos.class);
         startActivity(i);
+        */
+
 
         prefManager = new PrefManager(this);
         if (!prefManager.isFirstTimeLaunch()) {
