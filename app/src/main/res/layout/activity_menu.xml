@@ -99,7 +99,7 @@ tools:context="com.ascend.app.Menu">
         android:weightSum="1"
         android:gravity="center"
         android:layout_height="wrap_content"
-        android:onClick="goClientes">
+        android:onClick="goEscanear">
         <LinearLayout
             android:layout_width="0dp"
             android:layout_weight="0.10"
@@ -133,7 +133,7 @@ tools:context="com.ascend.app.Menu">
         android:weightSum="1"
         android:gravity="center"
         android:layout_height="wrap_content"
-        android:onClick="goEventos">
+        android:onClick="goDeudores">
         <LinearLayout
             android:layout_width="0dp"
             android:layout_weight="0.10"

@@ -35,8 +35,17 @@ public class Menu extends AppCompatActivity {
         Intent i = new Intent(Menu.this, Lista_contratos.class);
         startActivity(i);
     }
+    public void goEscanear(View v){
+        Intent i = new Intent(Menu.this, Detalle_escanear.class);
+        startActivity(i);
+    }
+
     public void goCrearEvento(View v){
         Intent i = new Intent(Menu.this, Lista_contratos.class);
+        startActivity(i);
+    }
+    public void goDeudores(View v){
+        Intent i = new Intent(Menu.this, Lista_deudores.class);
         startActivity(i);
     }
     public void goEventos(View v){

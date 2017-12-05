@@ -112,7 +112,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/outputs" />
       <excludeFolder url="file://$MODULE_DIR$/build/tmp" />
     </content>
-    <orderEntry type="jdk" jdkName="Android API 26 Platform (1)" jdkType="Android SDK" />
+    <orderEntry type="jdk" jdkName="Android API 26 Platform (2)" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="com.android.support:support-fragment-25.0.0" level="project" />
     <orderEntry type="library" scope="TEST" name="com.android.support.test:exposed-instrumentation-api-publish-0.5" level="project" />
@@ -121,6 +121,7 @@
     <orderEntry type="library" name="com.squareup.okhttp3:okhttp:3.2.0@jar" level="project" />
     <orderEntry type="library" name="com.android.support:support-v13-25.0.0" level="project" />
     <orderEntry type="library" scope="TEST" name="junit:junit:4.12@jar" level="project" />
+    <orderEntry type="library" name="com.google.zxing:core:3.2.1@jar" level="project" />
     <orderEntry type="library" scope="TEST" name="javax.inject:javax.inject:1@jar" level="project" />
     <orderEntry type="library" scope="TEST" name="com.squareup:javawriter:2.1.1@jar" level="project" />
     <orderEntry type="library" name="com.google.android.gms:play-services-basement-9.8.0" level="project" />
@@ -146,6 +147,7 @@
     <orderEntry type="library" name="com.parse.bolts:bolts-android:1.2.0@jar" level="project" />
     <orderEntry type="library" name="com.squareup.okio:okio:1.6.0@jar" level="project" />
     <orderEntry type="library" name="com.facebook.android:facebook-android-sdk-4.7.0" level="project" />
+    <orderEntry type="library" name="me.dm7.barcodescanner:core-1.8.4" level="project" />
     <orderEntry type="library" name="com.android.support:support-compat-25.0.0" level="project" />
     <orderEntry type="library" name="com.google.android.gms:play-services-maps-9.8.0" level="project" />
     <orderEntry type="library" scope="TEST" name="com.android.support.test.espresso:espresso-idling-resource-2.2.2" level="project" />
@@ -153,6 +155,7 @@
     <orderEntry type="library" scope="TEST" name="javax.annotation:javax.annotation-api:1.2@jar" level="project" />
     <orderEntry type="library" name="com.android.support:recyclerview-v7-25.0.0" level="project" />
     <orderEntry type="library" name="pl.droidsonroids.gif:android-gif-drawable-1.1.7" level="project" />
+    <orderEntry type="library" name="me.dm7.barcodescanner:zxing-1.8.4" level="project" />
     <orderEntry type="library" name="com.android.support:support-vector-drawable-25.0.0" level="project" />
   </component>
 </module>

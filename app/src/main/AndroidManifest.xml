@@ -66,6 +66,17 @@
         <activity android:name="com.ascend.app.Principal"
             android:screenOrientation="portrait"></activity>
 
+        <activity android:name="com.ascend.app.Lista_deudores"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name="com.ascend.app.Detalle_deudor"
+            android:screenOrientation="portrait"></activity>
+
+
+        <activity android:name="com.ascend.app.Detalle_escanear"
+            android:screenOrientation="portrait"></activity>
+
+
     </application>
 
 
