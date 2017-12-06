@@ -244,7 +244,8 @@ public class Login extends AppCompatActivity {
 
     private void jsonLogin(String usuario, String password){
         //String _url = "http://thekrakensolutions.com/cobradores/android_iniciar_sesion.php";
-        String _url = "http://aguitech.com/samemoon/cobradores/android_iniciar_sesion.php";
+        //String _url = "http://aguitech.com/samemoon/cobradores/android_iniciar_sesion.php";
+        String _url = "http://ascendsystem.net/ejecutivo/app_login.php";
 
 Log.d("url",_url);
         AndroidNetworking.post(_url)
