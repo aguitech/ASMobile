@@ -125,7 +125,7 @@ public class DeudoresAdapter extends BaseAdapter {
                 Intent intent = new Intent(context, Detalle_deudor.class);
                 //intent.putExtra("idveterinario", _listaIdVeterinarios.get(i));
                 //intent.putExtra("idcliente", _listaIdVeterinarios.get(i));
-                intent.putExtra("idcontrato", _listaIdVeterinarios.get(i));
+                intent.putExtra("iddeudor", _listaIdVeterinarios.get(i));
                 context.startActivity(intent);
 
             }
@@ -153,7 +153,7 @@ public class DeudoresAdapter extends BaseAdapter {
                 Intent intent = new Intent(context, Detalle_contrato.class);
                 //intent.putExtra("idveterinario", _listaIdVeterinarios.get(i));
                 //intent.putExtra("idcliente", _listaIdVeterinarios.get(i));
-                intent.putExtra("idcontrato", _listaIdVeterinarios.get(i));
+                intent.putExtra("iddeudor", _listaIdVeterinarios.get(i));
                 context.startActivity(intent);
 
             }

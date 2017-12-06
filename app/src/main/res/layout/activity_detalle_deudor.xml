@@ -121,6 +121,7 @@
             android:paddingRight="16dp"
             android:clipToPadding="false"
             android:paddingTop="0dp">
+            <!--
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -137,6 +138,7 @@
                 android:layout_height="1dp"
                 android:background="@color/fondo_input">
             </LinearLayout>
+            -->
 
             <LinearLayout
                 android:layout_marginTop="20dp"
@@ -252,7 +254,9 @@
                 </ListView>
 
             </LinearLayout>
-            -->
+
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -295,6 +299,8 @@
                     android:background="@drawable/border_verde_radius"
                     android:layout_height="30dp" />
             </LinearLayout>
+
+            -->
 
         </LinearLayout>
 

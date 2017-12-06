@@ -76,7 +76,7 @@ public class Detalle_deudor extends AppCompatActivity {
 
         } else {
             //idString= extras.getString("idcliente");
-            idString= extras.getString("idcontrato");
+            idString= extras.getString("iddeudor");
             Log.d("id_vet", idString);
 
         }
@@ -99,7 +99,8 @@ public class Detalle_deudor extends AppCompatActivity {
         */
         //_urlGet = "http://hyperion.init-code.com/zungu/app/vt_principal.php?id_editar=" + idString + "&idv=" + valueID + "&accion=true";
         //_urlGet = "http://thekrakensolutions.com/cobradores/android_get_cliente.php?id_editar=" + idString + "&idv=" + valueID + "&accion=true";
-        _urlGet = "http://thekrakensolutions.com/cobradores/android_get_contrato.php?id_editar=" + idString + "&idv=" + valueID + "&accion=true";
+        //_urlGet = "http://thekrakensolutions.com/cobradores/android_get_contrato.php?id_editar=" + idString + "&idv=" + valueID + "&accion=true";
+        _urlGet = "http://ascendsystem.net/ejecutivo/app_detalle_deudor.php?id_editar=" + idString + "&idv=" + valueID + "&accion=true";
         new Detalle_deudor.RetrieveFeedTaskGet().execute();
 
 
@@ -173,16 +174,18 @@ public class Detalle_deudor extends AppCompatActivity {
                     JSONObject object = (JSONObject) new JSONTokener(response).nextValue();
 
 
-                    String _nombre_vo = object.getString("numero_cliente") + " - " + object.getString("nombre") + " " + object.getString("apaterno") + " " + object.getString("amaterno");
+                    String _nombre_vo = object.getString("RFC_deudor") + " - " + object.getString("deudor") + " " + object.getString("cuenta_deudor");
 
                     //String _telefono_vo = object.getString("telefono_casa");
-                    String _cedula_vo = object.getString("numero_cliente");
-                    String _email_vo = object.getString("fecha_nacimiento");
+                    String _cedula_vo = object.getString("RFC_deudor");
+                    String _email_vo = object.getString("RFC_deudor");
                     //String _imagen_vo = object.getString("sexo");
-                    String _imagen_vo = object.getString("imagen");
+                    //String _imagen_vo = object.getString("imagen");
+                    String _imagen_vo = "hectoraguilar.png";
 
 
-                    showMsg("tesst2");
+
+                    //showMsg("tesst2");
 
                     showMsg(_email_vo);
                     //showMsg(_telefono_vo);
@@ -222,7 +225,7 @@ public class Detalle_deudor extends AppCompatActivity {
                     //DIRECCION
                     //String txtDireccion_ = object.getString("calle") + " " + object.getString("numero_exterior") + " " + object.getString("numero_interior")  + " , Colonia " + object.getString("colonia")  + " , Delegación/Municipio " + object.getString("delegacion_municipio")  + " , Estado " + object.getString("estado")  + " , C.P. " + object.getString("codigo_postal")  + " , País " + object.getString("pais")  + " , entre calle " + object.getString("entre_calle")  + " y calle " + object.getString("y_calle")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno");
                     //String txtDireccion_ = object.getString("calle") + " " + object.getString("numero_exterior") + " " + object.getString("numero_interior")  + " , Colonia " + object.getString("colonia")  + " , Delegación/Municipio " + object.getString("delegacion_municipio")  + " , Estado " + object.getString("estado")  + " , C.P. " + object.getString("codigo_postal")  + " , País " + object.getString("pais")  + " , entre calle " + object.getString("entre_calle")  + " y calle " + object.getString("y_calle");
-                    String txtDireccion_ = object.getString("calle") + " " + object.getString("numero_exterior") + " " + object.getString("numero_interior")  + " , Colonia " + object.getString("colonia")  + " , Delegación/Municipio " + object.getString("poblacion")  + " , Estado " + object.getString("estado")  + " , C.P. " + object.getString("codigo_postal")  + " , País " + object.getString("pais");
+                    String txtDireccion_ = object.getString("calle") + " " + object.getString("numero_exterior") + " " + object.getString("numero_interior")  + " , Colonia " + object.getString("colonia")  + " , Delegación/Municipio " + object.getString("municipio")  + " , Estado " + object.getString("estado")  + " , C.P. " + object.getString("codigo_postal")  + " , País " + object.getString("pais");
 
                     if(txtDireccion_.length() > 3)
                         txtDireccion.setText(txtDireccion_);
@@ -232,7 +235,7 @@ public class Detalle_deudor extends AppCompatActivity {
 
 
                     if(_imagen_vo.length() > 3){
-                        String _urlFoto = "http://thekrakensolutions.com/administrativos/images/clientes/" + _imagen_vo;
+                        String _urlFoto = "http://hector-aguilar.com/web/images/" + _imagen_vo;
                         //Picasso.with(fotoVeterinario.getContext()).load(_urlFoto).fit().centerCrop().into(fotoVeterinario);
 
                         Picasso.with(fotoVeterinario.getContext()).load(_urlFoto)

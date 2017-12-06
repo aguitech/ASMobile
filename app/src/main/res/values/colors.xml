@@ -41,10 +41,10 @@
     <color name="anaranjado">#FFA700</color>
 
     <!-- Screens background color-->
-    <color name="bg_screen1">#3e4359</color>
-    <color name="bg_screen2">#1f6fc6</color>
-    <color name="bg_screen3">#8fbada</color>
-    <color name="bg_screen4">#3e4359</color>
+    <color name="bg_screen1">#FFA700</color>
+    <color name="bg_screen2">#FF541E</color>
+    <color name="bg_screen3">#FFA700</color>
+    <color name="bg_screen4">#FF541E</color>
     <!-- <color name="bg_screen4">#d1d8de</color> -->
 
     <!-- dots inactive colors -->
