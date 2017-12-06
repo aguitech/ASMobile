@@ -7,7 +7,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -20,10 +19,8 @@ import org.json.JSONTokener;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 
 /**
@@ -66,36 +63,6 @@ public class Lista_deudores extends AppCompatActivity {
         new Lista_clientes.RetrieveFeedTaskNotificaciones().execute();
         */
 
-        buscador.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if(event.getAction() == MotionEvent.ACTION_UP) {
-                    if(event.getRawX() >= ((buscador.getWidth() - buscador.getTotalPaddingRight()))) {
-                        String param = buscador.getText().toString();
-
-                        try {
-
-                            _url = "http://hyperion.init-code.com/zungu/app/vt_get_veterinarios.php?idp=" + Integer.toString(valueID) + "&search=" + URLEncoder.encode(param, "UTF-8");
-
-                            lv.setAdapter(null);
-                            new Lista_deudores.RetrieveFeedTask().execute();
-                            return true;
-                            /*
-                            _url = "http://hyperion.init-code.com/zungu/app/vt_get_veterinarios.php?idp=" + Integer.toString(valueID) + "&search=" + URLEncoder.encode(param, "UTF-8");
-
-                            lv.setAdapter(null);
-                            new Lista_veterinarios.RetrieveFeedTask().execute();
-                            return true;
-                            */
-                        } catch (UnsupportedEncodingException e) {
-                            e.printStackTrace();
-                        }
-
-                    }
-                }
-                return false;
-            }
-        });
 
         //_url = "http://hyperion.init-code.com/zungu/app/vt_get_veterinarios.php?idp=" + Integer.toString(valueID);
         //_url = "http://thekrakensolutions.com/cobradores/android_get_clientes.php?id=" + Integer.toString(valueID);

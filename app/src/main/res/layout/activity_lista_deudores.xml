@@ -4,7 +4,7 @@
     android:id="@+id/activity_notificaciones"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondokraken"
+    android:background="@color/blanco"
     tools:context="com.ascend.app.Lista_deudores">
 
     <!--Comienza el contenedor padre-->
@@ -109,6 +109,7 @@
         <!--Termina contenedor del header-->
 
         <!--Buscador-->
+        <!--
         <LinearLayout
             android:layout_width="match_parent"
             android:focusableInTouchMode="true"
@@ -148,6 +149,7 @@
                 android:layout_height="1dp">
             </LinearLayout>
         </LinearLayout>
+        -->
         <!--Termina Buscador-->
 
     </LinearLayout>
