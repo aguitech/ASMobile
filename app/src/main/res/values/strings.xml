@@ -23,17 +23,17 @@ PageMaker, el cual incluye versiones de Lorem Ipsum.</string>
     <string name="skip">OMITIR</string>
     <string name="start">LISTO</string>
 
-    <string name="slide_1_title">Crea un evento</string>
-    <string name="slide_1_desc">Ingresa la fecha y hora del evento</string>
+    <string name="slide_1_title">Gestiona facturas</string>
+    <string name="slide_1_desc">Lista los deudores y selecciona las facturas</string>
 
-    <string name="slide_2_title">Invita a tus amigos</string>
-    <string name="slide_2_desc">Seleecciona de tus amigos los invitados</string>
+    <string name="slide_2_title">Asgina los Status</string>
+    <string name="slide_2_desc">Cambia el estatus a las facturas</string>
 
-    <string name="slide_3_title">Tomate la foto en el evento</string>
-    <string name="slide_3_desc">Toma la foto para poder generar el collage</string>
+    <string name="slide_3_title">Escanea facturas</string>
+    <string name="slide_3_desc">Escanea y sube tu información</string>
 
-    <string name="slide_4_title">Visita tus monnies</string>
-    <string name="slide_4_desc">Recuerda tus momentos guardados</string>
+    <string name="slide_4_title">Aplicación Online</string>
+    <string name="slide_4_desc">Consulta la información en tiempo real</string>
 
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
     <string name="play_again">Play Again</string>

@@ -45,6 +45,7 @@ public class Principal extends AppCompatActivity implements ZXingScannerView.Res
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         valueID = sharedpreferences.getInt("idu", 0);
 
+        onPause();
         /*
         _urlNotificaciones = "http://hyperion.init-code.com/zungu/app/vt_get_numero_notificaciones.php?idv=" + valueID;
         new Lista_clientes.RetrieveFeedTaskNotificaciones().execute();
@@ -64,6 +65,7 @@ public class Principal extends AppCompatActivity implements ZXingScannerView.Res
     }
     @Override
     public void onPause() {
+        mScannerView = new ZXingScannerView(this);   // Programmatically initialize the scanner view<br />
         super.onPause();
         mScannerView.stopCamera();   // Stop camera on pause<br />
     }

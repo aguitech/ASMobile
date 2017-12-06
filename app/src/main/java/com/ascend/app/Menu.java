@@ -29,6 +29,7 @@ public class Menu extends AppCompatActivity implements ZXingScannerView.ResultHa
 
         //TextView txtNombre = (TextView)findViewById(R.id.txtNombre);
         //txtNombre.setText(String.valueOf(value));
+        onPause();
     }
 
     public void QrScanner(View view){
@@ -39,6 +40,7 @@ public class Menu extends AppCompatActivity implements ZXingScannerView.ResultHa
     }
     @Override
     public void onPause() {
+        mScannerView = new ZXingScannerView(this);   // Programmatically initialize the scanner view<br />
         super.onPause();
         mScannerView.stopCamera();   // Stop camera on pause<br />
     }
@@ -92,6 +94,39 @@ public class Menu extends AppCompatActivity implements ZXingScannerView.ResultHa
         // If you would like to resume scanning, call this method below:<br />
         // mScannerView.resumeCameraPreview(this);<br />
     }
+
+
+/*
+    @Override
+    public void handleResult(Result rawResult) {
+        //Hold result
+        Log.e("handler", rawResult.getText()); // Prints scan results
+        Log.e("handler", rawResult.getBarcodeFormat().toString()); // Prints the scan format (qrcode)
+        mScannerView.removeAllViews(); //<- here remove all the views, it will make an Activity having no View
+        mScannerView.stopCamera(); //<- then stop the camera
+        setContentView(R.layout.activity_menu); //<- and set the View again.
+        final String vString = rawResult.getText();
+
+        Intent i = new Intent(Menu.this, Resultado_escanear.class);
+        //i.putExtra("idcliente", _listaIdVeterinarios.get(i));
+        //i.putExtra("idcliente", idString);
+        i.putExtra("resultado_qr", rawResult.getText());
+
+        startActivity(i);
+
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                //Toast.makeText(mContext,vString,Toast.LENGTH_LONG).show();
+
+
+
+            }
+        });
+        // to resume scanning
+        // mScannerView.resumeCameraPreview(this);<br />
+    }
+    */
 
     public void cerrar(View v){
         finish();
