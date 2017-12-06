@@ -334,8 +334,15 @@ public class Detalle_deudor extends AppCompatActivity {
                         listaImagenVeterinarios.add(jsonobject.getString("imagen"));
                         listaIdVeterinario.add(jsonobject.getString("id_cliente"));
                         listaNombreVeterinarios.add(jsonobject.getString("folio") + " " + jsonobject.getString("importe") + " " + jsonobject.getString("saldo"));
-                        */
+
+
                         listaNombreVeterinarios.add(jsonobject.getString("id_documento"));
+
+                        listaImagenVeterinarios.add(jsonobject.getString("id_documento"));
+                        //listaIdVeterinario.add(jsonobject.getString("total"));
+                        listaIdVeterinario.add(jsonobject.getString("id_documento"));
+                        */
+                        listaNombreVeterinarios.add(jsonobject.getString("folio") + " $" + jsonobject.getString("importe"));
 
                         listaImagenVeterinarios.add(jsonobject.getString("id_documento"));
                         //listaIdVeterinario.add(jsonobject.getString("total"));
