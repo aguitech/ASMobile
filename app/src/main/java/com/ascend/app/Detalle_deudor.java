@@ -18,7 +18,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ascend.app.adapters.PagosAdapter;
+import com.ascend.app.adapters.DocumentosAdapter;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -51,7 +51,7 @@ public class Detalle_deudor extends AppCompatActivity {
     public static ArrayList<String> listaIdVeterinario = new ArrayList<String>();
 
     public Detalle_deudor mActivity = this;
-    public PagosAdapter _mascotasAdapter;
+    public DocumentosAdapter _mascotasAdapter;
 
     public Detalle_deudor _activity = this;
     RecyclerView lvMascotas;
@@ -66,6 +66,7 @@ public class Detalle_deudor extends AppCompatActivity {
         setContentView(R.layout.activity_detalle_deudor);
 
         //lv = (ListView) findViewById(R.id.list_pagos);
+        lv = (ListView) findViewById(R.id.list_facturas);
 
         showMsg("test");
 
@@ -104,6 +105,11 @@ public class Detalle_deudor extends AppCompatActivity {
         new Detalle_deudor.RetrieveFeedTaskGet().execute();
 
 
+        //_url = "http://ascendsystem.net/ejecutivo/app_deudores_hoy.php?id=" + Integer.toString(valueID);
+        //_url = "http://ascendsystem.net/ejecutivo/app_listar_documentos.php?id_deudor=" + Integer.toString(valueID);
+        _url = "http://ascendsystem.net/ejecutivo/app_listar_documentos.php?id_deudor=" + idString;
+        Log.d("url_contratos", _url);
+        new Detalle_deudor.RetrieveFeedTask().execute();
         /**
         _url = "http://thekrakensolutions.com/cobradores/android_get_contratos.php?id=" + Integer.toString(valueID);
         Log.d("url_veterinarios", _url);
@@ -327,19 +333,19 @@ public class Detalle_deudor extends AppCompatActivity {
 
                         listaImagenVeterinarios.add(jsonobject.getString("imagen"));
                         listaIdVeterinario.add(jsonobject.getString("id_cliente"));
+                        listaNombreVeterinarios.add(jsonobject.getString("folio") + " " + jsonobject.getString("importe") + " " + jsonobject.getString("saldo"));
                         */
-                        listaNombreVeterinarios.add(jsonobject.getString("numero_contrato"));
+                        listaNombreVeterinarios.add(jsonobject.getString("id_documento"));
 
-                        listaImagenVeterinarios.add(jsonobject.getString("cantidad"));
+                        listaImagenVeterinarios.add(jsonobject.getString("id_documento"));
                         //listaIdVeterinario.add(jsonobject.getString("total"));
-                        listaIdVeterinario.add(jsonobject.getString("id_contrato"));
+                        listaIdVeterinario.add(jsonobject.getString("id_documento"));
 
                     }
 
-                    /*
-                    _mascotasAdapter = new PagosAdapter(valueID, mActivity, listaNombreVeterinarios, listaImagenVeterinarios, listaIdVeterinario);
+                    _mascotasAdapter = new DocumentosAdapter(valueID, mActivity, listaNombreVeterinarios, listaImagenVeterinarios, listaIdVeterinario);
                     lv.setAdapter(_mascotasAdapter);
-                    */
+
 
                 } catch (Exception e) {
                     e.printStackTrace();
