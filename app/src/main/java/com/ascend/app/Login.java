@@ -224,7 +224,8 @@ public class Login extends AppCompatActivity {
 
                                 text = "Bienvenido a Zungu usuarios";
                                 Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG).show();
-                                Intent i = new Intent(Login.this, Home.class);
+                                //Intent i = new Intent(Login.this, Home.class);
+                                Intent i = new Intent(Login.this, Principal.class);
 
                                 startActivity(i);
                                 finish();
@@ -271,7 +272,7 @@ Log.d("url",_url);
 
                                 Log.i("IDU", Integer.toString(ID));
 
-                                text = "Bienvenido a The Kraken Solutions";
+                                text = "Bienvenido Ascend Mobile";
                                 Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG).show();
                                 Intent i = new Intent(Login.this, Home.class);
 

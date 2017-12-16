@@ -142,6 +142,62 @@
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="0dp">
+                    <TextView
+                        android:id="@+id/txtRFCEmisor"
+                        android:textSize="12dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="RFC Emisor"/>
+                    <TextView
+                        android:layout_marginLeft="0dp"
+                        android:id="@+id/txtRazonSocialEmisor"
+                        android:textSize="12dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Razón Social Emisor" />
+                    <TextView
+                        android:id="@+id/txtRFCReceptor"
+                        android:textSize="12dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="RFC Emisor"/>
+                    <TextView
+                        android:layout_marginLeft="0dp"
+                        android:id="@+id/txtRazonSocialReceptor"
+                        android:textSize="12dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Razón Social Emisor" />
+                    <TextView
+                        android:id="@+id/txtTotalFactura"
+                        android:textSize="12dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total Factura"/>
+                    <TextView
+                        android:layout_marginLeft="0dp"
+                        android:id="@+id/txtFolioFiscal"
+                        android:textSize="12dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Folio Fiscal" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
                 <ImageView
                     android:layout_width="85dp"
                     android:layout_height="85dp"

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
@@ -98,9 +99,10 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
 
 
         showMsg(resultado_qr);
+        Log.d("resultado_qr", resultado_qr);
 
         //_urlGet = "http://thekrakensolutions.com/cobradores/android_get_contrato.php?id_editar=" + idString + "&idv=" + valueID + "&accion=true&resultado=" + resultado_qr;
-        _urlGet = "http://ascendsystem.net/ejecutivo/app_escanear_qr.php?id_editar=" + idString + "&idv=" + valueID + "&accion=true&resultado=" + resultado_qr;
+        _urlGet = "http://ascendsystem.net/ejecutivo/app_escanear_qr.php?id_editar=" + idString + "&id_usuario=" + valueID + "&accion=true&resultado=" + Uri.encode(resultado_qr);
         new Resultado_escanear.RetrieveFeedTaskGet().execute();
         /*
 
@@ -108,6 +110,7 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
         new Resultado_escanear.RetrieveFeedTaskGet().execute();
 
         */
+        onPause();
     }
 
 
@@ -126,8 +129,9 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
     }
     @Override
     public void onPause() {
-            super.onPause();
-            mScannerView.stopCamera();   // Stop camera on pause<br />
+        mScannerView = new ZXingScannerView(this);   // Programmatically initialize the scanner view<br />
+        super.onPause();
+        mScannerView.stopCamera();   // Stop camera on pause<br />
     }
     /*
     @Override
@@ -206,7 +210,7 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
 
         protected String doInBackground(Void... urls) {
             try {
-                Log.i("INFO url Contrato: ", _urlGet);
+                Log.i("INFO QR: ", _urlGet);
                 URL url = new URL(_urlGet);
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                 try {
@@ -238,6 +242,18 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
                 ImageView foto = (ImageView) findViewById(R.id.imgFoto);
                 */
 
+
+                TextView txtRFCEmisor = (TextView) findViewById(R.id.txtRFCEmisor);
+                TextView txtRFCReceptor = (TextView) findViewById(R.id.txtRFCReceptor);
+                TextView txtTotalFactura = (TextView) findViewById(R.id.txtTotalFactura);
+                TextView txtFolioFiscal = (TextView) findViewById(R.id.txtFolioFiscal);
+                TextView txtRazonSocialEmisor = (TextView) findViewById(R.id.txtRazonSocialEmisor);
+                TextView txtRazonSocialReceptor = (TextView) findViewById(R.id.txtRazonSocialReceptor);
+
+
+
+
+
                 TextView lblNombreVo = (TextView) findViewById(R.id.txtNombreA);
                 TextView lblEmailVo = (TextView) findViewById(R.id.txtEmailA);
                 TextView lblCelVo = (TextView) findViewById(R.id.txtCelA);
@@ -251,18 +267,46 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
                     JSONObject object = (JSONObject) new JSONTokener(response).nextValue();
 
 
-                    String _nombre_vo = object.getString("numero_cliente") + " - " + object.getString("nombre") + " " + object.getString("apaterno") + " " + object.getString("amaterno");
+
+                    //String _nombre_vo = object.getString("numero_cliente") + " - " + object.getString("nombre") + " " + object.getString("apaterno") + " " + object.getString("amaterno");
+                    String _nombre_vo = object.getString("rfc_emisor");
 
                     //String _telefono_vo = object.getString("telefono_casa");
-                    String _cedula_vo = object.getString("numero_cliente");
-                    String _email_vo = object.getString("fecha_nacimiento");
+                    String _cedula_vo = object.getString("rfc_emisor");
+                    String _email_vo = object.getString("rfc_emisor");
                     //String _imagen_vo = object.getString("sexo");
-                    String _imagen_vo = object.getString("imagen");
+                    String _imagen_vo = object.getString("rfc_emisor");
 
 
-                    showMsg("tesst2");
 
-                    showMsg(_email_vo);
+
+                    String _RFCEmisor = object.getString("rfc_emisor");
+                    String _RFCReceptor = object.getString("rfc_receptor");
+                    String _TotalFactura = object.getString("total_factura");
+                    String _FolioFiscal = object.getString("folio_fiscal");
+                    String _RazonSocialEmisor = object.getString("razon_social_emisor");
+                    String _RazonSocialReceptor = object.getString("razon_social_receptor");
+
+
+
+
+
+                    txtRFCEmisor.setText(_RFCEmisor);
+                    txtRFCReceptor.setText(_RFCReceptor);
+                    txtTotalFactura.setText(_TotalFactura);
+                    txtFolioFiscal.setText(_FolioFiscal);
+                    txtRazonSocialEmisor.setText(_RazonSocialEmisor);
+                    txtRazonSocialReceptor.setText(_RazonSocialReceptor);
+
+
+
+
+                    //showMsg("tesst2");
+
+                    //showMsg(_email_vo);
+
+
+
                     //showMsg(_telefono_vo);
 
 
@@ -300,7 +344,9 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
                     //DIRECCION
                     //String txtDireccion_ = object.getString("calle") + " " + object.getString("numero_exterior") + " " + object.getString("numero_interior")  + " , Colonia " + object.getString("colonia")  + " , Delegación/Municipio " + object.getString("delegacion_municipio")  + " , Estado " + object.getString("estado")  + " , C.P. " + object.getString("codigo_postal")  + " , País " + object.getString("pais")  + " , entre calle " + object.getString("entre_calle")  + " y calle " + object.getString("y_calle")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno");
                     //String txtDireccion_ = object.getString("calle") + " " + object.getString("numero_exterior") + " " + object.getString("numero_interior")  + " , Colonia " + object.getString("colonia")  + " , Delegación/Municipio " + object.getString("delegacion_municipio")  + " , Estado " + object.getString("estado")  + " , C.P. " + object.getString("codigo_postal")  + " , País " + object.getString("pais")  + " , entre calle " + object.getString("entre_calle")  + " y calle " + object.getString("y_calle");
-                    String txtDireccion_ = object.getString("calle") + " " + object.getString("numero_exterior") + " " + object.getString("numero_interior")  + " , Colonia " + object.getString("colonia")  + " , Delegación/Municipio " + object.getString("poblacion")  + " , Estado " + object.getString("estado")  + " , C.P. " + object.getString("codigo_postal")  + " , País " + object.getString("pais");
+                    //String txtDireccion_ = object.getString("calle") + " " + object.getString("numero_exterior") + " " + object.getString("numero_interior")  + " , Colonia " + object.getString("colonia")  + " , Delegación/Municipio " + object.getString("poblacion")  + " , Estado " + object.getString("estado")  + " , C.P. " + object.getString("codigo_postal")  + " , País " + object.getString("pais");
+                    String txtDireccion_ = object.getString("rfc_emisor");
+
 
                     if(txtDireccion_.length() > 3)
                         txtDireccion.setText(txtDireccion_);

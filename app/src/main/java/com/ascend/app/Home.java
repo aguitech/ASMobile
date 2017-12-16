@@ -65,6 +65,8 @@ public class Home extends AppCompatActivity {
         Intent i = new Intent(Home.this, Lista_contratos.class);
         startActivity(i);
         */
+        //Intent i = new Intent(Home.this, Principal.class);
+        //Intent i = new Intent(Home.this, Inicio.class);
         Intent i = new Intent(Home.this, Principal.class);
         startActivity(i);
 
