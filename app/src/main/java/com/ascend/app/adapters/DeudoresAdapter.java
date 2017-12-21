@@ -2,26 +2,17 @@ package com.ascend.app.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.AsyncTask;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.ascend.app.Detalle_contrato;
 import com.ascend.app.Detalle_deudor;
 import com.ascend.app.Lista_deudores;
 import com.ascend.app.R;
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -35,9 +26,11 @@ import java.util.ArrayList;
 
 public class DeudoresAdapter extends BaseAdapter {
 
-    ArrayList<String> _listaNombreVeterinarios;
-    ArrayList<String> _listaImagenVeterinarios;
-    ArrayList<String> _listaIdVeterinarios;
+    ArrayList<String> _listaRFCDeudores;
+    ArrayList<String> _listaRazonSocialDeudores;
+    ArrayList<String> _listaEstatus;
+    ArrayList<String> _listaIdDeudor;
+
     Context context;
     public String _url;
     public String _urlGo;
@@ -45,10 +38,14 @@ public class DeudoresAdapter extends BaseAdapter {
 
     private static LayoutInflater inflater=null;
 
-    public DeudoresAdapter(int valueID, Lista_deudores mainActivity, ArrayList<String> listaNombreVeterinarios, ArrayList<String> listaImagenVeterinarios, ArrayList<String> listaIdVeterinarios){
-        _listaIdVeterinarios = listaIdVeterinarios;
-        _listaImagenVeterinarios = listaImagenVeterinarios;
-        _listaNombreVeterinarios = listaNombreVeterinarios;
+    public DeudoresAdapter(int valueID, Lista_deudores mainActivity, ArrayList<String> listaRFCDeudores, ArrayList<String> listaRazonSocialDeudores, ArrayList<String> listaEstatus, ArrayList<String> listaIdDeudor){
+
+        _listaIdDeudor = listaIdDeudor;
+
+        _listaRFCDeudores = listaRFCDeudores;
+        _listaRazonSocialDeudores = listaRazonSocialDeudores;
+        _listaEstatus = listaEstatus;
+
         _valueID = valueID;
 
         context = mainActivity;
@@ -57,7 +54,7 @@ public class DeudoresAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return _listaIdVeterinarios.size();
+        return _listaIdDeudor.size();
     }
 
     @Override
@@ -71,10 +68,9 @@ public class DeudoresAdapter extends BaseAdapter {
     }
 
     public class Holder{
-        TextView nombreVeterinario;
-        ImageView imagenVeterinario;
-        Button agregarVeterinario;
-        ImageView detalleVeterinario;
+        TextView RFCDeudor;
+        TextView RazonSocialDeudor;
+        TextView EstatusDeudor;
     }
 
     @Override
@@ -82,13 +78,26 @@ public class DeudoresAdapter extends BaseAdapter {
 
         final Holder holder = new Holder();
         final View rowView;
-        rowView = inflater.inflate(R.layout.list_contratos, null);
+        rowView = inflater.inflate(R.layout.list_deudores, null);
         final int pos = i;
 
-        holder.nombreVeterinario = (TextView) rowView.findViewById(R.id.txtNombreVeterinario);
-        holder.imagenVeterinario = (ImageView) rowView.findViewById(R.id.imgVeterinario);
+        //holder.nombreVeterinario = (TextView) rowView.findViewById(R.id.txtNombreVeterinario);
+
+
+        holder.RFCDeudor = (TextView) rowView.findViewById(R.id.txtRFCDeudor);
+        holder.RazonSocialDeudor = (TextView) rowView.findViewById(R.id.txtRazonSocialDeudor);
+        holder.EstatusDeudor = (TextView) rowView.findViewById(R.id.txtEstatusPagoDeudor);
+
+
+        holder.RFCDeudor.setText(_listaRFCDeudores.get(i));
+        holder.RazonSocialDeudor.setText(_listaRazonSocialDeudores.get(i));
+        holder.EstatusDeudor.setText(_listaEstatus.get(i));
+
+
+
+        //holder.imagenVeterinario = (ImageView) rowView.findViewById(R.id.imgVeterinario);
         //holder.agregarVeterinario = (Button) rowView.findViewById(R.id.buttonAgregar);
-        holder.detalleVeterinario = (ImageView) rowView.findViewById(R.id.imgDetalle);
+        //holder.detalleVeterinario = (ImageView) rowView.findViewById(R.id.imgDetalle);
 
         /*
 
@@ -118,19 +127,20 @@ public class DeudoresAdapter extends BaseAdapter {
                 //context.startActivity(intent);
 
                 Log.d("click", String.valueOf(i));
-                Log.d("click", _listaIdVeterinarios.get(i));
+                Log.d("click", _listaIdDeudor.get(i));
 
                 //Intent intent = new Intent(context, Detalle_cliente.class);
                 //Intent intent = new Intent(context, Detalle_contrato.class);
                 Intent intent = new Intent(context, Detalle_deudor.class);
                 //intent.putExtra("idveterinario", _listaIdVeterinarios.get(i));
                 //intent.putExtra("idcliente", _listaIdVeterinarios.get(i));
-                intent.putExtra("iddeudor", _listaIdVeterinarios.get(i));
+                intent.putExtra("iddeudor", _listaIdDeudor.get(i));
                 context.startActivity(intent);
 
             }
         });
 
+        /*
         holder.detalleVeterinario.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 //_urlGo = "http://hyperion.init-code.com/zungu/app/vt_agregar_id_veterinario.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos);
@@ -158,7 +168,8 @@ public class DeudoresAdapter extends BaseAdapter {
 
             }
         });
-
+        */
+/*
         holder.nombreVeterinario.setText(_listaNombreVeterinarios.get(i));
         _url = "http://hyperion.init-code.com/zungu/imagen_establecimiento/" + _listaImagenVeterinarios.get(i);
         Log.d("url", _url);
@@ -180,6 +191,7 @@ public class DeudoresAdapter extends BaseAdapter {
                     }
                 });
 
+        */
         return rowView;
     }
 

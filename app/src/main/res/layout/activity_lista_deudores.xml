@@ -168,7 +168,7 @@
             android:layout_weight="0.90"
             android:layout_height="match_parent">
             <ListView
-                android:id="@+id/list_veterinarios"
+                android:id="@+id/lista_deudores"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
             </ListView>

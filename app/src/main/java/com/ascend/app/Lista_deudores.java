@@ -39,11 +39,18 @@ public class Lista_deudores extends AppCompatActivity {
     private int valueID = 0;
 
     public static ArrayList<String> listaNombreVeterinarios = new ArrayList<String>();
+
+    public static ArrayList<String> listaRFCDeudores = new ArrayList<String>();
+    public static ArrayList<String> listaRazonSocialDeudores = new ArrayList<String>();
+    public static ArrayList<String> listaEstatusDeudores = new ArrayList<String>();
+
     public static ArrayList<String> listaImagenVeterinarios = new ArrayList<String>();
-    public static ArrayList<String> listaIdVeterinario = new ArrayList<String>();
+    public static ArrayList<String> listaIdDeudor = new ArrayList<String>();
+
+
 
     public Lista_deudores mActivity = this;
-    public DeudoresAdapter _mascotasAdapter;
+    public DeudoresAdapter _deudoresAdapter;
 
     private String _urlNotificaciones;
 
@@ -52,8 +59,8 @@ public class Lista_deudores extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_deudores);
 
-        lv = (ListView) findViewById(R.id.list_veterinarios);
-        buscador = (EditText) findViewById(R.id.txtBuscador);
+        lv = (ListView) findViewById(R.id.lista_deudores);
+        //buscador = (EditText) findViewById(R.id.txtBuscador);
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         valueID = sharedpreferences.getInt("idu", 0);
@@ -136,45 +143,35 @@ public class Lista_deudores extends AppCompatActivity {
                     JSONTokener tokener = new JSONTokener(response);
                     JSONArray arr = new JSONArray(tokener);
 
-                    listaNombreVeterinarios.clear();
-                    listaImagenVeterinarios.clear();
-                    listaIdVeterinario.clear();
-
+                    listaRFCDeudores.clear();
+                    listaRazonSocialDeudores.clear();
+                    listaEstatusDeudores.clear();
+                    listaIdDeudor.clear();
 
                     for (int i = 0; i < arr.length(); i++) {
                         JSONObject jsonobject = arr.getJSONObject(i);
 
-                        /*
-                        listaNombreVeterinarios.add(jsonobject.getString("nombre"));
-                        listaImagenVeterinarios.add(jsonobject.getString("foto"));
-                        listaIdVeterinario.add(jsonobject.getString("id_veterinario"));
-                        */
-                        //listaImagenVeterinarios.add(jsonobject.getString("foto"));
 
-                        /*
-                        listaNombreVeterinarios.add(jsonobject.getString("numero_cliente") + " " + jsonobject.getString("nombre") + " " + jsonobject.getString("apaterno"));
-
-                        listaImagenVeterinarios.add(jsonobject.getString("imagen"));
-                        listaIdVeterinario.add(jsonobject.getString("id_cliente"));
+                        Log.i("INFO", jsonobject.getString("RFC_deudor"));
 
 
-                        listaNombreVeterinarios.add(jsonobject.getString("numero_contrato"));
+                        //listaRFCDeudores.add(jsonobject.getString("RFC_deudor") + " " + jsonobject.getString("cuenta_deudor"));
+                        listaRFCDeudores.add(jsonobject.getString("RFC_deudor") + " " + jsonobject.getString("cuenta_deudor"));
+                        listaRazonSocialDeudores.add(jsonobject.getString("deudor"));
+                        listaEstatusDeudores.add(jsonobject.getString("status_texto"));
 
-                        listaImagenVeterinarios.add(jsonobject.getString("cantidad"));
-                        //listaIdVeterinario.add(jsonobject.getString("total"));
-                        listaIdVeterinario.add(jsonobject.getString("id_contrato"));
-                        */
-                        listaNombreVeterinarios.add(jsonobject.getString("RFC_deudor") + " " + jsonobject.getString("deudor") + " " + jsonobject.getString("cuenta_deudor") + jsonobject.getString("status_texto"));
+                        Log.i("INFO", listaRFCDeudores.toString());
 
                         //listaImagenVeterinarios.add(jsonobject.getString("cantidad"));
-                        listaImagenVeterinarios.add(jsonobject.getString("id_documento"));
+                        //listaImagenVeterinarios.add(jsonobject.getString("id_documento"));
                         //listaIdVeterinario.add(jsonobject.getString("total"));
-                        listaIdVeterinario.add(jsonobject.getString("id_deudor"));
-
+                        listaIdDeudor.add(jsonobject.getString("id_deudor"));
                     }
 
-                    _mascotasAdapter = new DeudoresAdapter(valueID, mActivity, listaNombreVeterinarios, listaImagenVeterinarios, listaIdVeterinario);
-                    lv.setAdapter(_mascotasAdapter);
+                    //_mascotasAdapter = new DeudoresAdapter(valueID, mActivity, listaNombreVeterinarios, listaImagenVeterinarios, listaIdVeterinario);
+                    //_mascotasAdapter = new DeudoresAdapter(valueID, mActivity, listaNombreVeterinarios, listaRFCDeudores, listaRazonSocialDeudores, listaEstatusDeudores, listaImagenVeterinarios, listaIdVeterinario);
+                    _deudoresAdapter = new DeudoresAdapter(valueID, mActivity, listaRFCDeudores, listaRazonSocialDeudores, listaEstatusDeudores, listaIdDeudor);
+                    lv.setAdapter(_deudoresAdapter);
 
                 } catch (Exception e) {
                     e.printStackTrace();
