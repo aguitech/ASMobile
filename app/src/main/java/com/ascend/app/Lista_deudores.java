@@ -156,7 +156,7 @@ public class Lista_deudores extends AppCompatActivity {
 
 
                         //listaRFCDeudores.add(jsonobject.getString("RFC_deudor") + " " + jsonobject.getString("cuenta_deudor"));
-                        listaRFCDeudores.add(jsonobject.getString("RFC_deudor") + " " + jsonobject.getString("cuenta_deudor"));
+                        listaRFCDeudores.add(jsonobject.getString("cuenta_deudor") + " " + jsonobject.getString("RFC_deudor"));
                         listaRazonSocialDeudores.add(jsonobject.getString("deudor"));
                         listaEstatusDeudores.add(jsonobject.getString("status_texto"));
 

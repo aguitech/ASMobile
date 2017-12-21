@@ -1,18 +1,23 @@
 package com.ascend.app;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -58,7 +63,14 @@ public class Detalle_deudor extends AppCompatActivity {
 
     private String _urlNotificaciones;
 
+    private String _urlStatus;
     String idString;
+
+    CharSequence[] items;
+    public int selStatus = 0;
+
+    public ArrayList<String> _status = new ArrayList<String>();
+    public  ArrayList<Integer> _ids_status = new ArrayList<Integer>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,6 +127,9 @@ public class Detalle_deudor extends AppCompatActivity {
         Log.d("url_veterinarios", _url);
         new Detalle_contrato.RetrieveFeedTask().execute();
         */
+        _urlStatus = "http://ascendsystem.net/ejecutivo/app_obtener_status.php?id_veterinario=" + valueID + "&id_usuario=" + selStatus;
+        Log.d("url_mascota", _urlStatus);
+        new Detalle_deudor.RetrieveFeedTaskStatus().execute();
 
     }
     private void showMsg(CharSequence text){
@@ -362,6 +377,70 @@ public class Detalle_deudor extends AppCompatActivity {
         }
     }
 
+    class RetrieveFeedTaskStatus extends AsyncTask<Void, Void, String> {
+
+        private Exception exception;
+
+        protected void onPreExecute() {
+        }
+
+        protected String doInBackground(Void... urls) {
+            try {
+                Log.i("INFO url: ", _urlStatus);
+                URL url = new URL(_urlStatus);
+                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                try {
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+                    StringBuilder stringBuilder = new StringBuilder();
+                    String line;
+                    while ((line = bufferedReader.readLine()) != null) {
+                        stringBuilder.append(line).append("\n");
+                    }
+                    bufferedReader.close();
+                    return stringBuilder.toString();
+                }
+                finally{
+                    urlConnection.disconnect();
+                }
+            }
+            catch(Exception e) {
+                Log.e("ERROR", e.getMessage(), e);
+                return null;
+            }
+        }
+
+        protected void onPostExecute(String response) {
+            if(response == null) {
+                response = "THERE WAS AN ERROR";
+            } else {
+                Context context = getApplicationContext();
+                int duration = Toast.LENGTH_SHORT;
+
+                try {
+                    JSONTokener tokener = new JSONTokener(response);
+                    JSONArray arr = new JSONArray(tokener);
+
+                    _status.clear();
+                    _ids_status.clear();
+
+                    for (int i = 0; i < arr.length(); i++) {
+                        JSONObject jsonobject = arr.getJSONObject(i);
+                        Log.d("status",jsonobject.getString("status"));
+
+                        //_clientes.add(jsonobject.getString("nombre_usuario") + " - " + jsonobject.getString("nombre"));
+                        //_mascotas.add(jsonobject.getString("nombre_usuario") + " - " + jsonobject.getString("nombre"));
+                        _status.add(jsonobject.getString("status"));
+                        //_ids_cliente.add(jsonobject.getInt("id_mascota"));
+                        _ids_status.add(jsonobject.getInt("id_status"));
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            Log.i("INFO", response);
+        }
+    }
     /*
     public void editarEstablecimiento(View view) {
         Intent i = new Intent(Detalle_veterinario.this, Editar_establecimiento.class);
@@ -369,6 +448,34 @@ public class Detalle_deudor extends AppCompatActivity {
     }
     */
 
+    public void showEstatusList(View v){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        items = _status.toArray(new CharSequence[_status.size()]);
+
+        builder.setItems(items, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int item) {
+                Button btnEstatus = (Button)findViewById(R.id.btnEstatusDetalle);
+                btnEstatus.setText(items[item]);
+                selStatus = _ids_status.get(item); //En la variable selCliente esta guardado el id del cliente.
+                Log.d("id_status", Integer.toString(selStatus));
+
+                //_urlMascota = "http://hyperion.init-code.com/zungu/app/vt_obtener_clientes.php?id_veterinario=" + valueID + "&id_usuario=" + selCliente;
+                //_urlMascota = "http://hyperion.init-code.com/zungu/app/vt_obtener_mascotas.php?id_veterinario=" + valueID + "&id_usuario=" + selCliente;
+
+            }
+        });
+
+        AlertDialog alert = builder.create();
+
+        ListView listView = alert.getListView();
+        listView.setDivider(new ColorDrawable(Color.GRAY)); // set color
+        listView.setDividerHeight(1);
+        listView.setOverscrollFooter(new ColorDrawable(Color.TRANSPARENT));
+
+        alert.show();
+
+
+    }
     public void goBack(View v){
         //Intent i = new Intent(Detalle_contrato.this, Lista_clientes.class);
         Intent i = new Intent(Detalle_deudor.this, Lista_contratos.class);
