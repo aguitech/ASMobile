@@ -50,6 +50,7 @@ public class Detalle_deudor extends AppCompatActivity {
     SharedPreferences sharedpreferences;
     public static final String MyPREFERENCES = "MyPrefs";
     private int valueID = 0;
+    private String idStatus = "";
 
     public static ArrayList<String> listaNombreVeterinarios = new ArrayList<String>();
     public static ArrayList<String> listaImagenVeterinarios = new ArrayList<String>();
@@ -67,7 +68,8 @@ public class Detalle_deudor extends AppCompatActivity {
     String idString;
 
     CharSequence[] items;
-    public int selStatus = 0;
+    //public int selStatus = 0;
+    private int selStatus = 0;
 
     public ArrayList<String> _status = new ArrayList<String>();
     public  ArrayList<Integer> _ids_status = new ArrayList<Integer>();
@@ -119,9 +121,14 @@ public class Detalle_deudor extends AppCompatActivity {
 
         //_url = "http://ascendsystem.net/ejecutivo/app_deudores_hoy.php?id=" + Integer.toString(valueID);
         //_url = "http://ascendsystem.net/ejecutivo/app_listar_documentos.php?id_deudor=" + Integer.toString(valueID);
+
+
+        /**
+         * DESCOMENTAR
         _url = "http://ascendsystem.net/ejecutivo/app_listar_documentos.php?id_deudor=" + idString;
         Log.d("url_contratos", _url);
         new Detalle_deudor.RetrieveFeedTask().execute();
+        */
         /**
         _url = "http://thekrakensolutions.com/cobradores/android_get_contratos.php?id=" + Integer.toString(valueID);
         Log.d("url_veterinarios", _url);
@@ -365,8 +372,11 @@ public class Detalle_deudor extends AppCompatActivity {
 
                     }
 
-                    _mascotasAdapter = new DocumentosAdapter(valueID, mActivity, listaNombreVeterinarios, listaImagenVeterinarios, listaIdVeterinario);
+
+                    _mascotasAdapter = new DocumentosAdapter(selStatus, valueID, mActivity, listaNombreVeterinarios, listaImagenVeterinarios, listaIdVeterinario);
                     lv.setAdapter(_mascotasAdapter);
+
+
 
 
                 } catch (Exception e) {
@@ -458,6 +468,15 @@ public class Detalle_deudor extends AppCompatActivity {
                 btnEstatus.setText(items[item]);
                 selStatus = _ids_status.get(item); //En la variable selCliente esta guardado el id del cliente.
                 Log.d("id_status", Integer.toString(selStatus));
+
+
+                _url = "http://ascendsystem.net/ejecutivo/app_listar_documentos.php?id_deudor=" + idString + "&test=" + _ids_status.get(item) + "&otro=" + selStatus;
+                Log.d("url_documentos", _url);
+                new Detalle_deudor.RetrieveFeedTask().execute();
+
+
+                //_mascotasAdapter = new DocumentosAdapter(_ids_status.get(item), valueID, mActivity, listaNombreVeterinarios, listaImagenVeterinarios, listaIdVeterinario);
+                //lv.setAdapter(_mascotasAdapter);
 
                 //_urlMascota = "http://hyperion.init-code.com/zungu/app/vt_obtener_clientes.php?id_veterinario=" + valueID + "&id_usuario=" + selCliente;
                 //_urlMascota = "http://hyperion.init-code.com/zungu/app/vt_obtener_mascotas.php?id_veterinario=" + valueID + "&id_usuario=" + selCliente;

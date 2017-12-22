@@ -1,8 +1,8 @@
 package com.ascend.app.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.AsyncTask;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
@@ -15,9 +15,9 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ascend.app.Detalle_deudor;
-import com.ascend.app.Lista_deudores;
 import com.ascend.app.R;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
@@ -39,16 +39,18 @@ public class DocumentosAdapter extends BaseAdapter {
     ArrayList<String> _listaIdVeterinarios;
     Context context;
     public String _url;
+    public int _idStatus;
     public String _urlGo;
     public int _valueID;
 
     private static LayoutInflater inflater=null;
 
-    public DocumentosAdapter(int valueID, Detalle_deudor mainActivity, ArrayList<String> listaNombreVeterinarios, ArrayList<String> listaImagenVeterinarios, ArrayList<String> listaIdVeterinarios){
+    public DocumentosAdapter(int idStatus ,int valueID, Detalle_deudor mainActivity, ArrayList<String> listaNombreVeterinarios, ArrayList<String> listaImagenVeterinarios, ArrayList<String> listaIdVeterinarios){
         _listaIdVeterinarios = listaIdVeterinarios;
         _listaImagenVeterinarios = listaImagenVeterinarios;
         _listaNombreVeterinarios = listaNombreVeterinarios;
         _valueID = valueID;
+        _idStatus = idStatus;
 
         context = mainActivity;
         inflater = ( LayoutInflater )context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -101,6 +103,9 @@ public class DocumentosAdapter extends BaseAdapter {
         });
         */
 
+        holder.nombreVeterinario.setText(_listaNombreVeterinarios.get(i));
+        //holder.nombreVeterinario.setTextColor(Color.RED);
+
         rowView.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 //_urlGo = "http://hyperion.init-code.com/zungu/app/vt_agregar_id_veterinario.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos);
@@ -119,6 +124,9 @@ public class DocumentosAdapter extends BaseAdapter {
                 Log.d("click", String.valueOf(i));
                 Log.d("click", _listaIdVeterinarios.get(i));
 
+                holder.nombreVeterinario.setTextColor(Color.RED);
+                /*
+                DESCOMENTAR
                 //Intent intent = new Intent(context, Detalle_cliente.class);
                 //Intent intent = new Intent(context, Detalle_contrato.class);
                 Intent intent = new Intent(context, Lista_deudores.class);
@@ -126,6 +134,15 @@ public class DocumentosAdapter extends BaseAdapter {
                 //intent.putExtra("idcliente", _listaIdVeterinarios.get(i));
                 intent.putExtra("iddeudor", _listaIdVeterinarios.get(i));
                 context.startActivity(intent);
+                */
+
+                //_urlGo = "http://hyperion.init-code.com/zungu/app/vt_agregar_id_veterinario.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos);
+                //_urlGo = "http://ascendsystem.net/ejecutivo/app_actualizar_documento.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos) + "&id_status=" + Integer.toString(_idStatus);
+                _urlGo = "http://ascendsystem.net/ejecutivo/app_actualizar_documento.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos) + "&id_status=" + Integer.toString(_idStatus);
+                Log.d("id_estatus go", Integer.toString(_idStatus));
+                Log.d("urlgo",_urlGo);
+                new DocumentosAdapter.RetrieveFeedTask().execute();
+                Toast.makeText(holder.nombreVeterinario.getContext(), "Documento agregado con éxito.", Toast.LENGTH_LONG).show();
 
             }
         });
@@ -145,6 +162,14 @@ public class DocumentosAdapter extends BaseAdapter {
                 //intent.putExtra("idveterinario", i);
                 //context.startActivity(intent);
 
+
+
+                Log.d("click", String.valueOf(i));
+                Log.d("click", _listaIdVeterinarios.get(i));
+
+
+                /*
+                DESCOMENTAR
                 Log.d("click", String.valueOf(i));
                 Log.d("click", _listaIdVeterinarios.get(i));
 
@@ -154,11 +179,12 @@ public class DocumentosAdapter extends BaseAdapter {
                 //intent.putExtra("idcliente", _listaIdVeterinarios.get(i));
                 intent.putExtra("iddeudor", _listaIdVeterinarios.get(i));
                 context.startActivity(intent);
+                */
 
             }
         });
 
-        holder.nombreVeterinario.setText(_listaNombreVeterinarios.get(i));
+
         _url = "http://hyperion.init-code.com/zungu/imagen_establecimiento/" + _listaImagenVeterinarios.get(i);
         Log.d("url", _url);
         Log.d("entro", "sii");
