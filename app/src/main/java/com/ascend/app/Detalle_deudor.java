@@ -53,6 +53,13 @@ public class Detalle_deudor extends AppCompatActivity {
     private String idStatus = "";
 
     public static ArrayList<String> listaNombreVeterinarios = new ArrayList<String>();
+
+    public static ArrayList<String> listaFolioFiscal = new ArrayList<String>();
+    public static ArrayList<String> listaTotalFactura = new ArrayList<String>();
+    public static ArrayList<String> listaStatusFactura = new ArrayList<String>();
+    public static ArrayList<String> listaStatusColor = new ArrayList<String>();
+
+
     public static ArrayList<String> listaImagenVeterinarios = new ArrayList<String>();
     public static ArrayList<String> listaIdVeterinario = new ArrayList<String>();
 
@@ -336,6 +343,13 @@ public class Detalle_deudor extends AppCompatActivity {
                     JSONArray arr = new JSONArray(tokener);
 
                     listaNombreVeterinarios.clear();
+
+                    listaFolioFiscal.clear();
+                    listaTotalFactura.clear();
+                    listaStatusFactura.clear();
+                    listaStatusColor.clear();
+
+
                     listaImagenVeterinarios.clear();
                     listaIdVeterinario.clear();
 
@@ -366,6 +380,14 @@ public class Detalle_deudor extends AppCompatActivity {
                         */
                         listaNombreVeterinarios.add(jsonobject.getString("folio") + " $" + jsonobject.getString("importe"));
 
+
+
+                        listaFolioFiscal.add(jsonobject.getString("folio"));
+                        listaTotalFactura.add("$ " + jsonobject.getString("importe"));
+                        listaStatusFactura.add(jsonobject.getString("status_texto"));
+                        //listaStatusColor.add(jsonobject.getString("folio") + " $" + jsonobject.getString("importe"));
+                        listaStatusColor.add(jsonobject.getString("status_color"));
+
                         listaImagenVeterinarios.add(jsonobject.getString("id_documento"));
                         //listaIdVeterinario.add(jsonobject.getString("total"));
                         listaIdVeterinario.add(jsonobject.getString("id_documento"));
@@ -373,7 +395,8 @@ public class Detalle_deudor extends AppCompatActivity {
                     }
 
 
-                    _mascotasAdapter = new DocumentosAdapter(selStatus, valueID, mActivity, listaNombreVeterinarios, listaImagenVeterinarios, listaIdVeterinario);
+                    //_mascotasAdapter = new DocumentosAdapter(selStatus, valueID, mActivity, listaNombreVeterinarios, listaImagenVeterinarios, listaIdVeterinario);
+                    _mascotasAdapter = new DocumentosAdapter(selStatus, valueID, mActivity, listaNombreVeterinarios, listaFolioFiscal, listaTotalFactura, listaStatusFactura, listaStatusColor, listaImagenVeterinarios, listaIdVeterinario);
                     lv.setAdapter(_mascotasAdapter);
 
 

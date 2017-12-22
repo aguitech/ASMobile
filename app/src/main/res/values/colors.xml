@@ -17,6 +17,11 @@
     <!-- Estilos Ascend -->
     <color name="fondo_login">#FF541E</color>
     <color name="naranja">#FF541E</color>
+    <color name="verde_autorizado">#87C848</color>
+    <color name="rojo_denegado">#FF0000</color>
+    <color name="amarillo_precaucion">#FFA700</color>
+
+
 
 
     <color name="btn_registro">#00DC49</color>

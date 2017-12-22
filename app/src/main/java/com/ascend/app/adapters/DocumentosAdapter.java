@@ -1,12 +1,10 @@
 package com.ascend.app.adapters;
 
 import android.content.Context;
-import android.graphics.Bitmap;
+import android.content.DialogInterface;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.AsyncTask;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,13 +12,12 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ascend.app.Detalle_deudor;
 import com.ascend.app.R;
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -35,6 +32,12 @@ import java.util.ArrayList;
 public class DocumentosAdapter extends BaseAdapter {
 
     ArrayList<String> _listaNombreVeterinarios;
+    ArrayList<String> _listaFolioFiscal;
+    ArrayList<String> _listaTotalFactura;
+    ArrayList<String> _listaStatusFactura;
+    ArrayList<String> _listaStatusColor;
+
+
     ArrayList<String> _listaImagenVeterinarios;
     ArrayList<String> _listaIdVeterinarios;
     Context context;
@@ -45,10 +48,16 @@ public class DocumentosAdapter extends BaseAdapter {
 
     private static LayoutInflater inflater=null;
 
-    public DocumentosAdapter(int idStatus ,int valueID, Detalle_deudor mainActivity, ArrayList<String> listaNombreVeterinarios, ArrayList<String> listaImagenVeterinarios, ArrayList<String> listaIdVeterinarios){
+    public DocumentosAdapter(int idStatus ,int valueID, Detalle_deudor mainActivity, ArrayList<String> listaNombreVeterinarios, ArrayList<String> listaFolioFiscal, ArrayList<String> listaTotalFactura, ArrayList<String> listaStatusFactura, ArrayList<String> listaStatusColor, ArrayList<String> listaImagenVeterinarios, ArrayList<String> listaIdVeterinarios){
         _listaIdVeterinarios = listaIdVeterinarios;
         _listaImagenVeterinarios = listaImagenVeterinarios;
         _listaNombreVeterinarios = listaNombreVeterinarios;
+
+        _listaFolioFiscal = listaFolioFiscal;
+        _listaTotalFactura = listaTotalFactura;
+        _listaStatusFactura = listaStatusFactura;
+        _listaStatusColor = listaStatusColor;
+
         _valueID = valueID;
         _idStatus = idStatus;
 
@@ -73,9 +82,18 @@ public class DocumentosAdapter extends BaseAdapter {
 
     public class Holder{
         TextView nombreVeterinario;
+
+        TextView folioFiscal;
+        TextView totalFactura;
+        TextView statusFactura;
+        LinearLayout statusColor;
+
+
+
+
         ImageView imagenVeterinario;
         Button agregarVeterinario;
-        ImageView detalleVeterinario;
+        ImageView imgActualizar;
     }
 
     @Override
@@ -83,13 +101,29 @@ public class DocumentosAdapter extends BaseAdapter {
 
         final Holder holder = new Holder();
         final View rowView;
-        rowView = inflater.inflate(R.layout.list_contratos, null);
+        rowView = inflater.inflate(R.layout.list_documentos, null);
         final int pos = i;
 
         holder.nombreVeterinario = (TextView) rowView.findViewById(R.id.txtNombreVeterinario);
+
+
+        holder.folioFiscal = (TextView) rowView.findViewById(R.id.txtFolioFactura);
+        holder.totalFactura = (TextView) rowView.findViewById(R.id.txtTotalFactura);
+        holder.statusFactura = (TextView) rowView.findViewById(R.id.txtStatusFactura);
+        holder.statusColor = (LinearLayout) rowView.findViewById(R.id.statusColor);
+
+
         holder.imagenVeterinario = (ImageView) rowView.findViewById(R.id.imgVeterinario);
         //holder.agregarVeterinario = (Button) rowView.findViewById(R.id.buttonAgregar);
-        holder.detalleVeterinario = (ImageView) rowView.findViewById(R.id.imgDetalle);
+        holder.imgActualizar = (ImageView) rowView.findViewById(R.id.imgActualizar);
+
+        //convertView.setBackgroundColor(Color.BLACK);
+        if(_listaStatusColor.get(i).equals("VERDE")){
+            holder.statusColor.setBackgroundColor(context.getResources().getColor(R.color.verde_autorizado));
+        }else{
+            holder.statusColor.setBackgroundColor(context.getResources().getColor(R.color.rojo_denegado));
+        }
+
 
         /*
 
@@ -101,11 +135,164 @@ public class DocumentosAdapter extends BaseAdapter {
                 Toast.makeText(holder.nombreVeterinario.getContext(), "Veterinario agregado con éxito.", Toast.LENGTH_LONG).show();
             }
         });
+
+
+
+
+        holder.imgEliminar.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                //confirm(holder.imgMascota.getContext(), position, "Eliminar mascota: " + _listaNombreMascota.get(position));
+                AlertDialog.Builder dialogo1 = new AlertDialog.Builder(context);
+                dialogo1.setTitle("Importante");
+                dialogo1.setMessage("¿ Estas seguro que desea borrarlo ?");
+                dialogo1.setCancelable(false);
+                dialogo1.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialogo1, int id) {
+                        _urlGo = "http://hyperion.init-code.com/zungu/app/vt_eliminar_servicio.php?delete="  + _listaImgMascotas.get(position);
+                        Log.d("urlgo",_urlGo);
+                        new ServicioAdapter.RetrieveFeedTask().execute();
+                        //Toast.makeText(holder.nombreTienda.getContext(), "Producto eliminado", Toast.LENGTH_LONG).show();
+                        _listaNombreMascota.remove(position);
+                        _listaNombreCliente.remove(position);
+                        _listaImgMascotas.remove(position);
+
+                        notifyDataSetChanged();
+
+                        Toast.makeText(context, "Eliminado", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                dialogo1.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialogo1, int id) {
+
+                    }
+                });
+                dialogo1.show();
+
+            }
+        });
+
         */
 
-        holder.nombreVeterinario.setText(_listaNombreVeterinarios.get(i));
+        //holder.nombreVeterinario.setText(_listaNombreVeterinarios.get(i));
+
+        holder.folioFiscal.setText(_listaFolioFiscal.get(i));
+        holder.totalFactura.setText(_listaTotalFactura.get(i));
+        holder.statusFactura.setText(_listaStatusFactura.get(i));
+        //holder.nombreVeterinario.setText(_listaNombreVeterinarios.get(i));
+
+
         //holder.nombreVeterinario.setTextColor(Color.RED);
 
+        holder.imgActualizar.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                //confirm(holder.imgMascota.getContext(), position, "Eliminar mascota: " + _listaNombreMascota.get(position));
+
+                holder.statusColor.setBackgroundColor(Color.BLUE);
+                AlertDialog.Builder dialogo1 = new AlertDialog.Builder(context);
+                dialogo1.setTitle("Importante");
+                dialogo1.setMessage("¿ Estas seguro que desea actualizar?");
+                dialogo1.setCancelable(false);
+                dialogo1.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialogo1, int id) {
+
+                        //holder.statusColor.setBackgroundColor(Color.GREEN);
+                        holder.statusColor.setBackgroundColor(Color.YELLOW);
+                        //holder.statusColor.getContext().setBackgroundColor(Color.GREEN);
+
+                        _urlGo = "http://ascendsystem.net/ejecutivo/app_actualizar_documento.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos) + "&id_status=" + Integer.toString(_idStatus);
+                        Log.d("id_estatus go", Integer.toString(_idStatus));
+                        Log.d("urlgo",_urlGo);
+                        new DocumentosAdapter.RetrieveFeedTask().execute();
+                        Toast.makeText(holder.folioFiscal.getContext(), "Documento agregado con éxito.", Toast.LENGTH_LONG).show();
+
+
+
+                        _listaIdVeterinarios.remove(i);
+                        _listaImagenVeterinarios.remove(i);
+                        _listaNombreVeterinarios.remove(i);
+
+                        _listaFolioFiscal.remove(i);
+                        _listaTotalFactura.remove(i);
+                        _listaStatusFactura.remove(i);
+                        _listaStatusColor.remove(i);
+                        /*
+                        _urlGo = "http://hyperion.init-code.com/zungu/app/vt_eliminar_servicio.php?delete="  + _listaImgMascotas.get(position);
+                        Log.d("urlgo",_urlGo);
+                        new ServicioAdapter.RetrieveFeedTask().execute();
+                        //Toast.makeText(holder.nombreTienda.getContext(), "Producto eliminado", Toast.LENGTH_LONG).show();
+                        _listaNombreMascota.remove(position);
+                        _listaNombreCliente.remove(position);
+                        _listaImgMascotas.remove(position);
+
+                        */
+
+
+
+                        notifyDataSetChanged();
+
+                        Toast.makeText(context, "Eliminado", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                dialogo1.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialogo1, int id) {
+
+                    }
+                });
+                dialogo1.show();
+
+            }
+        });
+        holder.statusColor.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                //confirm(holder.imgMascota.getContext(), position, "Eliminar mascota: " + _listaNombreMascota.get(position));
+                holder.statusColor.setBackgroundColor(Color.BLUE);
+                AlertDialog.Builder dialogo1 = new AlertDialog.Builder(context);
+                dialogo1.setTitle("Importante");
+                dialogo1.setMessage("¿ Estas seguro que desea actualizar?");
+                dialogo1.setCancelable(false);
+                dialogo1.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialogo1, int id) {
+
+
+                        holder.statusColor.setBackgroundColor(Color.YELLOW);
+
+                        _urlGo = "http://ascendsystem.net/ejecutivo/app_actualizar_documento.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos) + "&id_status=" + Integer.toString(_idStatus);
+                        Log.d("id_estatus go", Integer.toString(_idStatus));
+                        Log.d("urlgo",_urlGo);
+                        new DocumentosAdapter.RetrieveFeedTask().execute();
+                        Toast.makeText(holder.folioFiscal.getContext(), "Documento agregado con éxito.", Toast.LENGTH_LONG).show();
+
+
+                        /*
+                        _urlGo = "http://hyperion.init-code.com/zungu/app/vt_eliminar_servicio.php?delete="  + _listaImgMascotas.get(position);
+                        Log.d("urlgo",_urlGo);
+                        new ServicioAdapter.RetrieveFeedTask().execute();
+                        //Toast.makeText(holder.nombreTienda.getContext(), "Producto eliminado", Toast.LENGTH_LONG).show();
+                        _listaNombreMascota.remove(position);
+                        _listaNombreCliente.remove(position);
+                        _listaImgMascotas.remove(position);
+
+                        */
+
+
+
+                        notifyDataSetChanged();
+
+                        Toast.makeText(context, "Eliminado", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                dialogo1.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialogo1, int id) {
+
+                    }
+                });
+                dialogo1.show();
+
+            }
+        });
+
+        /*
+        Click a toda la lista
         rowView.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 //_urlGo = "http://hyperion.init-code.com/zungu/app/vt_agregar_id_veterinario.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos);
@@ -117,6 +304,7 @@ public class DocumentosAdapter extends BaseAdapter {
                 //context.startActivity(i);
 
 
+                holder.statusColor.setBackgroundColor(Color.GREEN);
                 //Intent intent = new Intent(context, Detalle_veterinario.class);
                 //intent.putExtra("idveterinario", i);
                 //context.startActivity(intent);
@@ -124,17 +312,18 @@ public class DocumentosAdapter extends BaseAdapter {
                 Log.d("click", String.valueOf(i));
                 Log.d("click", _listaIdVeterinarios.get(i));
 
-                holder.nombreVeterinario.setTextColor(Color.RED);
-                /*
-                DESCOMENTAR
+
+                //DESCOMENTAR
                 //Intent intent = new Intent(context, Detalle_cliente.class);
                 //Intent intent = new Intent(context, Detalle_contrato.class);
-                Intent intent = new Intent(context, Lista_deudores.class);
                 //intent.putExtra("idveterinario", _listaIdVeterinarios.get(i));
                 //intent.putExtra("idcliente", _listaIdVeterinarios.get(i));
-                intent.putExtra("iddeudor", _listaIdVeterinarios.get(i));
-                context.startActivity(intent);
-                */
+
+
+                //Intent intent = new Intent(context, Lista_deudores.class);
+                //intent.putExtra("iddeudor", _listaIdVeterinarios.get(i));
+                //context.startActivity(intent);
+
 
                 //_urlGo = "http://hyperion.init-code.com/zungu/app/vt_agregar_id_veterinario.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos);
                 //_urlGo = "http://ascendsystem.net/ejecutivo/app_actualizar_documento.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos) + "&id_status=" + Integer.toString(_idStatus);
@@ -146,45 +335,11 @@ public class DocumentosAdapter extends BaseAdapter {
 
             }
         });
+        */
 
-        holder.detalleVeterinario.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v) {
-                //_urlGo = "http://hyperion.init-code.com/zungu/app/vt_agregar_id_veterinario.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos);
-                //Log.d("urlgo",_urlGo);
-                //new AgregarVeterinariosAdapter.RetrieveFeedTask().execute();
+        /*
 
-                //Toast.makeText(holder.nombreVeterinario.getContext(), "Veterinario agregado con éxito.", Toast.LENGTH_LONG).show();
-                //Intent i = new Intent(context, Detalle_veterinario.class);
-                //context.startActivity(i);
-
-
-                //Intent intent = new Intent(context, Detalle_veterinario.class);
-                //intent.putExtra("idveterinario", i);
-                //context.startActivity(intent);
-
-
-
-                Log.d("click", String.valueOf(i));
-                Log.d("click", _listaIdVeterinarios.get(i));
-
-
-                /*
-                DESCOMENTAR
-                Log.d("click", String.valueOf(i));
-                Log.d("click", _listaIdVeterinarios.get(i));
-
-                //Intent intent = new Intent(context, Detalle_cliente.class);
-                Intent intent = new Intent(context, Lista_deudores.class);
-                //intent.putExtra("idveterinario", _listaIdVeterinarios.get(i));
-                //intent.putExtra("idcliente", _listaIdVeterinarios.get(i));
-                intent.putExtra("iddeudor", _listaIdVeterinarios.get(i));
-                context.startActivity(intent);
-                */
-
-            }
-        });
-
-
+        Cargar imagen en caso de ser necesaria
         _url = "http://hyperion.init-code.com/zungu/imagen_establecimiento/" + _listaImagenVeterinarios.get(i);
         Log.d("url", _url);
         Log.d("entro", "sii");
@@ -205,6 +360,7 @@ public class DocumentosAdapter extends BaseAdapter {
                     }
                 });
 
+        */
         return rowView;
     }
 
