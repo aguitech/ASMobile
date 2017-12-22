@@ -18,6 +18,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -77,6 +78,8 @@ public class Detalle_deudor extends AppCompatActivity {
     CharSequence[] items;
     //public int selStatus = 0;
     private int selStatus = 0;
+    private String observaciones = "";
+    EditText txtObservacionesFactura;
 
     public ArrayList<String> _status = new ArrayList<String>();
     public  ArrayList<Integer> _ids_status = new ArrayList<Integer>();
@@ -88,6 +91,7 @@ public class Detalle_deudor extends AppCompatActivity {
 
         //lv = (ListView) findViewById(R.id.list_pagos);
         lv = (ListView) findViewById(R.id.list_facturas);
+        txtObservacionesFactura = (EditText) findViewById(R.id.txtObservacionesFactura);
 
         showMsg("test");
 
@@ -338,6 +342,7 @@ public class Detalle_deudor extends AppCompatActivity {
             if(response == null) {
                 response = "THERE WAS AN ERROR";
             } else {
+
                 try {
                     JSONTokener tokener = new JSONTokener(response);
                     JSONArray arr = new JSONArray(tokener);
@@ -352,6 +357,8 @@ public class Detalle_deudor extends AppCompatActivity {
 
                     listaImagenVeterinarios.clear();
                     listaIdVeterinario.clear();
+
+
 
 
                     for (int i = 0; i < arr.length(); i++) {
@@ -394,9 +401,18 @@ public class Detalle_deudor extends AppCompatActivity {
 
                     }
 
+                    //EditText txtObservaciones = (EditText) findViewById(R.id.txtObservaciones);
+
+
+
+                    //theFact.getText().toString();
+
+
+                    //Log.d("observaciones", findViewById(R.id.txtObservacionesFactura).getText().toString());
+                    Log.d("observaciones", txtObservacionesFactura.getText().toString());
 
                     //_mascotasAdapter = new DocumentosAdapter(selStatus, valueID, mActivity, listaNombreVeterinarios, listaImagenVeterinarios, listaIdVeterinario);
-                    _mascotasAdapter = new DocumentosAdapter(selStatus, valueID, mActivity, listaNombreVeterinarios, listaFolioFiscal, listaTotalFactura, listaStatusFactura, listaStatusColor, listaImagenVeterinarios, listaIdVeterinario);
+                    _mascotasAdapter = new DocumentosAdapter(selStatus, txtObservacionesFactura.getText().toString(), valueID, mActivity, listaNombreVeterinarios, listaFolioFiscal, listaTotalFactura, listaStatusFactura, listaStatusColor, listaImagenVeterinarios, listaIdVeterinario);
                     lv.setAdapter(_mascotasAdapter);
 
 
@@ -493,6 +509,7 @@ public class Detalle_deudor extends AppCompatActivity {
                 Log.d("id_status", Integer.toString(selStatus));
 
 
+                //_url = "http://ascendsystem.net/ejecutivo/app_listar_documentos.php?id_deudor=" + idString + "&test=" + _ids_status.get(item) + "&otro=" + selStatus;
                 _url = "http://ascendsystem.net/ejecutivo/app_listar_documentos.php?id_deudor=" + idString + "&test=" + _ids_status.get(item) + "&otro=" + selStatus;
                 Log.d("url_documentos", _url);
                 new Detalle_deudor.RetrieveFeedTask().execute();
@@ -518,6 +535,12 @@ public class Detalle_deudor extends AppCompatActivity {
 
 
     }
+    public void actualizarDocumentos(View v){
+        _url = "http://ascendsystem.net/ejecutivo/app_listar_documentos.php?id_deudor=" + idString + "&test=" + selStatus + "&otro=" + selStatus;
+        Log.d("url_documentos", _url);
+        new Detalle_deudor.RetrieveFeedTask().execute();
+    }
+
     public void goBack(View v){
         //Intent i = new Intent(Detalle_contrato.this, Lista_clientes.class);
         Intent i = new Intent(Detalle_deudor.this, Lista_contratos.class);

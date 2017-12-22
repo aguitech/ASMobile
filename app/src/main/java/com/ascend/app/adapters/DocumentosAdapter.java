@@ -42,13 +42,15 @@ public class DocumentosAdapter extends BaseAdapter {
     ArrayList<String> _listaIdVeterinarios;
     Context context;
     public String _url;
+    public String _observaciones;
+
     public int _idStatus;
     public String _urlGo;
     public int _valueID;
 
     private static LayoutInflater inflater=null;
 
-    public DocumentosAdapter(int idStatus ,int valueID, Detalle_deudor mainActivity, ArrayList<String> listaNombreVeterinarios, ArrayList<String> listaFolioFiscal, ArrayList<String> listaTotalFactura, ArrayList<String> listaStatusFactura, ArrayList<String> listaStatusColor, ArrayList<String> listaImagenVeterinarios, ArrayList<String> listaIdVeterinarios){
+    public DocumentosAdapter(int idStatus, String observaciones, int valueID, Detalle_deudor mainActivity, ArrayList<String> listaNombreVeterinarios, ArrayList<String> listaFolioFiscal, ArrayList<String> listaTotalFactura, ArrayList<String> listaStatusFactura, ArrayList<String> listaStatusColor, ArrayList<String> listaImagenVeterinarios, ArrayList<String> listaIdVeterinarios){
         _listaIdVeterinarios = listaIdVeterinarios;
         _listaImagenVeterinarios = listaImagenVeterinarios;
         _listaNombreVeterinarios = listaNombreVeterinarios;
@@ -60,6 +62,7 @@ public class DocumentosAdapter extends BaseAdapter {
 
         _valueID = valueID;
         _idStatus = idStatus;
+        _observaciones = observaciones;
 
         context = mainActivity;
         inflater = ( LayoutInflater )context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -199,7 +202,7 @@ public class DocumentosAdapter extends BaseAdapter {
                         holder.statusColor.setBackgroundColor(Color.YELLOW);
                         //holder.statusColor.getContext().setBackgroundColor(Color.GREEN);
 
-                        _urlGo = "http://ascendsystem.net/ejecutivo/app_actualizar_documento.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos) + "&id_status=" + Integer.toString(_idStatus);
+                        _urlGo = "http://ascendsystem.net/ejecutivo/app_actualizar_documento.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos) + "&id_status=" + Integer.toString(_idStatus) + "&observaciones=" + _observaciones;
                         Log.d("id_estatus go", Integer.toString(_idStatus));
                         Log.d("urlgo",_urlGo);
                         new DocumentosAdapter.RetrieveFeedTask().execute();
@@ -256,7 +259,7 @@ public class DocumentosAdapter extends BaseAdapter {
 
                         holder.statusColor.setBackgroundColor(Color.YELLOW);
 
-                        _urlGo = "http://ascendsystem.net/ejecutivo/app_actualizar_documento.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos) + "&id_status=" + Integer.toString(_idStatus);
+                        _urlGo = "http://ascendsystem.net/ejecutivo/app_actualizar_documento.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos) + "&id_status=" + Integer.toString(_idStatus) + "&observaciones=" + _observaciones;;
                         Log.d("id_estatus go", Integer.toString(_idStatus));
                         Log.d("urlgo",_urlGo);
                         new DocumentosAdapter.RetrieveFeedTask().execute();
