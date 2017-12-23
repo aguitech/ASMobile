@@ -330,7 +330,7 @@
                     <ListView
                         android:id="@+id/list_facturas"
                         android:layout_width="match_parent"
-                        android:layout_height="230dp">
+                        android:layout_height="220dp">
                     </ListView>
                 </LinearLayout>
             </LinearLayout>

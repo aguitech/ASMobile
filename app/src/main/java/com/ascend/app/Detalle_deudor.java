@@ -207,20 +207,134 @@ public class Detalle_deudor extends AppCompatActivity {
                     JSONObject object = (JSONObject) new JSONTokener(response).nextValue();
 
 
-                    String _razon_social = object.getString("RFC_deudor") + " - " + object.getString("deudor") + " " + object.getString("cuenta_deudor");
+                    //String _razon_social = object.getString("RFC_deudor") + " - " + object.getString("deudor") + " " + object.getString("cuenta_deudor");
+                    String _razon_social = "";
 
                     //String _telefono_vo = object.getString("telefono_casa");
                     //String _imagen_vo = object.getString("sexo");
                     //String _imagen_vo = object.getString("imagen");
 
+                    if(object.getString("cuenta_deudor").length() > 3){
+                        _razon_social += object.getString("cuenta_deudor");
+                    }
+                    if(object.getString("RFC_deudor").length() > 3){
+                        _razon_social += " | " + object.getString("RFC_deudor");
+                    }
+                    if(object.getString("deudor").length() > 3){
+                        _razon_social += " | " + object.getString("deudor");
+                    }
 
 
                     if(_razon_social.length() > 3)
                         lblRazonSocial.setText(_razon_social);
 
                     //String txtDireccion_ = object.getString("calle") + " " + object.getString("numero_exterior") + " " + object.getString("numero_interior")  + " , Colonia " + object.getString("colonia")  + " , Delegación/Municipio " + object.getString("municipio")  + " , Estado " + object.getString("estado")  + " , C.P. " + object.getString("codigo_postal")  + " , País " + object.getString("pais");
-                    String txtDireccion_ = object.getString("calle") + " " + object.getString("numero_exterior") + " " + object.getString("numero_interior")  + " , Colonia " + object.getString("colonia")  + " , Delegación/Municipio " + object.getString("municipio")  + " , Estado " + object.getString("estado")  + " , C.P. " + object.getString("codigo_postal")  + " , País " + object.getString("pais");
+                    //String txtDireccion_ = object.getString("calle") + " " + object.getString("numero_exterior") + " " + object.getString("numero_interior")  + " , Colonia " + object.getString("colonia")  + " , Delegación/Municipio " + object.getString("municipio")  + " , Estado " + object.getString("estado")  + " , C.P. " + object.getString("codigo_postal")  + " , País " + object.getString("pais");
 
+
+                    /*
+                    if(object.getString("calle").length() > 3){
+                        txtDireccion_.concat(object.getString("calle"));
+
+                        if(object.getString("numero_exterior").length() > 1){
+                            txtDireccion_.concat(" " + object.getString("numero_exterior"));
+
+                            if(object.getString("numero_interior").length() > 1){
+                                txtDireccion_.concat(" " + object.getString("numero_interior"));
+
+                                if(object.getString("colonia").length() > 3){
+                                    txtDireccion_.concat(" Colonia " + object.getString("colonia"));
+
+                                    if(object.getString("municipio").length() > 1){
+                                        txtDireccion_.concat(" Delegación/Municipio " + object.getString("municipio"));
+
+                                        if(object.getString("estado").length() > 1){
+                                            txtDireccion_.concat("  Estado " + object.getString("estado"));
+
+
+                                            if(object.getString("codigo_postal").length() > 1){
+                                                txtDireccion_.concat("  C.P. " + object.getString("codigo_postal"));
+
+
+                                                if(object.getString("pais").length() > 1){
+                                                    txtDireccion_.concat("  País " + object.getString("pais"));
+
+
+
+
+
+
+
+
+
+
+
+                                                }
+
+
+
+
+
+
+
+
+
+                                            }
+
+
+
+
+
+
+
+
+
+                                        }
+
+
+
+
+                                    }
+
+
+
+                                }
+
+
+                            }
+
+
+
+
+                        }
+
+                    }
+                    */
+                    String txtDireccion_ = "";
+                    if(object.getString("calle").length() > 3){
+                        txtDireccion_ += object.getString("calle");
+                    }
+                    if(object.getString("numero_exterior").length() > 1){
+                        txtDireccion_ += " " + object.getString("numero_exterior");
+                    }
+                    if(object.getString("numero_interior").length() > 1){
+                        txtDireccion_ += " " + object.getString("numero_interior");
+                    }
+                    if(object.getString("colonia").length() > 3){
+                        txtDireccion_ += " Colonia " + object.getString("colonia");
+                    }
+                    if(object.getString("municipio").length() > 1){
+                        txtDireccion_ += " Delegación/Municipio " + object.getString("municipio");
+                    }
+                    if(object.getString("estado").length() > 1){
+                        txtDireccion_ += "  Estado " + object.getString("estado");
+                    }
+                    if(object.getString("codigo_postal").length() > 1){
+                        txtDireccion_ += "  C.P. " + object.getString("codigo_postal");
+                    }
+                    if(object.getString("pais").length() > 1){
+                        txtDireccion_ += "  País " + object.getString("pais");
+                    }
 
                     if(txtDireccion_.length() > 3)
                         txtDireccion.setText(txtDireccion_);
