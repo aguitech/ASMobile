@@ -4,14 +4,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -19,14 +15,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ascend.app.adapters.DocumentosAdapter;
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -200,33 +193,49 @@ public class Detalle_deudor extends AppCompatActivity {
                 ImageView foto = (ImageView) findViewById(R.id.imgFoto);
                 */
 
-                TextView lblNombreVo = (TextView) findViewById(R.id.txtNombreA);
-                TextView lblEmailVo = (TextView) findViewById(R.id.txtEmailA);
-                TextView lblCelVo = (TextView) findViewById(R.id.txtCelA);
-                //TextView lblCedVo = (TextView) findViewById(R.id.txtCedA);
+                TextView lblRazonSocial = (TextView) findViewById(R.id.txtRazonSocial);
+
                 TextView txtDireccion = (TextView) findViewById(R.id.txtDireccion);
 
-                final ImageView fotoVeterinario = (ImageView) findViewById(R.id.imgVeterinario);
+
+
+                //URL IMAGEN
+                //final ImageView fotoVeterinario = (ImageView) findViewById(R.id.imgVeterinario);
 
                 try {
 
                     JSONObject object = (JSONObject) new JSONTokener(response).nextValue();
 
 
-                    String _nombre_vo = object.getString("RFC_deudor") + " - " + object.getString("deudor") + " " + object.getString("cuenta_deudor");
+                    String _razon_social = object.getString("RFC_deudor") + " - " + object.getString("deudor") + " " + object.getString("cuenta_deudor");
 
                     //String _telefono_vo = object.getString("telefono_casa");
-                    String _cedula_vo = object.getString("RFC_deudor");
-                    String _email_vo = object.getString("RFC_deudor");
                     //String _imagen_vo = object.getString("sexo");
                     //String _imagen_vo = object.getString("imagen");
-                    String _imagen_vo = "hectoraguilar.png";
 
+
+
+                    if(_razon_social.length() > 3)
+                        lblRazonSocial.setText(_razon_social);
+
+                    //String txtDireccion_ = object.getString("calle") + " " + object.getString("numero_exterior") + " " + object.getString("numero_interior")  + " , Colonia " + object.getString("colonia")  + " , Delegación/Municipio " + object.getString("municipio")  + " , Estado " + object.getString("estado")  + " , C.P. " + object.getString("codigo_postal")  + " , País " + object.getString("pais");
+                    String txtDireccion_ = object.getString("calle") + " " + object.getString("numero_exterior") + " " + object.getString("numero_interior")  + " , Colonia " + object.getString("colonia")  + " , Delegación/Municipio " + object.getString("municipio")  + " , Estado " + object.getString("estado")  + " , C.P. " + object.getString("codigo_postal")  + " , País " + object.getString("pais");
+
+
+                    if(txtDireccion_.length() > 3)
+                        txtDireccion.setText(txtDireccion_);
+
+                    /*
+                    if(txtDireccion_.length() > 3)
+                        txtDireccion.setText(txtDireccion_);
+                    */
+
+
+                    Log.d("INFO", _razon_social);
 
 
                     //showMsg("tesst2");
 
-                    showMsg(_email_vo);
                     //showMsg(_telefono_vo);
 
 
@@ -243,13 +252,6 @@ public class Detalle_deudor extends AppCompatActivity {
 
 
 
-
-                    if(_nombre_vo.length() > 3)
-                        lblNombreVo.setText(_nombre_vo);
-
-                    if(_email_vo.length() > 3)
-                        lblEmailVo.setText(_email_vo);
-
                     /*
                     if(_telefono_vo.length() > 3)
                         lblCelVo.setText(_telefono_vo);
@@ -264,14 +266,9 @@ public class Detalle_deudor extends AppCompatActivity {
                     //DIRECCION
                     //String txtDireccion_ = object.getString("calle") + " " + object.getString("numero_exterior") + " " + object.getString("numero_interior")  + " , Colonia " + object.getString("colonia")  + " , Delegación/Municipio " + object.getString("delegacion_municipio")  + " , Estado " + object.getString("estado")  + " , C.P. " + object.getString("codigo_postal")  + " , País " + object.getString("pais")  + " , entre calle " + object.getString("entre_calle")  + " y calle " + object.getString("y_calle")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno")  + " " + object.getString("amaterno");
                     //String txtDireccion_ = object.getString("calle") + " " + object.getString("numero_exterior") + " " + object.getString("numero_interior")  + " , Colonia " + object.getString("colonia")  + " , Delegación/Municipio " + object.getString("delegacion_municipio")  + " , Estado " + object.getString("estado")  + " , C.P. " + object.getString("codigo_postal")  + " , País " + object.getString("pais")  + " , entre calle " + object.getString("entre_calle")  + " y calle " + object.getString("y_calle");
-                    String txtDireccion_ = object.getString("calle") + " " + object.getString("numero_exterior") + " " + object.getString("numero_interior")  + " , Colonia " + object.getString("colonia")  + " , Delegación/Municipio " + object.getString("municipio")  + " , Estado " + object.getString("estado")  + " , C.P. " + object.getString("codigo_postal")  + " , País " + object.getString("pais");
-
-                    if(txtDireccion_.length() > 3)
-                        txtDireccion.setText(txtDireccion_);
 
 
-                    Log.d("INFO", _nombre_vo);
-
+                    /*
 
                     if(_imagen_vo.length() > 3){
                         String _urlFoto = "http://hector-aguilar.com/web/images/" + _imagen_vo;
@@ -292,7 +289,9 @@ public class Detalle_deudor extends AppCompatActivity {
 
                                     }
                                 });
+
                     }
+                    */
 
 
 
