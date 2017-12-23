@@ -19,6 +19,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -65,6 +66,8 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
     public static ArrayList<String> listaImagenVeterinarios = new ArrayList<String>();
     public static ArrayList<String> listaIdVeterinario = new ArrayList<String>();
 
+    EditText detalleFolioFactura;
+
     public Resultado_escanear mActivity = this;
     public PagosAdapter _mascotasAdapter;
 
@@ -79,7 +82,7 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
     String resultado_qr;
 
 
-    public int selStatus = 0;
+    private int selStatus = 0;
 
     public ArrayList<String> _status = new ArrayList<String>();
     public  ArrayList<Integer> _ids_status = new ArrayList<Integer>();
@@ -90,6 +93,7 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
         setContentView(R.layout.activity_resultado_escanear);
 
         //lv = (ListView) findViewById(R.id.list_pagos);
+        detalleFolioFactura = (EditText) findViewById(R.id.detalleFolioFactura);
 
         showMsg("test");
 
@@ -126,6 +130,10 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
 
         _urlGet = "http://thekrakensolutions.com/cobradores/android_get_contrato.php?id_editar=" + idString + "&idv=" + valueID + "&accion=true";
         new Resultado_escanear.RetrieveFeedTaskGet().execute();
+
+
+        _url = "http://ascendsystem.net/ejecutivo/app_guardar_factura.php?id_editar=" + idString + "&idv=" + valueID + "&accion=true";
+        new Resultado_escanear.RetrieveFeedTask().execute();
 
         */
         onPause();
@@ -446,34 +454,7 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
                     JSONTokener tokener = new JSONTokener(response);
                     JSONArray arr = new JSONArray(tokener);
 
-                    listaNombreVeterinarios.clear();
-                    listaImagenVeterinarios.clear();
-                    listaIdVeterinario.clear();
 
-
-                    for (int i = 0; i < arr.length(); i++) {
-                        JSONObject jsonobject = arr.getJSONObject(i);
-
-                        /*
-                        listaNombreVeterinarios.add(jsonobject.getString("nombre"));
-                        listaImagenVeterinarios.add(jsonobject.getString("foto"));
-                        listaIdVeterinario.add(jsonobject.getString("id_veterinario"));
-                        */
-                        //listaImagenVeterinarios.add(jsonobject.getString("foto"));
-
-                        /*
-                        listaNombreVeterinarios.add(jsonobject.getString("numero_cliente") + " " + jsonobject.getString("nombre") + " " + jsonobject.getString("apaterno"));
-
-                        listaImagenVeterinarios.add(jsonobject.getString("imagen"));
-                        listaIdVeterinario.add(jsonobject.getString("id_cliente"));
-                        */
-                        listaNombreVeterinarios.add(jsonobject.getString("numero_contrato"));
-
-                        listaImagenVeterinarios.add(jsonobject.getString("cantidad"));
-                        //listaIdVeterinario.add(jsonobject.getString("total"));
-                        listaIdVeterinario.add(jsonobject.getString("id_contrato"));
-
-                    }
 
                     /*
                     _mascotasAdapter = new PagosAdapter(valueID, mActivity, listaNombreVeterinarios, listaImagenVeterinarios, listaIdVeterinario);
@@ -534,6 +515,20 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
         //i.putExtra("idcliente", idString);
         i.putExtra("idcontrato", idString);
         startActivity(i);
+    }
+    public void goAgregarFactura(View v){
+
+        Log.d("welcm",Integer.toString(selStatus));
+        _url = "http://ascendsystem.net/ejecutivo/app_guardar_factura.php?id_editar=" + idString + "&id_usuario=" + valueID + "&accion=true&folio_factura=" + detalleFolioFactura.getText().toString() + "&id_status=" + selStatus + "&resultado=" + Uri.encode(resultado_qr);
+        Log.d("tes", _url);
+        new Resultado_escanear.RetrieveFeedTask().execute();
+        /*
+        Intent i = new Intent(Resultado_escanear.this, Agregar_pago.class);
+        //i.putExtra("idcliente", _listaIdVeterinarios.get(i));
+        //i.putExtra("idcliente", idString);
+        i.putExtra("idcontrato", idString);
+        startActivity(i);
+        */
     }
     public void goMenu(View v){
         Intent i = new Intent(Resultado_escanear.this, Menu.class);
