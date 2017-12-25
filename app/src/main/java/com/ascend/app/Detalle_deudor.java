@@ -86,7 +86,7 @@ public class Detalle_deudor extends AppCompatActivity {
         lv = (ListView) findViewById(R.id.list_facturas);
         txtObservacionesFactura = (EditText) findViewById(R.id.txtObservacionesFactura);
 
-        showMsg("test");
+        //showMsg("test");
 
         //String idString;
         Bundle extras = getIntent().getExtras();

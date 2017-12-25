@@ -95,7 +95,7 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
         //lv = (ListView) findViewById(R.id.list_pagos);
         detalleFolioFactura = (EditText) findViewById(R.id.detalleFolioFactura);
 
-        showMsg("test");
+        //showMsg("test");
 
         //String idString;
         Bundle extras = getIntent().getExtras();
@@ -116,8 +116,8 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
         valueID = sharedpreferences.getInt("idu", 0);
 
 
-        showMsg(resultado_qr);
-        Log.d("resultado_qr", resultado_qr);
+        //showMsg(resultado_qr);
+        //Log.d("resultado_qr", resultado_qr);
 
         //_urlGet = "http://thekrakensolutions.com/cobradores/android_get_contrato.php?id_editar=" + idString + "&idv=" + valueID + "&accion=true&resultado=" + resultado_qr;
         _urlGet = "http://ascendsystem.net/ejecutivo/app_escanear_qr.php?id_editar=" + idString + "&id_usuario=" + valueID + "&accion=true&resultado=" + Uri.encode(resultado_qr);
@@ -324,6 +324,31 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
                     txtRazonSocialEmisor.setText(_RazonSocialEmisor);
                     txtRazonSocialReceptor.setText(_RazonSocialReceptor);
 
+                    //str == null | str.length() == 0
+                    //if(_RazonSocialReceptor.equals("") || _RazonSocialEmisor.equals("")){
+                    //if(_RazonSocialReceptor == null || _RazonSocialEmisor == null){
+                    //if(object.getString("razon_social_receptor") == null || object.getString("razon_social_emisor") == null){
+                    Log.d("razon social emisor", object.getString("razon_social_emisor"));
+                    //showMsg(object.getString("razon_social_emisor"));
+
+                    Log.d("razon social receptor", object.getString("razon_social_receptor"));
+                    //showMsg(object.getString("razon_social_receptor"));
+
+
+
+                    if(object.getString("razon_social_receptor") == null | object.getString("razon_social_receptor").length() == 0 | object.getString("razon_social_receptor").isEmpty() | object.getString("razon_social_emisor") == null  | object.getString("razon_social_emisor").length() == 0 | object.getString("razon_social_emisor").isEmpty()){
+                        if(object.getString("razon_social_receptor") == null | object.getString("razon_social_receptor").length() == 0 | object.getString("razon_social_receptor").isEmpty()){
+                            showMsg("No se ha encontrado el receptor de la factura");
+                        }
+                        if(object.getString("razon_social_emisor") == null | object.getString("razon_social_emisor").length() == 0 | object.getString("razon_social_emisor").isEmpty()){
+                            showMsg("No se ha encontrado el emisor de la factura");
+                        }
+
+                    }else{
+                        //showMsg("Todo esta perfecto");
+                    }
+
+
 
 
 
@@ -506,7 +531,8 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
     }
     public void goBack(View v){
         //Intent i = new Intent(Detalle_contrato.this, Lista_clientes.class);
-        Intent i = new Intent(Resultado_escanear.this, Lista_contratos.class);
+        //Intent i = new Intent(Resultado_escanear.this, Lista_contratos.class);
+        Intent i = new Intent(Resultado_escanear.this, Menu.class);
         startActivity(i);
     }
     public void goAgregarPago(View v){
