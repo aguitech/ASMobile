@@ -274,7 +274,8 @@ Log.d("url",_url);
 
                                 text = "Bienvenido Ascend Mobile";
                                 Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG).show();
-                                Intent i = new Intent(Login.this, Home.class);
+                                //Intent i = new Intent(Login.this, Home.class);
+                                Intent i = new Intent(Login.this, Principal.class);
 
                                 startActivity(i);
                                 finish();
