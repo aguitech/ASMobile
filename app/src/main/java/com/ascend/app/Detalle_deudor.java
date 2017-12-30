@@ -659,6 +659,10 @@ public class Detalle_deudor extends AppCompatActivity {
         Intent i = new Intent(Detalle_deudor.this, Lista_contratos.class);
         startActivity(i);
     }
+    public void goNotificaciones(View v){
+        
+    }
+
     public void goAgregarPago(View v){
         Intent i = new Intent(Detalle_deudor.this, Agregar_pago.class);
         //i.putExtra("idcliente", _listaIdVeterinarios.get(i));

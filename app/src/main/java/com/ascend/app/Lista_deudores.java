@@ -83,6 +83,12 @@ public class Lista_deudores extends AppCompatActivity {
         Intent i = new Intent(Lista_deudores.this, Menu.class);
         startActivity(i);
     }
+    public void goNotificaciones(View v){
+        /*
+        Intent i = new Intent(Lista_deudores.this, Menu.class);
+        startActivity(i);
+        */
+    }
     /*
     public void goMenu(View v){
         Intent i = new Intent(Lista_veterinarios.this, Menu.class);

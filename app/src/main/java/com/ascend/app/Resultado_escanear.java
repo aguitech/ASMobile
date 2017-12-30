@@ -533,6 +533,13 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
         Intent i = new Intent(Resultado_escanear.this, Menu.class);
         startActivity(i);
     }
+    public void goNotificaciones(View v){
+        /*
+        Intent i = new Intent(Resultado_escanear.this, Menu.class);
+        startActivity(i);
+        */
+    }
+
     public void goAgregarPago(View v){
         Intent i = new Intent(Resultado_escanear.this, Agregar_pago.class);
         //i.putExtra("idcliente", _listaIdVeterinarios.get(i));

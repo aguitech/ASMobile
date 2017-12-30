@@ -105,6 +105,13 @@ public class Principal extends AppCompatActivity implements ZXingScannerView.Res
         Intent i = new Intent(Principal.this, Detalle_escanear.class);
         startActivity(i);
     }
+    public void goNotificaciones(View v){
+        /*
+        Intent i = new Intent(Principal.this, Detalle_escanear.class);
+        startActivity(i);
+        */
+    }
+
 
 
 
