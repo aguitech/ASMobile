@@ -123,6 +123,25 @@
             android:paddingTop="0dp">
 
 
+            <!--
+            <LinearLayout
+                android:layout_marginTop="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="0dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="No se ha encontrado Razón Social del Emisor" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+            -->
             <LinearLayout
                 android:layout_marginTop="0dp"
                 android:layout_width="match_parent"
@@ -371,6 +390,7 @@
                 android:orientation="vertical"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
+                android:id="@+id/btn_agregar"
                 android:layout_marginTop="15dp"
                 android:clipToPadding="false"
                 android:gravity="center"

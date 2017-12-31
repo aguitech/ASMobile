@@ -79,6 +79,9 @@
         <activity android:name="com.ascend.app.Resultado_escanear"
             android:screenOrientation="portrait"></activity>
 
+        <activity android:name="com.ascend.app.Resultado_final"
+            android:screenOrientation="portrait"></activity>
+
 
     </application>
 

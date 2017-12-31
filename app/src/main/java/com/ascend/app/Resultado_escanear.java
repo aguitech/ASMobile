@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -333,9 +334,26 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
                     if(object.getString("razon_social_receptor") == null | object.getString("razon_social_receptor").length() == 0 | object.getString("razon_social_receptor").isEmpty() | object.getString("razon_social_emisor") == null  | object.getString("razon_social_emisor").length() == 0 | object.getString("razon_social_emisor").isEmpty()){
                         if(object.getString("razon_social_receptor") == null | object.getString("razon_social_receptor").length() == 0 | object.getString("razon_social_receptor").isEmpty()){
                             showMsg("No se ha encontrado el receptor de la factura");
+
+                            LinearLayout btn_agregar = (LinearLayout) findViewById(R.id.btn_agregar);
+                            btn_agregar.setVisibility(LinearLayout.INVISIBLE);
+
+
+                            txtRazonSocialReceptor.setText("No se ha encontrado el receptor de la factura");
+                            txtRazonSocialReceptor.setTextColor(getResources().getColor(R.color.rojo_denegado));
+
                         }
                         if(object.getString("razon_social_emisor") == null | object.getString("razon_social_emisor").length() == 0 | object.getString("razon_social_emisor").isEmpty()){
                             showMsg("No se ha encontrado el emisor de la factura");
+
+                            LinearLayout btn_agregar = (LinearLayout) findViewById(R.id.btn_agregar);
+                            //btn_agregar.setVisibility(LinearLayout.GONE);
+                            btn_agregar.setVisibility(LinearLayout.INVISIBLE);
+
+                            txtRazonSocialEmisor.setText("No se ha encontrado el emisor de la factura");
+                            txtRazonSocialEmisor.setTextColor(getResources().getColor(R.color.rojo_denegado));
+
+
                         }
 
                     }else{
@@ -474,8 +492,32 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
                 response = "THERE WAS AN ERROR";
             } else {
                 try {
-                    JSONTokener tokener = new JSONTokener(response);
-                    JSONArray arr = new JSONArray(tokener);
+                    JSONObject object = (JSONObject) new JSONTokener(response).nextValue();
+
+
+                    //String _razon_social = object.getString("RFC_deudor") + " - " + object.getString("deudor") + " " + object.getString("cuenta_deudor");
+
+
+                    //String _telefono_vo = object.getString("telefono_casa");
+                    //String _imagen_vo = object.getString("sexo");
+                    //String _imagen_vo = object.getString("imagen");
+
+                    //if (object.getString("id_documento").length() > 3) {
+                    if (object.getString("status_texto").length() > 3) {
+                        showMsg("Factura agregada correctamente");
+
+                        Intent i = new Intent(Resultado_escanear.this, Resultado_final.class);
+                        startActivity(i);
+                    }
+
+
+//JSONTokener tokener = new JSONTokener(response);
+                    //JSONArray arr = new JSONArray(tokener);
+
+
+
+
+
 
 
 

@@ -190,7 +190,7 @@ public class DocumentosAdapter extends BaseAdapter {
             public void onClick(View v) {
                 //confirm(holder.imgMascota.getContext(), position, "Eliminar mascota: " + _listaNombreMascota.get(position));
 
-                holder.statusColor.setBackgroundColor(Color.BLUE);
+                holder.statusColor.setBackgroundColor(Color.YELLOW);
                 AlertDialog.Builder dialogo1 = new AlertDialog.Builder(context);
                 dialogo1.setTitle("Importante");
                 dialogo1.setMessage("¿ Estas seguro que desea actualizar?");
@@ -199,7 +199,7 @@ public class DocumentosAdapter extends BaseAdapter {
                     public void onClick(DialogInterface dialogo1, int id) {
 
                         //holder.statusColor.setBackgroundColor(Color.GREEN);
-                        holder.statusColor.setBackgroundColor(Color.YELLOW);
+                        holder.statusColor.setBackgroundColor(Color.BLUE);
                         //holder.statusColor.getContext().setBackgroundColor(Color.GREEN);
 
                         _urlGo = "http://ascendsystem.net/ejecutivo/app_actualizar_documento.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos) + "&id_status=" + Integer.toString(_idStatus) + "&observaciones=" + _observaciones;
@@ -248,7 +248,7 @@ public class DocumentosAdapter extends BaseAdapter {
         holder.statusColor.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 //confirm(holder.imgMascota.getContext(), position, "Eliminar mascota: " + _listaNombreMascota.get(position));
-                holder.statusColor.setBackgroundColor(Color.BLUE);
+                holder.statusColor.setBackgroundColor(Color.YELLOW);
                 AlertDialog.Builder dialogo1 = new AlertDialog.Builder(context);
                 dialogo1.setTitle("Importante");
                 dialogo1.setMessage("¿ Estas seguro que desea actualizar?");
@@ -257,7 +257,7 @@ public class DocumentosAdapter extends BaseAdapter {
                     public void onClick(DialogInterface dialogo1, int id) {
 
 
-                        holder.statusColor.setBackgroundColor(Color.YELLOW);
+                        holder.statusColor.setBackgroundColor(Color.BLUE);
 
                         _urlGo = "http://ascendsystem.net/ejecutivo/app_actualizar_documento.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos) + "&id_status=" + Integer.toString(_idStatus) + "&observaciones=" + _observaciones;;
                         Log.d("id_estatus go", Integer.toString(_idStatus));

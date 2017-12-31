@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -75,12 +74,15 @@ public class Principal extends AppCompatActivity implements ZXingScannerView.Res
         // Do something with the result here</p>
         Log.e("handler", rawResult.getText()); // Prints scan results<br />
         Log.e("handler", rawResult.getBarcodeFormat().toString()); // Prints the scan format (qrcode)</p>
+
+        /*
         // show the scanner result into dialog box.<br />
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Scan Result");
         builder.setMessage(rawResult.getText());
         AlertDialog alert1 = builder.create();
         alert1.show();
+        */
 
 
         Intent i = new Intent(Principal.this, Resultado_escanear.class);
