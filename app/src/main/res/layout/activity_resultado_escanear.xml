@@ -362,6 +362,7 @@
                     android:layout_height="30dp"
                     android:id="@+id/detalleFolioFactura" />
             </LinearLayout>
+            <!--
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -383,6 +384,7 @@
                     android:background="@drawable/border_verde_radius"
                     android:layout_height="30dp" />
             </LinearLayout>
+            -->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -397,13 +399,13 @@
                 android:paddingTop="0dp">
 
                 <Button
-                    android:layout_width="wrap_content"
+                    android:layout_width="140dp"
                     android:text="Agregar factura"
                     android:textColor="@color/gris_fuerte"
                     android:textAllCaps="false"
                     android:onClick="goAgregarFactura"
                     android:textSize="12dp"
-                    android:background="@drawable/border_verde_radius"
+                    android:background="@drawable/border_naranja_radius"
                     android:layout_height="30dp" />
             </LinearLayout>
 
