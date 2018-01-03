@@ -126,7 +126,8 @@ public class DocumentosAdapter extends BaseAdapter {
         //convertView.setBackgroundColor(Color.BLACK);
         if(_listaStatusColor.get(i).equals("VERDE")){
             //holder.statusColor.setBackgroundColor(context.getResources().getColor(R.color.verde_autorizado));
-            holder.statusColor.setBackgroundColor(Color.GREEN);
+            //holder.statusColor.setBackgroundColor(Color.GREEN);
+            holder.statusColor.setBackgroundColor(context.getResources().getColor(R.color.verde_autorizado));
         }else{
             holder.statusColor.setBackgroundColor(Color.RED);
         }
