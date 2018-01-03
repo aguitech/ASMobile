@@ -591,10 +591,15 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
     }
     public void goAgregarFactura(View v){
 
-        Log.d("welcm",Integer.toString(selStatus));
-        _url = "http://ascendsystem.net/ejecutivo/app_guardar_factura.php?id_editar=" + idString + "&id_usuario=" + valueID + "&accion=true&folio_factura=" + detalleFolioFactura.getText().toString() + "&id_status=" + selStatus + "&resultado=" + Uri.encode(resultado_qr);
-        Log.d("tes", _url);
-        new Resultado_escanear.RetrieveFeedTask().execute();
+        if(detalleFolioFactura.getText().toString() != null && selStatus != 0){
+            Log.d("welcm",Integer.toString(selStatus));
+            _url = "http://ascendsystem.net/ejecutivo/app_guardar_factura.php?id_editar=" + idString + "&id_usuario=" + valueID + "&accion=true&folio_factura=" + detalleFolioFactura.getText().toString() + "&id_status=" + selStatus + "&resultado=" + Uri.encode(resultado_qr);
+            Log.d("tes", _url);
+            new Resultado_escanear.RetrieveFeedTask().execute();
+        }else{
+            showMsg("Todos los campos son necesarios");
+        }
+
         /*
         Intent i = new Intent(Resultado_escanear.this, Agregar_pago.class);
         //i.putExtra("idcliente", _listaIdVeterinarios.get(i));
