@@ -45,12 +45,14 @@ public class DocumentosAdapter extends BaseAdapter {
     public String _observaciones;
 
     public int _idStatus;
+    public int _idInconformidad;
+
     public String _urlGo;
     public int _valueID;
 
     private static LayoutInflater inflater=null;
 
-    public DocumentosAdapter(int idStatus, String observaciones, int valueID, Detalle_deudor mainActivity, ArrayList<String> listaNombreVeterinarios, ArrayList<String> listaFolioFiscal, ArrayList<String> listaTotalFactura, ArrayList<String> listaStatusFactura, ArrayList<String> listaStatusColor, ArrayList<String> listaImagenVeterinarios, ArrayList<String> listaIdVeterinarios){
+    public DocumentosAdapter(int idStatus, int idInconformidad, String observaciones, int valueID, Detalle_deudor mainActivity, ArrayList<String> listaNombreVeterinarios, ArrayList<String> listaFolioFiscal, ArrayList<String> listaTotalFactura, ArrayList<String> listaStatusFactura, ArrayList<String> listaStatusColor, ArrayList<String> listaImagenVeterinarios, ArrayList<String> listaIdVeterinarios){
         _listaIdVeterinarios = listaIdVeterinarios;
         _listaImagenVeterinarios = listaImagenVeterinarios;
         _listaNombreVeterinarios = listaNombreVeterinarios;
@@ -62,6 +64,7 @@ public class DocumentosAdapter extends BaseAdapter {
 
         _valueID = valueID;
         _idStatus = idStatus;
+        _idInconformidad = idInconformidad;
         _observaciones = observaciones;
 
         context = mainActivity;
@@ -122,9 +125,10 @@ public class DocumentosAdapter extends BaseAdapter {
 
         //convertView.setBackgroundColor(Color.BLACK);
         if(_listaStatusColor.get(i).equals("VERDE")){
-            holder.statusColor.setBackgroundColor(context.getResources().getColor(R.color.verde_autorizado));
+            //holder.statusColor.setBackgroundColor(context.getResources().getColor(R.color.verde_autorizado));
+            holder.statusColor.setBackgroundColor(Color.GREEN);
         }else{
-            holder.statusColor.setBackgroundColor(context.getResources().getColor(R.color.rojo_denegado));
+            holder.statusColor.setBackgroundColor(Color.RED);
         }
 
 
@@ -202,7 +206,7 @@ public class DocumentosAdapter extends BaseAdapter {
                         holder.statusColor.setBackgroundColor(Color.BLUE);
                         //holder.statusColor.getContext().setBackgroundColor(Color.GREEN);
 
-                        _urlGo = "http://ascendsystem.net/ejecutivo/app_actualizar_documento.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos) + "&id_status=" + Integer.toString(_idStatus) + "&observaciones=" + _observaciones;
+                        _urlGo = "http://ascendsystem.net/ejecutivo/app_actualizar_documento.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos) + "&id_status=" + Integer.toString(_idStatus) + "&id_inconformidad=" + Integer.toString(_idInconformidad) + "&observaciones=" + _observaciones;
                         Log.d("id_estatus go", Integer.toString(_idStatus));
                         Log.d("urlgo",_urlGo);
                         new DocumentosAdapter.RetrieveFeedTask().execute();
@@ -259,7 +263,7 @@ public class DocumentosAdapter extends BaseAdapter {
 
                         holder.statusColor.setBackgroundColor(Color.BLUE);
 
-                        _urlGo = "http://ascendsystem.net/ejecutivo/app_actualizar_documento.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos) + "&id_status=" + Integer.toString(_idStatus) + "&observaciones=" + _observaciones;;
+                        _urlGo = "http://ascendsystem.net/ejecutivo/app_actualizar_documento.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos) + "&id_status=" + Integer.toString(_idStatus) + "&id_inconformidad=" + Integer.toString(_idInconformidad) + "&observaciones=" + _observaciones;;
                         Log.d("id_estatus go", Integer.toString(_idStatus));
                         Log.d("urlgo",_urlGo);
                         new DocumentosAdapter.RetrieveFeedTask().execute();

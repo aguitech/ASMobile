@@ -66,16 +66,24 @@ public class Detalle_deudor extends AppCompatActivity {
     private String _urlNotificaciones;
 
     private String _urlStatus;
+    private String _urlInconformidad;
     String idString;
+
+
 
     CharSequence[] items;
     //public int selStatus = 0;
     private int selStatus = 0;
+    private int selInconformidad = 0;
+
     private String observaciones = "";
     EditText txtObservacionesFactura;
 
     public ArrayList<String> _status = new ArrayList<String>();
     public  ArrayList<Integer> _ids_status = new ArrayList<Integer>();
+
+    public ArrayList<String> _inconformidad = new ArrayList<String>();
+    public  ArrayList<Integer> _ids_inconformidad = new ArrayList<Integer>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,6 +149,10 @@ public class Detalle_deudor extends AppCompatActivity {
         _urlStatus = "http://ascendsystem.net/ejecutivo/app_obtener_status.php?id_veterinario=" + valueID + "&id_usuario=" + selStatus;
         Log.d("url_mascota", _urlStatus);
         new Detalle_deudor.RetrieveFeedTaskStatus().execute();
+
+        _urlInconformidad = "http://ascendsystem.net/ejecutivo/app_obtener_inconformidad.php?id_veterinario=" + valueID + "&id_usuario=" + selStatus;
+        Log.d("url_mascota", _urlInconformidad);
+        new Detalle_deudor.RetrieveFeedTaskInconformidad().execute();
 
     }
     private void showMsg(CharSequence text){
@@ -525,7 +537,7 @@ public class Detalle_deudor extends AppCompatActivity {
                     Log.d("observaciones", txtObservacionesFactura.getText().toString());
 
                     //_mascotasAdapter = new DocumentosAdapter(selStatus, valueID, mActivity, listaNombreVeterinarios, listaImagenVeterinarios, listaIdVeterinario);
-                    _mascotasAdapter = new DocumentosAdapter(selStatus, txtObservacionesFactura.getText().toString(), valueID, mActivity, listaNombreVeterinarios, listaFolioFiscal, listaTotalFactura, listaStatusFactura, listaStatusColor, listaImagenVeterinarios, listaIdVeterinario);
+                    _mascotasAdapter = new DocumentosAdapter(selStatus, selInconformidad, txtObservacionesFactura.getText().toString(), valueID, mActivity, listaNombreVeterinarios, listaFolioFiscal, listaTotalFactura, listaStatusFactura, listaStatusColor, listaImagenVeterinarios, listaIdVeterinario);
                     lv.setAdapter(_mascotasAdapter);
 
 
@@ -539,6 +551,71 @@ public class Detalle_deudor extends AppCompatActivity {
         }
     }
 
+
+    class RetrieveFeedTaskInconformidad extends AsyncTask<Void, Void, String> {
+
+        private Exception exception;
+
+        protected void onPreExecute() {
+        }
+
+        protected String doInBackground(Void... urls) {
+            try {
+                Log.i("INFO url: ", _urlInconformidad);
+                URL url = new URL(_urlInconformidad);
+                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                try {
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+                    StringBuilder stringBuilder = new StringBuilder();
+                    String line;
+                    while ((line = bufferedReader.readLine()) != null) {
+                        stringBuilder.append(line).append("\n");
+                    }
+                    bufferedReader.close();
+                    return stringBuilder.toString();
+                }
+                finally{
+                    urlConnection.disconnect();
+                }
+            }
+            catch(Exception e) {
+                Log.e("ERROR", e.getMessage(), e);
+                return null;
+            }
+        }
+
+        protected void onPostExecute(String response) {
+            if(response == null) {
+                response = "THERE WAS AN ERROR";
+            } else {
+                Context context = getApplicationContext();
+                int duration = Toast.LENGTH_SHORT;
+
+                try {
+                    JSONTokener tokener = new JSONTokener(response);
+                    JSONArray arr = new JSONArray(tokener);
+
+                    _inconformidad.clear();
+                    _ids_inconformidad.clear();
+
+                    for (int i = 0; i < arr.length(); i++) {
+                        JSONObject jsonobject = arr.getJSONObject(i);
+                        //Log.d("status",jsonobject.getString("status"));
+
+                        //_clientes.add(jsonobject.getString("nombre_usuario") + " - " + jsonobject.getString("nombre"));
+                        //_mascotas.add(jsonobject.getString("nombre_usuario") + " - " + jsonobject.getString("nombre"));
+                        _inconformidad.add(jsonobject.getString("tipo_inconformidad"));
+                        //_ids_cliente.add(jsonobject.getInt("id_mascota"));
+                        _ids_inconformidad.add(jsonobject.getInt("id_tipo_inconformidad"));
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            Log.i("INFO", response);
+        }
+    }
     class RetrieveFeedTaskStatus extends AsyncTask<Void, Void, String> {
 
         private Exception exception;
@@ -609,6 +686,44 @@ public class Detalle_deudor extends AppCompatActivity {
         startActivity(i);
     }
     */
+    public void showInconformidadList(View v){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        items = _inconformidad.toArray(new CharSequence[_inconformidad.size()]);
+
+        builder.setItems(items, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int item) {
+                Button btnInconformidad = (Button)findViewById(R.id.btnInconformidad);
+                btnInconformidad.setText(items[item]);
+                selInconformidad = _ids_inconformidad.get(item); //En la variable selCliente esta guardado el id del cliente.
+                Log.d("id_status", Integer.toString(selInconformidad));
+
+
+                //_url = "http://ascendsystem.net/ejecutivo/app_listar_documentos.php?id_deudor=" + idString + "&test=" + _ids_status.get(item) + "&otro=" + selStatus;
+                _url = "http://ascendsystem.net/ejecutivo/app_listar_documentos.php?id_deudor=" + idString + "&test=" + _ids_inconformidad.get(item) + "&otro=" + selInconformidad;
+                Log.d("url_documentos", _url);
+                new Detalle_deudor.RetrieveFeedTask().execute();
+
+
+                //_mascotasAdapter = new DocumentosAdapter(_ids_status.get(item), valueID, mActivity, listaNombreVeterinarios, listaImagenVeterinarios, listaIdVeterinario);
+                //lv.setAdapter(_mascotasAdapter);
+
+                //_urlMascota = "http://hyperion.init-code.com/zungu/app/vt_obtener_clientes.php?id_veterinario=" + valueID + "&id_usuario=" + selCliente;
+                //_urlMascota = "http://hyperion.init-code.com/zungu/app/vt_obtener_mascotas.php?id_veterinario=" + valueID + "&id_usuario=" + selCliente;
+
+            }
+        });
+
+        AlertDialog alert = builder.create();
+
+        ListView listView = alert.getListView();
+        listView.setDivider(new ColorDrawable(Color.GRAY)); // set color
+        listView.setDividerHeight(1);
+        listView.setOverscrollFooter(new ColorDrawable(Color.TRANSPARENT));
+
+        alert.show();
+
+
+    }
 
     public void showEstatusList(View v){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

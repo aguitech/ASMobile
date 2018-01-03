@@ -62,6 +62,7 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
     public static ArrayList<String> listaIdVeterinario = new ArrayList<String>();
 
     EditText detalleFolioFactura;
+    EditText historialGestion;
 
     public Resultado_escanear mActivity = this;
     public PagosAdapter _mascotasAdapter;
@@ -89,6 +90,8 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
 
         //lv = (ListView) findViewById(R.id.list_pagos);
         detalleFolioFactura = (EditText) findViewById(R.id.detalleFolioFactura);
+        historialGestion = (EditText) findViewById(R.id.historialGestion);
+
 
         //showMsg("test");
 
@@ -503,12 +506,21 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
                     //String _imagen_vo = object.getString("imagen");
 
                     //if (object.getString("id_documento").length() > 3) {
-                    if (object.getString("status_texto").length() > 3) {
+                    if (object.getString("status_operacion").equals("2")) {
+                        showMsg("La factura ya ha sido agregada anteriormente");
+                    }
+                    if (object.getString("status_operacion").equals("1")) {
                         showMsg("Factura agregada correctamente");
 
                         Intent i = new Intent(Resultado_escanear.this, Resultado_final.class);
                         startActivity(i);
                     }
+                    /*
+                    if (object.getString("status_texto").length() > 3) {
+
+                    }
+                    */
+
 
 
 //JSONTokener tokener = new JSONTokener(response);
@@ -593,7 +605,9 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
 
         if(detalleFolioFactura.getText().toString() != null && selStatus != 0){
             Log.d("welcm",Integer.toString(selStatus));
-            _url = "http://ascendsystem.net/ejecutivo/app_guardar_factura.php?id_editar=" + idString + "&id_usuario=" + valueID + "&accion=true&folio_factura=" + detalleFolioFactura.getText().toString() + "&id_status=" + selStatus + "&resultado=" + Uri.encode(resultado_qr);
+            //historialGestion
+            //_url = "http://ascendsystem.net/ejecutivo/app_guardar_factura.php?id_editar=" + idString + "&id_usuario=" + valueID + "&accion=true&folio_factura=" + detalleFolioFactura.getText().toString() + "&id_status=" + selStatus + "&resultado=" + Uri.encode(resultado_qr);
+            _url = "http://ascendsystem.net/ejecutivo/app_guardar_factura.php?id_editar=" + idString + "&id_usuario=" + valueID + "&accion=true&folio_factura=" + detalleFolioFactura.getText().toString() + "&bitacora=" + historialGestion.getText().toString() + "&id_status=" + selStatus + "&resultado=" + Uri.encode(resultado_qr);
             Log.d("tes", _url);
             new Resultado_escanear.RetrieveFeedTask().execute();
         }else{
