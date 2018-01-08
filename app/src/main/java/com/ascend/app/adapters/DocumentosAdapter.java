@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -94,6 +95,7 @@ public class DocumentosAdapter extends BaseAdapter {
         TextView statusFactura;
         LinearLayout statusColor;
 
+        CheckBox checkboxDocumento;
 
 
 
@@ -119,18 +121,25 @@ public class DocumentosAdapter extends BaseAdapter {
         holder.statusColor = (LinearLayout) rowView.findViewById(R.id.statusColor);
 
 
+        holder.checkboxDocumento = (CheckBox) rowView.findViewById(R.id.checkboxDocumento);
+
+
         holder.imagenVeterinario = (ImageView) rowView.findViewById(R.id.imgVeterinario);
         //holder.agregarVeterinario = (Button) rowView.findViewById(R.id.buttonAgregar);
         holder.imgActualizar = (ImageView) rowView.findViewById(R.id.imgActualizar);
 
         //convertView.setBackgroundColor(Color.BLACK);
+        /*
         if(_listaStatusColor.get(i).equals("VERDE")){
             //holder.statusColor.setBackgroundColor(context.getResources().getColor(R.color.verde_autorizado));
             //holder.statusColor.setBackgroundColor(Color.GREEN);
+            holder.checkboxDocumento.setChecked(true);
             holder.statusColor.setBackgroundColor(context.getResources().getColor(R.color.verde_autorizado));
         }else{
+            holder.checkboxDocumento.setChecked(false);
             holder.statusColor.setBackgroundColor(Color.RED);
         }
+        */
 
 
         /*
@@ -191,6 +200,46 @@ public class DocumentosAdapter extends BaseAdapter {
 
         //holder.nombreVeterinario.setTextColor(Color.RED);
 
+
+
+        //checkBox.setChecked(!checkBox.isChecked());
+        //holder.checkboxDocumento.setChecked(!holder.checkboxDocumento.isChecked());
+        //holder.checkboxDocumento.setChecked(true);
+
+        holder.checkboxDocumento.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                //confirm(holder.imgMascota.getContext(), position, "Eliminar mascota: " + _listaNombreMascota.get(position));
+
+
+
+                /*
+                public void onClick(View v) {
+                    ((Activity)context).finish();
+
+                }
+                */
+
+
+                //holder.statusColor.setBackgroundColor(Color.BLUE);
+                holder.statusColor.setBackgroundColor(context.getResources().getColor(R.color.verde_autorizado));
+
+                _urlGo = "http://ascendsystem.net/ejecutivo/app_actualizar_documento.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos) + "&id_status=" + Integer.toString(_idStatus) + "&id_inconformidad=" + Integer.toString(_idInconformidad) + "&observaciones=" + _observaciones;;
+                Log.d("id_estatus go", Integer.toString(_idStatus));
+                Log.d("urlgo",_urlGo);
+                new DocumentosAdapter.RetrieveFeedTask().execute();
+
+                //Toast.makeText(holder.folioFiscal.getContext(), "Documento agregado con éxito.", Toast.LENGTH_LONG).show();
+
+                //notifyDataSetChanged();
+
+
+                //((Detalle_deudor)context).finish();
+
+                //Toast.makeText(context, "Eliminado", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         holder.imgActualizar.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 //confirm(holder.imgMascota.getContext(), position, "Eliminar mascota: " + _listaNombreMascota.get(position));
@@ -211,6 +260,7 @@ public class DocumentosAdapter extends BaseAdapter {
                         Log.d("id_estatus go", Integer.toString(_idStatus));
                         Log.d("urlgo",_urlGo);
                         new DocumentosAdapter.RetrieveFeedTask().execute();
+
                         Toast.makeText(holder.folioFiscal.getContext(), "Documento agregado con éxito.", Toast.LENGTH_LONG).show();
 
 
@@ -369,6 +419,15 @@ public class DocumentosAdapter extends BaseAdapter {
                 });
 
         */
+        if(_listaStatusColor.get(i).equals("VERDE")){
+            //holder.statusColor.setBackgroundColor(context.getResources().getColor(R.color.verde_autorizado));
+            //holder.statusColor.setBackgroundColor(Color.GREEN);
+            holder.checkboxDocumento.setChecked(true);
+            holder.statusColor.setBackgroundColor(context.getResources().getColor(R.color.verde_autorizado));
+        }else{
+            holder.checkboxDocumento.setChecked(false);
+            holder.statusColor.setBackgroundColor(Color.RED);
+        }
         return rowView;
     }
 
@@ -406,6 +465,9 @@ public class DocumentosAdapter extends BaseAdapter {
             if (response == null) {
                 response = "THERE WAS AN ERROR";
             } else {
+
+
+
                 /*
                 DESCOMENTAR
                 Intent i = new Intent(context, Principal.class);

@@ -14,7 +14,26 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="0.60"
+            android:layout_weight="0.20"
+            android:gravity="center"
+            android:orientation="vertical"
+
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/checkboxDocumento"/>
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="0.40"
             android:gravity="center"
             android:orientation="vertical"
 
