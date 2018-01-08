@@ -73,6 +73,8 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
     private String _urlNotificaciones;
     private String _urlStatus;
 
+    private String _urlCuentaDeudor;
+
 
     String idString;
     String resultado_qr;
@@ -82,6 +84,13 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
 
     public ArrayList<String> _status = new ArrayList<String>();
     public  ArrayList<Integer> _ids_status = new ArrayList<Integer>();
+
+
+    private int selCuentaDeudor = 0;
+
+    public ArrayList<String> _cuentaDeudor = new ArrayList<String>();
+    public  ArrayList<Integer> _ids_cuentaDeudor = new ArrayList<Integer>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -332,6 +341,9 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
                     Log.d("razon social receptor", object.getString("razon_social_receptor"));
                     //showMsg(object.getString("razon_social_receptor"));
 
+                    _urlCuentaDeudor = "http://ascendsystem.net/ejecutivo/app_obtener_cuenta_deudor.php?id_veterinario=" + valueID + "&id_usuario=" + selStatus + "&rfc_emisor=" + object.getString("rfc_emisor") + "&rfc_receptor=" + object.getString("rfc_receptor");
+                    Log.d("url_cuenta_deudor", _urlCuentaDeudor);
+                    new Resultado_escanear.RetrieveFeedTaskCuentaDeudor().execute();
 
 
                     if(object.getString("razon_social_receptor") == null | object.getString("razon_social_receptor").length() == 0 | object.getString("razon_social_receptor").isEmpty() | object.getString("razon_social_emisor") == null  | object.getString("razon_social_emisor").length() == 0 | object.getString("razon_social_emisor").isEmpty()){
@@ -344,6 +356,8 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
 
                             txtRazonSocialReceptor.setText("No se ha encontrado el receptor de la factura");
                             txtRazonSocialReceptor.setTextColor(getResources().getColor(R.color.rojo_denegado));
+
+
 
                         }
                         if(object.getString("razon_social_emisor") == null | object.getString("razon_social_emisor").length() == 0 | object.getString("razon_social_emisor").isEmpty()){
@@ -362,6 +376,8 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
                     }else{
                         //showMsg("Todo esta perfecto");
                     }
+
+
 
 
 
@@ -552,6 +568,34 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
         startActivity(i);
     }
     */
+    public void showCuentaDeudorList(View v){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        items = _cuentaDeudor.toArray(new CharSequence[_cuentaDeudor.size()]);
+
+        builder.setItems(items, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int item) {
+                Button btnCuentaDeudor = (Button)findViewById(R.id.btnCuentaDeudor);
+                btnCuentaDeudor.setText(items[item]);
+                selCuentaDeudor = _ids_cuentaDeudor.get(item); //En la variable selCliente esta guardado el id del cliente.
+                Log.d("cuenta_deudor", Integer.toString(selCuentaDeudor));
+
+                //_urlMascota = "http://hyperion.init-code.com/zungu/app/vt_obtener_clientes.php?id_veterinario=" + valueID + "&id_usuario=" + selCliente;
+                //_urlMascota = "http://hyperion.init-code.com/zungu/app/vt_obtener_mascotas.php?id_veterinario=" + valueID + "&id_usuario=" + selCliente;
+
+            }
+        });
+
+        AlertDialog alert = builder.create();
+
+        ListView listView = alert.getListView();
+        listView.setDivider(new ColorDrawable(Color.GRAY)); // set color
+        listView.setDividerHeight(1);
+        listView.setOverscrollFooter(new ColorDrawable(Color.TRANSPARENT));
+
+        alert.show();
+
+
+    }
 
     public void showEstatusList(View v){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -607,7 +651,7 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
             Log.d("welcm",Integer.toString(selStatus));
             //historialGestion
             //_url = "http://ascendsystem.net/ejecutivo/app_guardar_factura.php?id_editar=" + idString + "&id_usuario=" + valueID + "&accion=true&folio_factura=" + detalleFolioFactura.getText().toString() + "&id_status=" + selStatus + "&resultado=" + Uri.encode(resultado_qr);
-            _url = "http://ascendsystem.net/ejecutivo/app_guardar_factura.php?id_editar=" + idString + "&id_usuario=" + valueID + "&accion=true&folio_factura=" + detalleFolioFactura.getText().toString() + "&bitacora=" + historialGestion.getText().toString() + "&id_status=" + selStatus + "&resultado=" + Uri.encode(resultado_qr);
+            _url = "http://ascendsystem.net/ejecutivo/app_guardar_factura.php?id_editar=" + idString + "&id_usuario=" + valueID + "&accion=true&folio_factura=" + detalleFolioFactura.getText().toString() + "&bitacora=" + historialGestion.getText().toString() + "&id_status=" + selStatus + "&id_deudor=" + selCuentaDeudor + "&resultado=" + Uri.encode(resultado_qr);
             Log.d("tes", _url);
             new Resultado_escanear.RetrieveFeedTask().execute();
         }else{
@@ -627,6 +671,70 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
         startActivity(i);
     }
 
+    class RetrieveFeedTaskCuentaDeudor extends AsyncTask<Void, Void, String> {
+
+        private Exception exception;
+
+        protected void onPreExecute() {
+        }
+
+        protected String doInBackground(Void... urls) {
+            try {
+                Log.i("INFO url: ", _urlCuentaDeudor);
+                URL url = new URL(_urlCuentaDeudor);
+                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                try {
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+                    StringBuilder stringBuilder = new StringBuilder();
+                    String line;
+                    while ((line = bufferedReader.readLine()) != null) {
+                        stringBuilder.append(line).append("\n");
+                    }
+                    bufferedReader.close();
+                    return stringBuilder.toString();
+                }
+                finally{
+                    urlConnection.disconnect();
+                }
+            }
+            catch(Exception e) {
+                Log.e("ERROR", e.getMessage(), e);
+                return null;
+            }
+        }
+
+        protected void onPostExecute(String response) {
+            if(response == null) {
+                response = "THERE WAS AN ERROR";
+            } else {
+                Context context = getApplicationContext();
+                int duration = Toast.LENGTH_SHORT;
+
+                try {
+                    JSONTokener tokener = new JSONTokener(response);
+                    JSONArray arr = new JSONArray(tokener);
+
+                    _cuentaDeudor.clear();
+                    _ids_cuentaDeudor.clear();
+
+                    for (int i = 0; i < arr.length(); i++) {
+                        JSONObject jsonobject = arr.getJSONObject(i);
+                        Log.d("cuenta_deudor",jsonobject.getString("cuenta_deudor"));
+
+                        //_clientes.add(jsonobject.getString("nombre_usuario") + " - " + jsonobject.getString("nombre"));
+                        //_mascotas.add(jsonobject.getString("nombre_usuario") + " - " + jsonobject.getString("nombre"));
+                        _cuentaDeudor.add(jsonobject.getString("cuenta_deudor"));
+                        //_ids_cliente.add(jsonobject.getInt("id_mascota"));
+                        _ids_cuentaDeudor.add(jsonobject.getInt("id_deudor"));
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            Log.i("INFO", response);
+        }
+    }
     class RetrieveFeedTaskStatus extends AsyncTask<Void, Void, String> {
 
         private Exception exception;

@@ -181,6 +181,29 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Razón Social Emisor" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:layout_marginTop="0dp"
+                        android:clipToPadding="false"
+                        android:gravity="center"
+                        android:paddingTop="0dp">
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:text="Cuenta Deudor"
+                            android:onClick="showCuentaDeudorList"
+                            android:gravity="left|center"
+                            android:paddingLeft="20dp"
+                            android:textAllCaps="false"
+                            android:textSize="12dp"
+                            android:background="@drawable/border_negro_radius"
+                            android:layout_height="30dp"
+                            android:id="@+id/btnCuentaDeudor" />
+                    </LinearLayout>
                     <TextView
                         android:id="@+id/txtTotalFactura"
                         android:textSize="12dp"
