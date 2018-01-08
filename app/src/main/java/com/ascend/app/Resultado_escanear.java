@@ -62,6 +62,7 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
     public static ArrayList<String> listaIdVeterinario = new ArrayList<String>();
 
     EditText detalleFolioFactura;
+    EditText detalleAtendioFactura;
     EditText historialGestion;
 
     public Resultado_escanear mActivity = this;
@@ -72,6 +73,7 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
 
     private String _urlNotificaciones;
     private String _urlStatus;
+    private String _urlInconformidad;
 
     private String _urlCuentaDeudor;
 
@@ -84,6 +86,11 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
 
     public ArrayList<String> _status = new ArrayList<String>();
     public  ArrayList<Integer> _ids_status = new ArrayList<Integer>();
+
+    private int selInconformidad = 0;
+
+    public ArrayList<String> _inconformidad = new ArrayList<String>();
+    public  ArrayList<Integer> _ids_inconformidad = new ArrayList<Integer>();
 
 
     private int selCuentaDeudor = 0;
@@ -99,6 +106,7 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
 
         //lv = (ListView) findViewById(R.id.list_pagos);
         detalleFolioFactura = (EditText) findViewById(R.id.detalleFolioFactura);
+        detalleAtendioFactura = (EditText) findViewById(R.id.detalleAtendioFactura);
         historialGestion = (EditText) findViewById(R.id.historialGestion);
 
 
@@ -133,6 +141,10 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
         _urlStatus = "http://ascendsystem.net/ejecutivo/app_obtener_status.php?id_veterinario=" + valueID + "&id_usuario=" + selStatus;
         Log.d("url_mascota", _urlStatus);
         new Resultado_escanear.RetrieveFeedTaskStatus().execute();
+
+        _urlInconformidad = "http://ascendsystem.net/ejecutivo/app_obtener_inconformidad.php?id_veterinario=" + valueID + "&id_usuario=" + selStatus;
+        Log.d("url_mascota", _urlInconformidad);
+        new Resultado_escanear.RetrieveFeedTaskInconformidad().execute();
         /*
 
         _urlGet = "http://thekrakensolutions.com/cobradores/android_get_contrato.php?id_editar=" + idString + "&idv=" + valueID + "&accion=true";
@@ -625,6 +637,46 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
 
 
     }
+    public void showInconformidadList(View v){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        items = _inconformidad.toArray(new CharSequence[_inconformidad.size()]);
+
+        builder.setItems(items, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int item) {
+                Button btnInconformidad = (Button)findViewById(R.id.btnInconformidad);
+                btnInconformidad.setText(items[item]);
+                selInconformidad = _ids_inconformidad.get(item); //En la variable selCliente esta guardado el id del cliente.
+                Log.d("id_status", Integer.toString(selInconformidad));
+
+
+                /*
+                //_url = "http://ascendsystem.net/ejecutivo/app_listar_documentos.php?id_deudor=" + idString + "&test=" + _ids_status.get(item) + "&otro=" + selStatus;
+                _url = "http://ascendsystem.net/ejecutivo/app_listar_documentos.php?id_deudor=" + idString + "&test=" + _ids_inconformidad.get(item) + "&otro=" + selInconformidad;
+                Log.d("url_documentos", _url);
+                new Resultado_escanear.RetrieveFeedTask().execute();
+                */
+
+
+                //_mascotasAdapter = new DocumentosAdapter(_ids_status.get(item), valueID, mActivity, listaNombreVeterinarios, listaImagenVeterinarios, listaIdVeterinario);
+                //lv.setAdapter(_mascotasAdapter);
+
+                //_urlMascota = "http://hyperion.init-code.com/zungu/app/vt_obtener_clientes.php?id_veterinario=" + valueID + "&id_usuario=" + selCliente;
+                //_urlMascota = "http://hyperion.init-code.com/zungu/app/vt_obtener_mascotas.php?id_veterinario=" + valueID + "&id_usuario=" + selCliente;
+
+            }
+        });
+
+        AlertDialog alert = builder.create();
+
+        ListView listView = alert.getListView();
+        listView.setDivider(new ColorDrawable(Color.GRAY)); // set color
+        listView.setDividerHeight(1);
+        listView.setOverscrollFooter(new ColorDrawable(Color.TRANSPARENT));
+
+        alert.show();
+
+
+    }
     public void goBack(View v){
         //Intent i = new Intent(Detalle_contrato.this, Lista_clientes.class);
         //Intent i = new Intent(Resultado_escanear.this, Lista_contratos.class);
@@ -651,7 +703,7 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
             Log.d("welcm",Integer.toString(selStatus));
             //historialGestion
             //_url = "http://ascendsystem.net/ejecutivo/app_guardar_factura.php?id_editar=" + idString + "&id_usuario=" + valueID + "&accion=true&folio_factura=" + detalleFolioFactura.getText().toString() + "&id_status=" + selStatus + "&resultado=" + Uri.encode(resultado_qr);
-            _url = "http://ascendsystem.net/ejecutivo/app_guardar_factura.php?id_editar=" + idString + "&id_usuario=" + valueID + "&accion=true&folio_factura=" + detalleFolioFactura.getText().toString() + "&bitacora=" + historialGestion.getText().toString() + "&id_status=" + selStatus + "&id_deudor=" + selCuentaDeudor + "&resultado=" + Uri.encode(resultado_qr);
+            _url = "http://ascendsystem.net/ejecutivo/app_guardar_factura.php?id_editar=" + idString + "&id_usuario=" + valueID + "&accion=true&folio_factura=" + detalleFolioFactura.getText().toString() + "&atendio=" + detalleAtendioFactura.getText().toString() + "&bitacora=" + historialGestion.getText().toString() + "&id_status=" + selStatus + "&id_deudor=" + selCuentaDeudor + "&resultado=" + Uri.encode(resultado_qr);
             Log.d("tes", _url);
             new Resultado_escanear.RetrieveFeedTask().execute();
         }else{
@@ -726,6 +778,70 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
                         _cuentaDeudor.add(jsonobject.getString("cuenta_deudor"));
                         //_ids_cliente.add(jsonobject.getInt("id_mascota"));
                         _ids_cuentaDeudor.add(jsonobject.getInt("id_deudor"));
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            Log.i("INFO", response);
+        }
+    }
+    class RetrieveFeedTaskInconformidad extends AsyncTask<Void, Void, String> {
+
+        private Exception exception;
+
+        protected void onPreExecute() {
+        }
+
+        protected String doInBackground(Void... urls) {
+            try {
+                Log.i("INFO url: ", _urlInconformidad);
+                URL url = new URL(_urlInconformidad);
+                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                try {
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+                    StringBuilder stringBuilder = new StringBuilder();
+                    String line;
+                    while ((line = bufferedReader.readLine()) != null) {
+                        stringBuilder.append(line).append("\n");
+                    }
+                    bufferedReader.close();
+                    return stringBuilder.toString();
+                }
+                finally{
+                    urlConnection.disconnect();
+                }
+            }
+            catch(Exception e) {
+                Log.e("ERROR", e.getMessage(), e);
+                return null;
+            }
+        }
+
+        protected void onPostExecute(String response) {
+            if(response == null) {
+                response = "THERE WAS AN ERROR";
+            } else {
+                Context context = getApplicationContext();
+                int duration = Toast.LENGTH_SHORT;
+
+                try {
+                    JSONTokener tokener = new JSONTokener(response);
+                    JSONArray arr = new JSONArray(tokener);
+
+                    _inconformidad.clear();
+                    _ids_inconformidad.clear();
+
+                    for (int i = 0; i < arr.length(); i++) {
+                        JSONObject jsonobject = arr.getJSONObject(i);
+                        //Log.d("status",jsonobject.getString("status"));
+
+                        //_clientes.add(jsonobject.getString("nombre_usuario") + " - " + jsonobject.getString("nombre"));
+                        //_mascotas.add(jsonobject.getString("nombre_usuario") + " - " + jsonobject.getString("nombre"));
+                        _inconformidad.add(jsonobject.getString("tipo_inconformidad"));
+                        //_ids_cliente.add(jsonobject.getInt("id_mascota"));
+                        _ids_inconformidad.add(jsonobject.getInt("id_tipo_inconformidad"));
                     }
 
                 } catch (Exception e) {
