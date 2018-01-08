@@ -39,6 +39,14 @@ public class DocumentosAdapter extends BaseAdapter {
     ArrayList<String> _listaStatusColor;
 
 
+
+
+    ArrayList<String> _listaStatusDeudor;
+    ArrayList<String> _listaObservaciones;
+    ArrayList<String> _listaAtendio;
+
+
+
     ArrayList<String> _listaImagenVeterinarios;
     ArrayList<String> _listaIdVeterinarios;
     Context context;
@@ -53,7 +61,7 @@ public class DocumentosAdapter extends BaseAdapter {
 
     private static LayoutInflater inflater=null;
 
-    public DocumentosAdapter(int idStatus, int idInconformidad, String observaciones, int valueID, Detalle_deudor mainActivity, ArrayList<String> listaNombreVeterinarios, ArrayList<String> listaFolioFiscal, ArrayList<String> listaTotalFactura, ArrayList<String> listaStatusFactura, ArrayList<String> listaStatusColor, ArrayList<String> listaImagenVeterinarios, ArrayList<String> listaIdVeterinarios){
+    public DocumentosAdapter(int idStatus, int idInconformidad, String observaciones,  int valueID, Detalle_deudor mainActivity, ArrayList<String> listaNombreVeterinarios, ArrayList<String> listaFolioFiscal, ArrayList<String> listaTotalFactura, ArrayList<String> listaStatusFactura, ArrayList<String> listaStatusColor,  ArrayList<String> listaStatusDeudor,  ArrayList<String> listaObservaciones,  ArrayList<String> listaAtendio, ArrayList<String> listaImagenVeterinarios, ArrayList<String> listaIdVeterinarios){
         _listaIdVeterinarios = listaIdVeterinarios;
         _listaImagenVeterinarios = listaImagenVeterinarios;
         _listaNombreVeterinarios = listaNombreVeterinarios;
@@ -63,10 +71,17 @@ public class DocumentosAdapter extends BaseAdapter {
         _listaStatusFactura = listaStatusFactura;
         _listaStatusColor = listaStatusColor;
 
+        //_listaStatusDeudor;  _listaObservaciones; _listaAtendio
+        _listaStatusDeudor = listaStatusDeudor;
+        _listaObservaciones = listaObservaciones;
+        _listaAtendio = listaAtendio;
+
+
         _valueID = valueID;
         _idStatus = idStatus;
         _idInconformidad = idInconformidad;
         _observaciones = observaciones;
+
 
         context = mainActivity;
         inflater = ( LayoutInflater )context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -93,6 +108,8 @@ public class DocumentosAdapter extends BaseAdapter {
         TextView folioFiscal;
         TextView totalFactura;
         TextView statusFactura;
+        TextView statusDeudor;
+        TextView observaciones;
         LinearLayout statusColor;
 
         CheckBox checkboxDocumento;
@@ -119,6 +136,9 @@ public class DocumentosAdapter extends BaseAdapter {
         holder.totalFactura = (TextView) rowView.findViewById(R.id.txtTotalFactura);
         holder.statusFactura = (TextView) rowView.findViewById(R.id.txtStatusFactura);
         holder.statusColor = (LinearLayout) rowView.findViewById(R.id.statusColor);
+
+        holder.statusDeudor = (TextView) rowView.findViewById(R.id.txtStatusDeudor);
+        holder.observaciones = (TextView) rowView.findViewById(R.id.txtObservaciones);
 
 
         holder.checkboxDocumento = (CheckBox) rowView.findViewById(R.id.checkboxDocumento);
@@ -195,6 +215,10 @@ public class DocumentosAdapter extends BaseAdapter {
         holder.folioFiscal.setText(_listaFolioFiscal.get(i));
         holder.totalFactura.setText(_listaTotalFactura.get(i));
         holder.statusFactura.setText(_listaStatusFactura.get(i));
+        holder.statusDeudor.setText(_listaStatusDeudor.get(i));
+        holder.observaciones.setText(_listaObservaciones.get(i));
+
+
         //holder.nombreVeterinario.setText(_listaNombreVeterinarios.get(i));
 
 

@@ -51,6 +51,9 @@ public class Detalle_deudor extends AppCompatActivity {
     public static ArrayList<String> listaFolioFiscal = new ArrayList<String>();
     public static ArrayList<String> listaTotalFactura = new ArrayList<String>();
     public static ArrayList<String> listaStatusFactura = new ArrayList<String>();
+    public static ArrayList<String> listaStatusDeudor = new ArrayList<String>();
+    public static ArrayList<String> listaObservaciones = new ArrayList<String>();
+    public static ArrayList<String> listaAtendio = new ArrayList<String>();
     public static ArrayList<String> listaStatusColor = new ArrayList<String>();
 
 
@@ -484,6 +487,9 @@ public class Detalle_deudor extends AppCompatActivity {
                     listaIdVeterinario.clear();
 
 
+                    listaStatusDeudor.clear();
+                    listaObservaciones.clear();
+                    listaAtendio.clear();
 
 
                     for (int i = 0; i < arr.length(); i++) {
@@ -524,6 +530,29 @@ public class Detalle_deudor extends AppCompatActivity {
                         //listaIdVeterinario.add(jsonobject.getString("total"));
                         listaIdVeterinario.add(jsonobject.getString("id_documento"));
 
+
+                        if(jsonobject.getString("status_deudor").equals("")){
+                            listaStatusDeudor.add(" ");
+                        }else{
+                            listaStatusDeudor.add(jsonobject.getString("status_deudor"));
+                        }
+
+                        if(jsonobject.getString("observaciones").equals("")){
+                            listaObservaciones.add(" ");
+                        }else{
+                            listaObservaciones.add(jsonobject.getString("observaciones"));
+                        }
+
+                        if(jsonobject.getString("atendio").equals("")){
+                            listaAtendio.add(" ");
+                        }else{
+                            listaAtendio.add(jsonobject.getString("atendio"));
+                        }
+
+
+
+
+
                     }
 
                     //EditText txtObservaciones = (EditText) findViewById(R.id.txtObservaciones);
@@ -537,7 +566,7 @@ public class Detalle_deudor extends AppCompatActivity {
                     Log.d("observaciones", txtObservacionesFactura.getText().toString());
 
                     //_mascotasAdapter = new DocumentosAdapter(selStatus, valueID, mActivity, listaNombreVeterinarios, listaImagenVeterinarios, listaIdVeterinario);
-                    _mascotasAdapter = new DocumentosAdapter(selStatus, selInconformidad, txtObservacionesFactura.getText().toString(), valueID, mActivity, listaNombreVeterinarios, listaFolioFiscal, listaTotalFactura, listaStatusFactura, listaStatusColor, listaImagenVeterinarios, listaIdVeterinario);
+                    _mascotasAdapter = new DocumentosAdapter(selStatus, selInconformidad, txtObservacionesFactura.getText().toString(), valueID, mActivity, listaNombreVeterinarios, listaFolioFiscal, listaTotalFactura, listaStatusFactura, listaStatusColor, listaStatusDeudor, listaObservaciones, listaAtendio, listaImagenVeterinarios, listaIdVeterinario);
                     lv.setAdapter(_mascotasAdapter);
 
 
