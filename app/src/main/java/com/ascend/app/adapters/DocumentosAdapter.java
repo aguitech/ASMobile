@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.AsyncTask;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -121,6 +123,7 @@ public class DocumentosAdapter extends BaseAdapter {
         ImageView imgActualizar;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public View getView(final int i, View view, ViewGroup viewGroup) {
 
@@ -231,6 +234,7 @@ public class DocumentosAdapter extends BaseAdapter {
         //holder.checkboxDocumento.setChecked(true);
 
         holder.checkboxDocumento.setOnClickListener(new View.OnClickListener(){
+            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onClick(View v) {
                 //confirm(holder.imgMascota.getContext(), position, "Eliminar mascota: " + _listaNombreMascota.get(position));
@@ -247,6 +251,8 @@ public class DocumentosAdapter extends BaseAdapter {
 
                 //holder.statusColor.setBackgroundColor(Color.BLUE);
                 holder.statusColor.setBackgroundColor(context.getResources().getColor(R.color.verde_autorizado));
+                //holder.statusColor.setBackground(context.getResources().getColor(R.color.verde_autorizado));
+                holder.statusColor.setBackground(context.getResources().getDrawable(R.drawable.border_autorizado_radius));
 
                 _urlGo = "http://ascendsystem.net/ejecutivo/app_actualizar_documento.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos) + "&id_status=" + Integer.toString(_idStatus) + "&id_inconformidad=" + Integer.toString(_idInconformidad) + "&observaciones=" + _observaciones;;
                 Log.d("id_estatus go", Integer.toString(_idStatus));
@@ -448,9 +454,17 @@ public class DocumentosAdapter extends BaseAdapter {
             //holder.statusColor.setBackgroundColor(Color.GREEN);
             holder.checkboxDocumento.setChecked(true);
             holder.statusColor.setBackgroundColor(context.getResources().getColor(R.color.verde_autorizado));
+
+            //holder.statusColor.setBackgroundColor(context.getResources().getColor(R.color.verde_autorizado));
+            //holder.statusColor.setBackground(context.getResources().getColor(R.color.verde_autorizado));
+            holder.statusColor.setBackground(context.getResources().getDrawable(R.drawable.border_autorizado_radius));
         }else{
             holder.checkboxDocumento.setChecked(false);
             holder.statusColor.setBackgroundColor(Color.RED);
+
+            //holder.statusColor.setBackgroundColor(context.getResources().getColor(R.color.verde_autorizado));
+            //holder.statusColor.setBackground(context.getResources().getColor(R.color.verde_autorizado));
+            holder.statusColor.setBackground(context.getResources().getDrawable(R.drawable.border_denegado_radius));
         }
         return rowView;
     }

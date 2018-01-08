@@ -9,7 +9,7 @@
         android:orientation="horizontal"
         android:weightSum="1"
         android:gravity="center_vertical"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="0dp"
         android:layout_height="35dp">
 
         <LinearLayout
@@ -84,16 +84,47 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_weight="0.10"
-            android:id="@+id/statusColor"
             android:orientation="horizontal"
             android:gravity="center"
-            android:background="@drawable/border_naranja_radius"
+            android:background="@color/blanco"
             android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:id="@+id/statusColor"
+                android:background="@drawable/border_blanco"
+                >
+                <ImageView
+                    android:layout_width="15dp"
+                    android:src="@drawable/border_blanco_radius"
+                    android:id="@+id/imgActualizar"
+                    android:layout_height="15dp" />
+            </LinearLayout>
+            <!--
+            <LinearLayout
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:id="@+id/statusColor"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:background="@drawable/border_naranja_radius"
+                >
+                <ImageView
+                    android:layout_width="20dp"
+                    android:src="@drawable/border_blanco"
+                    android:id="@+id/imgActualizar"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
             <ImageView
                 android:layout_width="20dp"
                 android:src="@drawable/expediente"
                 android:id="@+id/imgActualizar"
                 android:layout_height="wrap_content" />
+            -->
         </LinearLayout>
 
         <!--
@@ -147,7 +178,7 @@
         android:layout_height="35dp">
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="0.05"
+            android:layout_weight="0.0"
             android:gravity="center"
             android:orientation="vertical"
 
@@ -156,7 +187,7 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="0.95"
+            android:layout_weight="1.0"
             android:gravity="center"
             android:orientation="vertical"
 
