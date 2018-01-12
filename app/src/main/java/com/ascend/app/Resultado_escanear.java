@@ -703,7 +703,7 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
             Log.d("welcm",Integer.toString(selStatus));
             //historialGestion
             //_url = "http://ascendsystem.net/ejecutivo/app_guardar_factura.php?id_editar=" + idString + "&id_usuario=" + valueID + "&accion=true&folio_factura=" + detalleFolioFactura.getText().toString() + "&id_status=" + selStatus + "&resultado=" + Uri.encode(resultado_qr);
-            _url = "http://ascendsystem.net/ejecutivo/app_guardar_factura.php?id_editar=" + idString + "&id_usuario=" + valueID + "&accion=true&folio_factura=" + detalleFolioFactura.getText().toString() + "&atendio=" + detalleAtendioFactura.getText().toString() + "&bitacora=" + historialGestion.getText().toString() + "&id_status=" + selStatus + "&id_deudor=" + selCuentaDeudor + "&resultado=" + Uri.encode(resultado_qr);
+            _url = "http://ascendsystem.net/ejecutivo/app_guardar_factura.php?id_editar=" + idString + "&id_usuario=" + valueID + "&accion=true&folio_factura=" + detalleFolioFactura.getText().toString() + "&atendio=" + detalleAtendioFactura.getText().toString() + "&bitacora=" + historialGestion.getText().toString() + "&id_status=" + selStatus + "&id_tipo_inconformidad=" + selInconformidad + "&id_deudor=" + selCuentaDeudor + "&resultado=" + Uri.encode(resultado_qr);
             Log.d("tes", _url);
             new Resultado_escanear.RetrieveFeedTask().execute();
         }else{
