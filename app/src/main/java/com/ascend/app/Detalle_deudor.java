@@ -81,6 +81,7 @@ public class Detalle_deudor extends AppCompatActivity {
 
     private String observaciones = "";
     EditText txtObservacionesFactura;
+    EditText txtAtendioFactura;
 
     public ArrayList<String> _status = new ArrayList<String>();
     public  ArrayList<Integer> _ids_status = new ArrayList<Integer>();
@@ -96,6 +97,8 @@ public class Detalle_deudor extends AppCompatActivity {
         //lv = (ListView) findViewById(R.id.list_pagos);
         lv = (ListView) findViewById(R.id.list_facturas);
         txtObservacionesFactura = (EditText) findViewById(R.id.txtObservacionesFactura);
+
+        txtAtendioFactura = (EditText) findViewById(R.id.txtAtendioFactura);
 
         //showMsg("test");
 
@@ -566,7 +569,9 @@ public class Detalle_deudor extends AppCompatActivity {
                     Log.d("observaciones", txtObservacionesFactura.getText().toString());
 
                     //_mascotasAdapter = new DocumentosAdapter(selStatus, valueID, mActivity, listaNombreVeterinarios, listaImagenVeterinarios, listaIdVeterinario);
-                    _mascotasAdapter = new DocumentosAdapter(selStatus, selInconformidad, txtObservacionesFactura.getText().toString(), valueID, mActivity, listaNombreVeterinarios, listaFolioFiscal, listaTotalFactura, listaStatusFactura, listaStatusColor, listaStatusDeudor, listaObservaciones, listaAtendio, listaImagenVeterinarios, listaIdVeterinario);
+                    //_mascotasAdapter = new DocumentosAdapter(selStatus, selInconformidad, txtObservacionesFactura.getText().toString(), valueID, mActivity, listaNombreVeterinarios, listaFolioFiscal, listaTotalFactura, listaStatusFactura, listaStatusColor, listaStatusDeudor, listaObservaciones, listaAtendio, listaImagenVeterinarios, listaIdVeterinario);
+                    _mascotasAdapter = new DocumentosAdapter(selStatus, selInconformidad, txtObservacionesFactura.getText().toString(), txtAtendioFactura.getText().toString(), valueID, mActivity, listaNombreVeterinarios, listaFolioFiscal, listaTotalFactura, listaStatusFactura, listaStatusColor, listaStatusDeudor, listaObservaciones, listaAtendio, listaImagenVeterinarios, listaIdVeterinario);
+
                     lv.setAdapter(_mascotasAdapter);
 
 
