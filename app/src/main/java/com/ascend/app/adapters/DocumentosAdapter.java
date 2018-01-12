@@ -55,6 +55,7 @@ public class DocumentosAdapter extends BaseAdapter {
     public String _url;
     public String _observaciones;
     public String _atendio;
+    public String _fechaProgramacion;
 
     public int _idStatus;
     public int _idInconformidad;
@@ -64,7 +65,7 @@ public class DocumentosAdapter extends BaseAdapter {
 
     private static LayoutInflater inflater=null;
 
-    public DocumentosAdapter(int idStatus, int idInconformidad, String observaciones, String atendio,  int valueID, Detalle_deudor mainActivity, ArrayList<String> listaNombreVeterinarios, ArrayList<String> listaFolioFiscal, ArrayList<String> listaTotalFactura, ArrayList<String> listaStatusFactura, ArrayList<String> listaStatusColor,  ArrayList<String> listaStatusDeudor,  ArrayList<String> listaObservaciones,  ArrayList<String> listaAtendio, ArrayList<String> listaImagenVeterinarios, ArrayList<String> listaIdVeterinarios){
+    public DocumentosAdapter(int idStatus, int idInconformidad, String observaciones, String atendio, String fechaProgramacion,  int valueID, Detalle_deudor mainActivity, ArrayList<String> listaNombreVeterinarios, ArrayList<String> listaFolioFiscal, ArrayList<String> listaTotalFactura, ArrayList<String> listaStatusFactura, ArrayList<String> listaStatusColor,  ArrayList<String> listaStatusDeudor,  ArrayList<String> listaObservaciones,  ArrayList<String> listaAtendio, ArrayList<String> listaImagenVeterinarios, ArrayList<String> listaIdVeterinarios){
         _listaIdVeterinarios = listaIdVeterinarios;
         _listaImagenVeterinarios = listaImagenVeterinarios;
         _listaNombreVeterinarios = listaNombreVeterinarios;
@@ -85,7 +86,7 @@ public class DocumentosAdapter extends BaseAdapter {
         _idInconformidad = idInconformidad;
         _observaciones = observaciones;
         _atendio = atendio;
-
+        _fechaProgramacion = fechaProgramacion;
 
         context = mainActivity;
         inflater = ( LayoutInflater )context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -257,7 +258,9 @@ public class DocumentosAdapter extends BaseAdapter {
                 holder.statusColor.setBackground(context.getResources().getDrawable(R.drawable.border_autorizado_radius));
 
                 //_urlGo = "http://ascendsystem.net/ejecutivo/app_actualizar_documento.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos) + "&id_status=" + Integer.toString(_idStatus) + "&id_inconformidad=" + Integer.toString(_idInconformidad) + "&observaciones=" + _observaciones;
-                _urlGo = "http://ascendsystem.net/ejecutivo/app_actualizar_documento.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos) + "&id_status=" + Integer.toString(_idStatus) + "&id_inconformidad=" + Integer.toString(_idInconformidad) + "&observaciones=" + _observaciones + "&atendio=" + _atendio;
+                //_urlGo = "http://ascendsystem.net/ejecutivo/app_actualizar_documento.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos) + "&id_status=" + Integer.toString(_idStatus) + "&id_inconformidad=" + Integer.toString(_idInconformidad) + "&observaciones=" + _observaciones + "&atendio=" + _atendio;
+                _urlGo = "http://ascendsystem.net/ejecutivo/app_actualizar_documento.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos) + "&id_status=" + Integer.toString(_idStatus) + "&id_inconformidad=" + Integer.toString(_idInconformidad) + "&observaciones=" + _observaciones + "&atendio=" + _atendio + "&fecha_programacion=" + _fechaProgramacion;
+
 
                 Log.d("id_estatus go", Integer.toString(_idStatus));
                 Log.d("urlgo",_urlGo);

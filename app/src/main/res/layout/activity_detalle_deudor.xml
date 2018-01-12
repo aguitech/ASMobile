@@ -269,6 +269,28 @@
                     android:layout_height="30dp"
                     android:id="@+id/txtObservacionesFactura" />
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:layout_marginTop="15dp"
+                android:clipToPadding="false"
+                android:gravity="center"
+                android:paddingTop="0dp">
+                <Button
+                    android:layout_width="match_parent"
+                    android:text="Mes/Día"
+                    android:gravity="center"
+                    android:textAllCaps="false"
+                    android:textSize="12dp"
+                    android:background="@drawable/border_negro_radius"
+                    android:layout_height="30dp"
+                    android:id="@+id/btnMesDia" />
+            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
