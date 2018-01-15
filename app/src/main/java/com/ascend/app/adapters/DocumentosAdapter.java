@@ -249,31 +249,38 @@ public class DocumentosAdapter extends BaseAdapter {
                     ((Activity)context).finish();
 
                 }
+
+                // + "&atendio=" + _atendio + "&fecha_programacion=" + _fechaProgramacion
                 */
 
+                if(_observaciones.equals("") || _atendio.equals("")){
+                    Toast.makeText(holder.folioFiscal.getContext(), "Todos los campos son necesarios.", Toast.LENGTH_LONG).show();
+                }else{
+                    //holder.statusColor.setBackgroundColor(Color.BLUE);
+                    holder.statusColor.setBackgroundColor(context.getResources().getColor(R.color.verde_autorizado));
+                    //holder.statusColor.setBackground(context.getResources().getColor(R.color.verde_autorizado));
+                    holder.statusColor.setBackground(context.getResources().getDrawable(R.drawable.border_autorizado_radius));
 
-                //holder.statusColor.setBackgroundColor(Color.BLUE);
-                holder.statusColor.setBackgroundColor(context.getResources().getColor(R.color.verde_autorizado));
-                //holder.statusColor.setBackground(context.getResources().getColor(R.color.verde_autorizado));
-                holder.statusColor.setBackground(context.getResources().getDrawable(R.drawable.border_autorizado_radius));
-
-                //_urlGo = "http://ascendsystem.net/ejecutivo/app_actualizar_documento.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos) + "&id_status=" + Integer.toString(_idStatus) + "&id_inconformidad=" + Integer.toString(_idInconformidad) + "&observaciones=" + _observaciones;
-                //_urlGo = "http://ascendsystem.net/ejecutivo/app_actualizar_documento.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos) + "&id_status=" + Integer.toString(_idStatus) + "&id_inconformidad=" + Integer.toString(_idInconformidad) + "&observaciones=" + _observaciones + "&atendio=" + _atendio;
-                _urlGo = "http://ascendsystem.net/ejecutivo/app_actualizar_documento.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos) + "&id_status=" + Integer.toString(_idStatus) + "&id_inconformidad=" + Integer.toString(_idInconformidad) + "&observaciones=" + _observaciones + "&atendio=" + _atendio + "&fecha_programacion=" + _fechaProgramacion;
-
-
-                Log.d("id_estatus go", Integer.toString(_idStatus));
-                Log.d("urlgo",_urlGo);
-                new DocumentosAdapter.RetrieveFeedTask().execute();
-
-                //Toast.makeText(holder.folioFiscal.getContext(), "Documento agregado con éxito.", Toast.LENGTH_LONG).show();
-
-                //notifyDataSetChanged();
+                    //_urlGo = "http://ascendsystem.net/ejecutivo/app_actualizar_documento.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos) + "&id_status=" + Integer.toString(_idStatus) + "&id_inconformidad=" + Integer.toString(_idInconformidad) + "&observaciones=" + _observaciones;
+                    //_urlGo = "http://ascendsystem.net/ejecutivo/app_actualizar_documento.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos) + "&id_status=" + Integer.toString(_idStatus) + "&id_inconformidad=" + Integer.toString(_idInconformidad) + "&observaciones=" + _observaciones + "&atendio=" + _atendio;
+                    _urlGo = "http://ascendsystem.net/ejecutivo/app_actualizar_documento.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos) + "&id_status=" + Integer.toString(_idStatus) + "&id_inconformidad=" + Integer.toString(_idInconformidad) + "&observaciones=" + _observaciones + "&atendio=" + _atendio + "&fecha_programacion=" + _fechaProgramacion;
 
 
-                //((Detalle_deudor)context).finish();
+                    Log.d("id_estatus go", Integer.toString(_idStatus));
+                    Log.d("urlgo",_urlGo);
+                    new DocumentosAdapter.RetrieveFeedTask().execute();
 
-                //Toast.makeText(context, "Eliminado", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(holder.folioFiscal.getContext(), "Documento agregado con éxito.", Toast.LENGTH_LONG).show();
+
+                    //notifyDataSetChanged();
+
+
+                    //((Detalle_deudor)context).finish();
+
+                    //Toast.makeText(context, "Eliminado", Toast.LENGTH_SHORT).show();
+                }
+
+
             }
         });
 

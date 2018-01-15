@@ -992,9 +992,25 @@ public class Detalle_deudor extends AppCompatActivity {
 
     }
     public void actualizarDocumentos(View v){
-        _url = "http://ascendsystem.net/ejecutivo/app_listar_documentos.php?id_deudor=" + idString + "&test=" + selStatus + "&otro=" + selStatus;
-        Log.d("url_documentos", _url);
-        new Detalle_deudor.RetrieveFeedTask().execute();
+
+        EditText txtMotivoCita = (EditText)findViewById(R.id.txtMotivoCita);
+        EditText txtAtendioFactura = (EditText)findViewById(R.id.txtAtendioFactura);
+        EditText txtObservacionesFactura = (EditText)findViewById(R.id.txtObservacionesFactura);
+        //EditText txtDescripcion = (EditText)findViewById(R.id.txtDescripcion);
+
+
+
+
+        //if(txtMotivoCita.getText().toString().length() < 1 || btnHora.getText().toString().equals("Horario disponible") || btnMesDia.getText().toString().equals("Mes/Día")){
+        //if(txtMotivoCita.getText().toString().length() < 1 || btnHora.getText().toString().equals("Horario disponible") || btnMesDia.getText().toString().equals("Mes/Día")){
+        if(txtAtendioFactura.getText().toString().length() < 1 || txtObservacionesFactura.getText().toString().length() < 1 || btnMesDia.getText().toString().equals("Mes/Día") || btnMesDia.getText().toString().equals("") || selStatus == 0){
+            showMsg("Todos los campos son necesarios.");
+        } else {
+            _url = "http://ascendsystem.net/ejecutivo/app_listar_documentos.php?id_deudor=" + idString + "&test=" + selStatus + "&otro=" + selStatus;
+            Log.d("url_documentos", _url);
+            new Detalle_deudor.RetrieveFeedTask().execute();
+        }
+
     }
 
     public void goBack(View v){
