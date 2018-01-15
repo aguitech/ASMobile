@@ -108,7 +108,7 @@
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_above="@+id/footer"
@@ -185,7 +185,7 @@
                 android:orientation="vertical"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:clipToPadding="false"
                 android:gravity="center"
                 android:paddingTop="0dp">
@@ -208,7 +208,7 @@
                 android:orientation="vertical"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:clipToPadding="false"
                 android:gravity="center"
                 android:paddingTop="0dp">
@@ -231,7 +231,7 @@
                 android:orientation="vertical"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:clipToPadding="false"
                 android:gravity="center"
                 android:paddingTop="0dp">
@@ -253,7 +253,7 @@
                 android:orientation="vertical"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:clipToPadding="false"
                 android:gravity="center"
                 android:paddingTop="0dp">
@@ -276,7 +276,7 @@
                 android:orientation="vertical"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:clipToPadding="false"
                 android:gravity="center"
                 android:paddingTop="0dp">
@@ -297,7 +297,7 @@
                 android:orientation="vertical"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:clipToPadding="false"
                 android:gravity="center"
                 android:paddingTop="0dp">
@@ -305,13 +305,15 @@
                 <Button
                     android:layout_width="match_parent"
                     android:hint="Actualizar documentos"
-                    android:gravity="left|center"
+                    android:gravity="center|center"
                     android:onClick="actualizarDocumentos"
                     android:paddingLeft="20dp"
                     android:textSize="12dp"
-                    android:background="@drawable/border_negro_radius"
+                    android:background="@drawable/border_naranja_radius_full"
                     android:layout_height="30dp"
-                    android:id="@+id/btnActualizarDocumentos" />
+                    android:id="@+id/btnActualizarDocumentos"
+                    android:textColorHint="@color/blanco"
+                    />
             </LinearLayout>
 
             <!--
