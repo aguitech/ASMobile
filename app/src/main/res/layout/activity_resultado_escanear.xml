@@ -187,7 +187,8 @@
                         android:orientation="vertical"
                         android:paddingLeft="16dp"
                         android:paddingRight="16dp"
-                        android:layout_marginTop="0dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="7dp"
                         android:clipToPadding="false"
                         android:gravity="center"
                         android:paddingTop="0dp">
@@ -346,7 +347,7 @@
                 android:orientation="vertical"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="7dp"
                 android:clipToPadding="false"
                 android:gravity="center"
                 android:paddingTop="0dp">
@@ -369,7 +370,7 @@
                 android:orientation="vertical"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:clipToPadding="false"
                 android:gravity="center"
                 android:paddingTop="0dp">
@@ -391,7 +392,7 @@
                 android:orientation="vertical"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:clipToPadding="false"
                 android:gravity="center"
                 android:paddingTop="0dp">
@@ -413,7 +414,7 @@
                 android:orientation="vertical"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:clipToPadding="false"
                 android:gravity="center"
                 android:paddingTop="0dp">
@@ -435,7 +436,7 @@
                 android:orientation="vertical"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:clipToPadding="false"
                 android:gravity="center"
                 android:paddingTop="0dp">
@@ -489,11 +490,11 @@
                 <Button
                     android:layout_width="140dp"
                     android:text="Agregar factura"
-                    android:textColor="@color/gris_fuerte"
                     android:textAllCaps="false"
                     android:onClick="goAgregarFactura"
                     android:textSize="12dp"
-                    android:background="@drawable/border_naranja_radius"
+                    android:textColor="@color/blanco"
+                    android:background="@drawable/border_naranja_radius_full"
                     android:layout_height="30dp" />
             </LinearLayout>
 

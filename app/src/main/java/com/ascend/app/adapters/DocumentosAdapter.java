@@ -26,6 +26,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 /**
@@ -263,7 +264,11 @@ public class DocumentosAdapter extends BaseAdapter {
 
                     //_urlGo = "http://ascendsystem.net/ejecutivo/app_actualizar_documento.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos) + "&id_status=" + Integer.toString(_idStatus) + "&id_inconformidad=" + Integer.toString(_idInconformidad) + "&observaciones=" + _observaciones;
                     //_urlGo = "http://ascendsystem.net/ejecutivo/app_actualizar_documento.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos) + "&id_status=" + Integer.toString(_idStatus) + "&id_inconformidad=" + Integer.toString(_idInconformidad) + "&observaciones=" + _observaciones + "&atendio=" + _atendio;
-                    _urlGo = "http://ascendsystem.net/ejecutivo/app_actualizar_documento.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos) + "&id_status=" + Integer.toString(_idStatus) + "&id_inconformidad=" + Integer.toString(_idInconformidad) + "&observaciones=" + _observaciones + "&atendio=" + _atendio + "&fecha_programacion=" + _fechaProgramacion;
+                    //URLEncoder.encode(
+                    //URLEncoder.encode(
+
+                    //_urlGo = "http://ascendsystem.net/ejecutivo/app_actualizar_documento.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos) + "&id_status=" + Integer.toString(_idStatus) + "&id_inconformidad=" + Integer.toString(_idInconformidad) + "&observaciones=" + _observaciones + "&atendio=" + _atendio + "&fecha_programacion=" + _fechaProgramacion;
+                    _urlGo = "http://ascendsystem.net/ejecutivo/app_actualizar_documento.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos) + "&id_status=" + Integer.toString(_idStatus) + "&id_inconformidad=" + Integer.toString(_idInconformidad) + "&observaciones=" + URLEncoder.encode(_observaciones) + "&atendio=" + URLEncoder.encode(_atendio) + "&fecha_programacion=" + _fechaProgramacion;
 
 
                     Log.d("id_estatus go", Integer.toString(_idStatus));

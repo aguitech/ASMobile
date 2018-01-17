@@ -34,6 +34,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
@@ -699,15 +700,25 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
     }
     public void goAgregarFactura(View v){
 
-        if(detalleFolioFactura.getText().toString() != null && selStatus != 0){
+        //_url = "http://ascendsystem.net/ejecutivo/app_guardar_factura.php?id_editar=" + idString + "&id_usuario=" + valueID + "&accion=true&folio_factura=" + detalleFolioFactura.getText().toString() + "&atendio=" + detalleAtendioFactura.getText().toString() + "&bitacora=" + historialGestion.getText().toString() + "&id_status=" + selStatus + "&id_tipo_inconformidad=" + selInconformidad + "&id_deudor=" + selCuentaDeudor + "&resultado=" + Uri.encode(resultado_qr);
+
+
+        //if(detalleFolioFactura.getText().toString() != null && selStatus != 0 && detalleAtendioFactura.getText().toString() != null && historialGestion.getText().toString() != null && selCuentaDeudor != 0){
+        //if(detalleFolioFactura.getText().toString().equals("") || selStatus != 0 || detalleAtendioFactura.getText().toString().equals("") || historialGestion.getText().toString().equals("") && selCuentaDeudor != 0){
+        if(detalleFolioFactura.getText().toString().equals("") || selStatus == 0 || detalleAtendioFactura.getText().toString().equals("") || historialGestion.getText().toString().equals("") || selCuentaDeudor == 0){
+            showMsg("Todos los campos son necesarios");
+        }else{
+
             Log.d("welcm",Integer.toString(selStatus));
             //historialGestion
             //_url = "http://ascendsystem.net/ejecutivo/app_guardar_factura.php?id_editar=" + idString + "&id_usuario=" + valueID + "&accion=true&folio_factura=" + detalleFolioFactura.getText().toString() + "&id_status=" + selStatus + "&resultado=" + Uri.encode(resultado_qr);
-            _url = "http://ascendsystem.net/ejecutivo/app_guardar_factura.php?id_editar=" + idString + "&id_usuario=" + valueID + "&accion=true&folio_factura=" + detalleFolioFactura.getText().toString() + "&atendio=" + detalleAtendioFactura.getText().toString() + "&bitacora=" + historialGestion.getText().toString() + "&id_status=" + selStatus + "&id_tipo_inconformidad=" + selInconformidad + "&id_deudor=" + selCuentaDeudor + "&resultado=" + Uri.encode(resultado_qr);
+            //URLEncoder.encode(
+            //_url = "http://ascendsystem.net/ejecutivo/app_guardar_factura.php?id_editar=" + idString + "&id_usuario=" + valueID + "&accion=true&folio_factura=" + detalleFolioFactura.getText().toString() + "&atendio=" + detalleAtendioFactura.getText().toString() + "&bitacora=" + historialGestion.getText().toString() + "&id_status=" + selStatus + "&id_tipo_inconformidad=" + selInconformidad + "&id_deudor=" + selCuentaDeudor + "&resultado=" + Uri.encode(resultado_qr);
+            _url = "http://ascendsystem.net/ejecutivo/app_guardar_factura.php?id_editar=" + idString + "&id_usuario=" + valueID + "&accion=true&folio_factura=" + URLEncoder.encode(detalleFolioFactura.getText().toString()) + "&atendio=" + URLEncoder.encode(detalleAtendioFactura.getText().toString()) + "&bitacora=" + URLEncoder.encode(historialGestion.getText().toString()) + "&id_status=" + selStatus + "&id_tipo_inconformidad=" + selInconformidad + "&id_deudor=" + selCuentaDeudor + "&resultado=" + Uri.encode(resultado_qr);
             Log.d("tes", _url);
             new Resultado_escanear.RetrieveFeedTask().execute();
-        }else{
-            showMsg("Todos los campos son necesarios");
+
+
         }
 
         /*
