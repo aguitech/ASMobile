@@ -94,7 +94,7 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_detalle_deudor.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
-              <caret line="404" column="27" lean-forward="false" selection-start-line="404" selection-start-column="27" selection-end-line="404" selection-end-column="27" />
+              <caret line="404" column="27" lean-forward="true" selection-start-line="404" selection-start-column="27" selection-end-line="404" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -2221,7 +2221,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1516271125255" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1516310950353" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -2246,7 +2246,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1516271125255" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1516310950353" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2406,7 +2406,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1516271125264" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1516310950387" />
       </method>
     </configuration>
     <list size="1">
@@ -3031,7 +3031,7 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_detalle_deudor.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
-          <caret line="404" column="27" lean-forward="false" selection-start-line="404" selection-start-column="27" selection-end-line="404" selection-end-column="27" />
+          <caret line="404" column="27" lean-forward="true" selection-start-line="404" selection-start-column="27" selection-end-line="404" selection-end-column="27" />
           <folding />
         </state>
       </provider>
