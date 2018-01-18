@@ -2,12 +2,14 @@ package com.ascend.app.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ascend.app.Detalle_deudor;
@@ -29,6 +31,7 @@ public class DeudoresAdapter extends BaseAdapter {
     ArrayList<String> _listaRFCDeudores;
     ArrayList<String> _listaRazonSocialDeudores;
     ArrayList<String> _listaEstatus;
+    ArrayList<String> _listaColor;
     ArrayList<String> _listaIdDeudor;
 
     Context context;
@@ -38,13 +41,14 @@ public class DeudoresAdapter extends BaseAdapter {
 
     private static LayoutInflater inflater=null;
 
-    public DeudoresAdapter(int valueID, Lista_deudores mainActivity, ArrayList<String> listaRFCDeudores, ArrayList<String> listaRazonSocialDeudores, ArrayList<String> listaEstatus, ArrayList<String> listaIdDeudor){
+    public DeudoresAdapter(int valueID, Lista_deudores mainActivity, ArrayList<String> listaRFCDeudores, ArrayList<String> listaRazonSocialDeudores, ArrayList<String> listaEstatus, ArrayList<String> listaColor, ArrayList<String> listaIdDeudor){
 
         _listaIdDeudor = listaIdDeudor;
 
         _listaRFCDeudores = listaRFCDeudores;
         _listaRazonSocialDeudores = listaRazonSocialDeudores;
         _listaEstatus = listaEstatus;
+        _listaColor = listaColor;
 
         _valueID = valueID;
 
@@ -71,6 +75,7 @@ public class DeudoresAdapter extends BaseAdapter {
         TextView RFCDeudor;
         TextView RazonSocialDeudor;
         TextView EstatusDeudor;
+        LinearLayout statusColor;
     }
 
     @Override
@@ -87,7 +92,7 @@ public class DeudoresAdapter extends BaseAdapter {
         holder.RFCDeudor = (TextView) rowView.findViewById(R.id.txtRFCDeudor);
         holder.RazonSocialDeudor = (TextView) rowView.findViewById(R.id.txtRazonSocialDeudor);
         holder.EstatusDeudor = (TextView) rowView.findViewById(R.id.txtEstatusPagoDeudor);
-
+        holder.statusColor = (LinearLayout) rowView.findViewById(R.id.statusColor);
 
         holder.RFCDeudor.setText(_listaRFCDeudores.get(i));
         holder.RazonSocialDeudor.setText(_listaRazonSocialDeudores.get(i));
@@ -139,6 +144,22 @@ public class DeudoresAdapter extends BaseAdapter {
 
             }
         });
+
+        if(_listaColor.get(i).equals("VERDE")){
+            //holder.statusColor.setBackgroundColor(context.getResources().getColor(R.color.verde_autorizado));
+            //holder.statusColor.setBackgroundColor(Color.GREEN);
+            holder.statusColor.setBackgroundColor(context.getResources().getColor(R.color.verde_autorizado));
+
+            //holder.statusColor.setBackgroundColor(context.getResources().getColor(R.color.verde_autorizado));
+            //holder.statusColor.setBackground(context.getResources().getColor(R.color.verde_autorizado));
+            holder.statusColor.setBackground(context.getResources().getDrawable(R.drawable.border_autorizado_radius));
+        }else{
+            holder.statusColor.setBackgroundColor(Color.RED);
+
+            //holder.statusColor.setBackgroundColor(context.getResources().getColor(R.color.verde_autorizado));
+            //holder.statusColor.setBackground(context.getResources().getColor(R.color.verde_autorizado));
+            holder.statusColor.setBackground(context.getResources().getDrawable(R.drawable.border_denegado_radius));
+        }
 
         /*
         holder.detalleVeterinario.setOnClickListener(new View.OnClickListener(){

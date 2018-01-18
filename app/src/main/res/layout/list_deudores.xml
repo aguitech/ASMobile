@@ -105,7 +105,7 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="0.40"
+            android:layout_weight="0.70"
             android:orientation="horizontal"
             android:gravity="center_vertical"
             android:layout_height="match_parent">
@@ -122,6 +122,29 @@
 
 
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="0.10"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:id="@+id/statusColor"
+                android:background="@drawable/border_blanco"
+                >
+                <ImageView
+                    android:layout_width="15dp"
+                    android:src="@drawable/border_blanco_radius"
+                    android:id="@+id/imgActualizar"
+                    android:layout_height="15dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
 
     </LinearLayout>
 </LinearLayout>

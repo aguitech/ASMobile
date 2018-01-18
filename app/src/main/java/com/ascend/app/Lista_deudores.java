@@ -43,6 +43,7 @@ public class Lista_deudores extends AppCompatActivity {
     public static ArrayList<String> listaRFCDeudores = new ArrayList<String>();
     public static ArrayList<String> listaRazonSocialDeudores = new ArrayList<String>();
     public static ArrayList<String> listaEstatusDeudores = new ArrayList<String>();
+    public static ArrayList<String> listaColorDeudores = new ArrayList<String>();
 
     public static ArrayList<String> listaImagenVeterinarios = new ArrayList<String>();
     public static ArrayList<String> listaIdDeudor = new ArrayList<String>();
@@ -153,6 +154,7 @@ public class Lista_deudores extends AppCompatActivity {
                     listaRazonSocialDeudores.clear();
                     listaEstatusDeudores.clear();
                     listaIdDeudor.clear();
+                    listaColorDeudores.clear();
 
                     for (int i = 0; i < arr.length(); i++) {
                         JSONObject jsonobject = arr.getJSONObject(i);
@@ -165,6 +167,7 @@ public class Lista_deudores extends AppCompatActivity {
                         listaRFCDeudores.add(jsonobject.getString("cuenta_deudor") + " " + jsonobject.getString("RFC_deudor"));
                         listaRazonSocialDeudores.add(jsonobject.getString("deudor"));
                         listaEstatusDeudores.add(jsonobject.getString("status_texto"));
+                        listaColorDeudores.add(jsonobject.getString("status_color"));
 
                         Log.i("INFO", listaRFCDeudores.toString());
 
@@ -176,7 +179,7 @@ public class Lista_deudores extends AppCompatActivity {
 
                     //_mascotasAdapter = new DeudoresAdapter(valueID, mActivity, listaNombreVeterinarios, listaImagenVeterinarios, listaIdVeterinario);
                     //_mascotasAdapter = new DeudoresAdapter(valueID, mActivity, listaNombreVeterinarios, listaRFCDeudores, listaRazonSocialDeudores, listaEstatusDeudores, listaImagenVeterinarios, listaIdVeterinario);
-                    _deudoresAdapter = new DeudoresAdapter(valueID, mActivity, listaRFCDeudores, listaRazonSocialDeudores, listaEstatusDeudores, listaIdDeudor);
+                    _deudoresAdapter = new DeudoresAdapter(valueID, mActivity, listaRFCDeudores, listaRazonSocialDeudores, listaEstatusDeudores, listaColorDeudores, listaIdDeudor);
                     lv.setAdapter(_deudoresAdapter);
 
                 } catch (Exception e) {

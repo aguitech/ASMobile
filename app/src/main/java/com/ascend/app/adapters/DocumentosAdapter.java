@@ -1,12 +1,10 @@
 package com.ascend.app.adapters;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
-import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -293,6 +291,7 @@ public class DocumentosAdapter extends BaseAdapter {
             }
         });
 
+        /*
         holder.imgActualizar.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 //confirm(holder.imgMascota.getContext(), position, "Eliminar mascota: " + _listaNombreMascota.get(position));
@@ -326,16 +325,16 @@ public class DocumentosAdapter extends BaseAdapter {
                         _listaTotalFactura.remove(i);
                         _listaStatusFactura.remove(i);
                         _listaStatusColor.remove(i);
-                        /*
-                        _urlGo = "http://hyperion.init-code.com/zungu/app/vt_eliminar_servicio.php?delete="  + _listaImgMascotas.get(position);
-                        Log.d("urlgo",_urlGo);
-                        new ServicioAdapter.RetrieveFeedTask().execute();
-                        //Toast.makeText(holder.nombreTienda.getContext(), "Producto eliminado", Toast.LENGTH_LONG).show();
-                        _listaNombreMascota.remove(position);
-                        _listaNombreCliente.remove(position);
-                        _listaImgMascotas.remove(position);
 
-                        */
+                        //_urlGo = "http://hyperion.init-code.com/zungu/app/vt_eliminar_servicio.php?delete="  + _listaImgMascotas.get(position);
+                        //Log.d("urlgo",_urlGo);
+                        //new ServicioAdapter.RetrieveFeedTask().execute();
+                        //Toast.makeText(holder.nombreTienda.getContext(), "Producto eliminado", Toast.LENGTH_LONG).show();
+                        //_listaNombreMascota.remove(position);
+                        //_listaNombreCliente.remove(position);
+                        //_listaImgMascotas.remove(position);
+
+
 
 
 
@@ -374,16 +373,17 @@ public class DocumentosAdapter extends BaseAdapter {
                         Toast.makeText(holder.folioFiscal.getContext(), "Documento agregado con éxito.", Toast.LENGTH_LONG).show();
 
 
-                        /*
-                        _urlGo = "http://hyperion.init-code.com/zungu/app/vt_eliminar_servicio.php?delete="  + _listaImgMascotas.get(position);
-                        Log.d("urlgo",_urlGo);
-                        new ServicioAdapter.RetrieveFeedTask().execute();
-                        //Toast.makeText(holder.nombreTienda.getContext(), "Producto eliminado", Toast.LENGTH_LONG).show();
-                        _listaNombreMascota.remove(position);
-                        _listaNombreCliente.remove(position);
-                        _listaImgMascotas.remove(position);
 
-                        */
+                        //_urlGo = "http://hyperion.init-code.com/zungu/app/vt_eliminar_servicio.php?delete="  + _listaImgMascotas.get(position);
+                        //Log.d("urlgo",_urlGo);
+                        //new ServicioAdapter.RetrieveFeedTask().execute();
+                        //Toast.makeText(holder.nombreTienda.getContext(), "Producto eliminado", Toast.LENGTH_LONG).show();
+
+                        //_listaNombreMascota.remove(position);
+                        //_listaNombreCliente.remove(position);
+                        //_listaImgMascotas.remove(position);
+
+
 
 
 
@@ -401,6 +401,7 @@ public class DocumentosAdapter extends BaseAdapter {
 
             }
         });
+        */
 
         /*
         Click a toda la lista
