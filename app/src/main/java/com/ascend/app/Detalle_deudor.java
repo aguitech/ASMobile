@@ -767,7 +767,7 @@ public class Detalle_deudor extends AppCompatActivity {
 
                     //_mascotasAdapter = new DocumentosAdapter(selStatus, valueID, mActivity, listaNombreVeterinarios, listaImagenVeterinarios, listaIdVeterinario);
                     //_mascotasAdapter = new DocumentosAdapter(selStatus, selInconformidad, txtObservacionesFactura.getText().toString(), valueID, mActivity, listaNombreVeterinarios, listaFolioFiscal, listaTotalFactura, listaStatusFactura, listaStatusColor, listaStatusDeudor, listaObservaciones, listaAtendio, listaImagenVeterinarios, listaIdVeterinario);
-                    _mascotasAdapter = new DocumentosAdapter(selStatus, selInconformidad, txtObservacionesFactura.getText().toString(), txtAtendioFactura.getText().toString(), btnMesDia.getText().toString(), valueID, mActivity, listaNombreVeterinarios, listaFolioFiscal, listaTotalFactura, listaStatusFactura, listaStatusColor, listaStatusDeudor, listaObservaciones, listaAtendio, listaImagenVeterinarios, listaIdVeterinario);
+                    _mascotasAdapter = new DocumentosAdapter(idString, selStatus, selInconformidad, txtObservacionesFactura.getText().toString(), txtAtendioFactura.getText().toString(), btnMesDia.getText().toString(), valueID, mActivity, listaNombreVeterinarios, listaFolioFiscal, listaTotalFactura, listaStatusFactura, listaStatusColor, listaStatusDeudor, listaObservaciones, listaAtendio, listaImagenVeterinarios, listaIdVeterinario);
 
                     lv.setAdapter(_mascotasAdapter);
 

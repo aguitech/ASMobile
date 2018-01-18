@@ -53,6 +53,7 @@ public class DocumentosAdapter extends BaseAdapter {
     ArrayList<String> _listaImagenVeterinarios;
     ArrayList<String> _listaIdVeterinarios;
     Context context;
+    public String _idDeudor;
     public String _url;
     public String _observaciones;
     public String _atendio;
@@ -66,7 +67,7 @@ public class DocumentosAdapter extends BaseAdapter {
 
     private static LayoutInflater inflater=null;
 
-    public DocumentosAdapter(int idStatus, int idInconformidad, String observaciones, String atendio, String fechaProgramacion,  int valueID, Detalle_deudor mainActivity, ArrayList<String> listaNombreVeterinarios, ArrayList<String> listaFolioFiscal, ArrayList<String> listaTotalFactura, ArrayList<String> listaStatusFactura, ArrayList<String> listaStatusColor,  ArrayList<String> listaStatusDeudor,  ArrayList<String> listaObservaciones,  ArrayList<String> listaAtendio, ArrayList<String> listaImagenVeterinarios, ArrayList<String> listaIdVeterinarios){
+    public DocumentosAdapter(String idDeudor, int idStatus, int idInconformidad, String observaciones, String atendio, String fechaProgramacion,  int valueID, Detalle_deudor mainActivity, ArrayList<String> listaNombreVeterinarios, ArrayList<String> listaFolioFiscal, ArrayList<String> listaTotalFactura, ArrayList<String> listaStatusFactura, ArrayList<String> listaStatusColor,  ArrayList<String> listaStatusDeudor,  ArrayList<String> listaObservaciones,  ArrayList<String> listaAtendio, ArrayList<String> listaImagenVeterinarios, ArrayList<String> listaIdVeterinarios){
         _listaIdVeterinarios = listaIdVeterinarios;
         _listaImagenVeterinarios = listaImagenVeterinarios;
         _listaNombreVeterinarios = listaNombreVeterinarios;
@@ -82,6 +83,7 @@ public class DocumentosAdapter extends BaseAdapter {
         _listaAtendio = listaAtendio;
 
 
+        _idDeudor = idDeudor;
         _valueID = valueID;
         _idStatus = idStatus;
         _idInconformidad = idInconformidad;
@@ -268,7 +270,9 @@ public class DocumentosAdapter extends BaseAdapter {
                     //URLEncoder.encode(
 
                     //_urlGo = "http://ascendsystem.net/ejecutivo/app_actualizar_documento.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos) + "&id_status=" + Integer.toString(_idStatus) + "&id_inconformidad=" + Integer.toString(_idInconformidad) + "&observaciones=" + _observaciones + "&atendio=" + _atendio + "&fecha_programacion=" + _fechaProgramacion;
-                    _urlGo = "http://ascendsystem.net/ejecutivo/app_actualizar_documento.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos) + "&id_status=" + Integer.toString(_idStatus) + "&id_inconformidad=" + Integer.toString(_idInconformidad) + "&observaciones=" + URLEncoder.encode(_observaciones) + "&atendio=" + URLEncoder.encode(_atendio) + "&fecha_programacion=" + _fechaProgramacion;
+                    //_urlGo = "http://ascendsystem.net/ejecutivo/app_actualizar_documento.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos) + "&id_status=" + Integer.toString(_idStatus) + "&id_inconformidad=" + Integer.toString(_idInconformidad) + "&observaciones=" + URLEncoder.encode(_observaciones) + "&atendio=" + URLEncoder.encode(_atendio) + "&fecha_programacion=" + _fechaProgramacion;
+                    _urlGo = "http://ascendsystem.net/ejecutivo/app_actualizar_documento.php?idu=" + Integer.toString(_valueID) + "&idv=" + _listaIdVeterinarios.get(pos) + "&id_status=" + Integer.toString(_idStatus) + "&id_inconformidad=" + Integer.toString(_idInconformidad) + "&observaciones=" + URLEncoder.encode(_observaciones) + "&atendio=" + URLEncoder.encode(_atendio) + "&id_deudor=" + URLEncoder.encode(_idDeudor) +   "&fecha_programacion=" + _fechaProgramacion;
+
 
 
                     Log.d("id_estatus go", Integer.toString(_idStatus));
