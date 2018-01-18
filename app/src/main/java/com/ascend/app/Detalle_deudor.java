@@ -734,13 +734,13 @@ public class Detalle_deudor extends AppCompatActivity {
                         if(jsonobject.getString("status_deudor").equals("")){
                             listaStatusDeudor.add(" ");
                         }else{
-                            listaStatusDeudor.add(jsonobject.getString("status_deudor"));
+                            listaStatusDeudor.add(jsonobject.getString("status_deudor") + " " + jsonobject.getString("fecha_programacion"));
                         }
 
                         if(jsonobject.getString("observaciones").equals("")){
                             listaObservaciones.add(" ");
                         }else{
-                            listaObservaciones.add(jsonobject.getString("observaciones"));
+                            listaObservaciones.add(jsonobject.getString("atendio") + " " + jsonobject.getString("observaciones"));
                         }
 
                         if(jsonobject.getString("atendio").equals("")){
