@@ -77,6 +77,7 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
     private String _urlInconformidad;
 
     private String _urlCuentaDeudor;
+    private String _urlPrefijo;
 
 
     String idString;
@@ -98,6 +99,11 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
 
     public ArrayList<String> _cuentaDeudor = new ArrayList<String>();
     public  ArrayList<Integer> _ids_cuentaDeudor = new ArrayList<Integer>();
+
+    private int selPrefijo = 0;
+
+    public ArrayList<String> _prefijo = new ArrayList<String>();
+    public  ArrayList<Integer> _ids_prefijo = new ArrayList<Integer>();
 
 
     @Override
@@ -595,6 +601,67 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
 
                 //_urlMascota = "http://hyperion.init-code.com/zungu/app/vt_obtener_clientes.php?id_veterinario=" + valueID + "&id_usuario=" + selCliente;
                 //_urlMascota = "http://hyperion.init-code.com/zungu/app/vt_obtener_mascotas.php?id_veterinario=" + valueID + "&id_usuario=" + selCliente;
+                Button btnPrefijo = (Button)findViewById(R.id.btnPrefijo);
+                btnPrefijo.setText("Prefijo folio factura");
+                selPrefijo = 0; //En la variable selCliente esta guardado el id del cliente.
+
+                //_urlPrefijo = "http://hyperion.init-code.com/zungu/app/vt_obtener_mascotas.php?id_veterinario=" + valueID + "&id_usuario=" + selCliente;
+                //_urlPrefijo = "http://ascendsystem.net/ejecutivo/app_obtener_prefijo.php?id_cuenta_deudor=" + selCuentaDeudor + "&id_usuario=" + selCliente;
+                //_urlPrefijo = "http://ascendsystem.net/ejecutivo/app_obtener_prefijo.php?id_cuenta_deudor=" + selCuentaDeudor;
+                _urlPrefijo = "http://ascendsystem.net/ejecutivo/app_obtener_prefijo.php?id_deudor=" + selCuentaDeudor;
+                Log.d("url_prefijo", _urlPrefijo);
+                new Resultado_escanear.RetrieveFeedTaskPrefijo().execute();
+
+            }
+        });
+
+        AlertDialog alert = builder.create();
+
+        ListView listView = alert.getListView();
+        listView.setDivider(new ColorDrawable(Color.GRAY)); // set color
+        listView.setDividerHeight(1);
+        listView.setOverscrollFooter(new ColorDrawable(Color.TRANSPARENT));
+
+        alert.show();
+
+        /*
+
+        Button btnMascota = (Button)findViewById(R.id.btnMascota);
+        btnMascota.setText("Mascota");
+        selMascota = 0; //En la variable selCliente esta guardado el id del cliente.
+
+        _urlMascota = "http://hyperion.init-code.com/zungu/app/vt_obtener_mascotas.php?id_veterinario=" + valueID + "&id_usuario=" + selCliente;
+        Log.d("url_mascota", _urlMascota);
+        new Agregar_cita.RetrieveFeedTaskMascota().execute();
+        */
+        /*
+        Button btnPrefijo = (Button)findViewById(R.id.btnPrefijo);
+        btnPrefijo.setText("Prefijo folio factura");
+        selPrefijo = 0; //En la variable selCliente esta guardado el id del cliente.
+
+        //_urlPrefijo = "http://hyperion.init-code.com/zungu/app/vt_obtener_mascotas.php?id_veterinario=" + valueID + "&id_usuario=" + selCliente;
+        //_urlPrefijo = "http://ascendsystem.net/ejecutivo/app_obtener_prefijo.php?id_cuenta_deudor=" + selCuentaDeudor + "&id_usuario=" + selCliente;
+        //_urlPrefijo = "http://ascendsystem.net/ejecutivo/app_obtener_prefijo.php?id_cuenta_deudor=" + selCuentaDeudor;
+        _urlPrefijo = "http://ascendsystem.net/ejecutivo/app_obtener_prefijo.php?id_deudor=" + selCuentaDeudor;
+        Log.d("url_prefijo", _urlPrefijo);
+        new Resultado_escanear.RetrieveFeedTaskPrefijo().execute();
+        */
+
+
+    }
+    public void showPrefijoList(View v){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        items = _prefijo.toArray(new CharSequence[_prefijo.size()]);
+
+        builder.setItems(items, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int item) {
+                Button btnPrefijo = (Button)findViewById(R.id.btnPrefijo);
+                btnPrefijo.setText(items[item]);
+                selPrefijo = _ids_prefijo.get(item); //En la variable selCliente esta guardado el id del cliente.
+                Log.d("id_status", Integer.toString(selPrefijo));
+
+                //_urlMascota = "http://hyperion.init-code.com/zungu/app/vt_obtener_clientes.php?id_veterinario=" + valueID + "&id_usuario=" + selCliente;
+                //_urlMascota = "http://hyperion.init-code.com/zungu/app/vt_obtener_mascotas.php?id_veterinario=" + valueID + "&id_usuario=" + selCliente;
 
             }
         });
@@ -799,6 +866,72 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
             Log.i("INFO", response);
         }
     }
+    class RetrieveFeedTaskPrefijo extends AsyncTask<Void, Void, String> {
+
+        private Exception exception;
+
+        protected void onPreExecute() {
+        }
+
+        protected String doInBackground(Void... urls) {
+            try {
+                Log.i("INFO url: ", _urlPrefijo);
+                URL url = new URL(_urlPrefijo);
+                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                try {
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+                    StringBuilder stringBuilder = new StringBuilder();
+                    String line;
+                    while ((line = bufferedReader.readLine()) != null) {
+                        stringBuilder.append(line).append("\n");
+                    }
+                    bufferedReader.close();
+                    return stringBuilder.toString();
+                }
+                finally{
+                    urlConnection.disconnect();
+                }
+            }
+            catch(Exception e) {
+                Log.e("ERROR", e.getMessage(), e);
+                return null;
+            }
+        }
+
+        protected void onPostExecute(String response) {
+            if(response == null) {
+                response = "THERE WAS AN ERROR";
+            } else {
+                Context context = getApplicationContext();
+                int duration = Toast.LENGTH_SHORT;
+
+                try {
+                    JSONTokener tokener = new JSONTokener(response);
+                    JSONArray arr = new JSONArray(tokener);
+
+                    _prefijo.clear();
+                    _ids_prefijo.clear();
+
+                    for (int i = 0; i < arr.length(); i++) {
+                        JSONObject jsonobject = arr.getJSONObject(i);
+                        //Log.d("cuenta_deudor",jsonobject.getString("cuenta_deudor"));
+                        //Log.d("cuenta_deudor",jsonobject.getString("cuenta_deudor"));
+
+                        //_clientes.add(jsonobject.getString("nombre_usuario") + " - " + jsonobject.getString("nombre"));
+                        //_mascotas.add(jsonobject.getString("nombre_usuario") + " - " + jsonobject.getString("nombre"));
+                        _prefijo.add(jsonobject.getString("deudor_prefijo"));
+                        //_ids_cliente.add(jsonobject.getInt("id_mascota"));
+                        _ids_prefijo.add(jsonobject.getInt("id_deudor_prefijo"));
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            Log.i("INFO", response);
+        }
+    }
+
     class RetrieveFeedTaskInconformidad extends AsyncTask<Void, Void, String> {
 
         private Exception exception;
