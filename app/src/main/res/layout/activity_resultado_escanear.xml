@@ -376,7 +376,7 @@
                 android:paddingTop="0dp">
                 <Button
                     android:layout_width="match_parent"
-                    android:text="Inconformidad"
+                    android:text="Tipo de inconformidad"
                     android:onClick="showInconformidadList"
                     android:gravity="left|center"
                     android:paddingLeft="20dp"
@@ -443,6 +443,7 @@
 
                 <EditText
                     android:layout_width="match_parent"
+                    android:text="Se recibió facturación de CEO"
                     android:hint="Historial de la gestión"
                     android:gravity="left|center"
                     android:paddingLeft="20dp"

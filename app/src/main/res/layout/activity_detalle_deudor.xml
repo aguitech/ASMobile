@@ -214,7 +214,7 @@
                 android:paddingTop="0dp">
                 <Button
                     android:layout_width="match_parent"
-                    android:text="Inconformidad"
+                    android:text="Tipo de inconformidad"
                     android:onClick="showInconformidadList"
                     android:gravity="left|center"
                     android:paddingLeft="20dp"
