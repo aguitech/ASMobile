@@ -166,8 +166,11 @@ public class Detalle_deudor extends AppCompatActivity {
         _url = "http://thekrakensolutions.com/cobradores/android_get_contratos.php?id=" + Integer.toString(valueID);
         Log.d("url_veterinarios", _url);
         new Detalle_contrato.RetrieveFeedTask().execute();
+
+
         */
-        _urlStatus = "http://ascendsystem.net/ejecutivo/app_obtener_status.php?id_veterinario=" + valueID + "&id_usuario=" + selStatus;
+        //_urlStatus = "http://ascendsystem.net/ejecutivo/app_obtener_status.php?id_veterinario=" + valueID + "&id_usuario=" + selStatus;
+        _urlStatus = "http://ascendsystem.net/ejecutivo/app_obtener_status.php?id_veterinario=" + valueID + "&id_usuario=" + selStatus + "&id_deudor=" + idString;
         Log.d("url_mascota", _urlStatus);
         new Detalle_deudor.RetrieveFeedTaskStatus().execute();
 

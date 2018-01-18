@@ -83,7 +83,7 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
     String resultado_qr;
 
 
-    private int selStatus = 0;
+    private int selStatus = 17;
 
     public ArrayList<String> _status = new ArrayList<String>();
     public  ArrayList<Integer> _ids_status = new ArrayList<Integer>();
@@ -139,7 +139,8 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
         _urlGet = "http://ascendsystem.net/ejecutivo/app_escanear_qr.php?id_editar=" + idString + "&id_usuario=" + valueID + "&accion=true&resultado=" + Uri.encode(resultado_qr);
         new Resultado_escanear.RetrieveFeedTaskGet().execute();
 
-        _urlStatus = "http://ascendsystem.net/ejecutivo/app_obtener_status.php?id_veterinario=" + valueID + "&id_usuario=" + selStatus;
+        //_urlStatus = "http://ascendsystem.net/ejecutivo/app_obtener_status.php?id_veterinario=" + valueID + "&id_usuario=" + selStatus;
+        _urlStatus = "http://ascendsystem.net/ejecutivo/app_obtener_status_escanear.php?id_veterinario=" + valueID + "&id_usuario=" + selStatus + "&resultado=" + Uri.encode(resultado_qr);;
         Log.d("url_mascota", _urlStatus);
         new Resultado_escanear.RetrieveFeedTaskStatus().execute();
 
