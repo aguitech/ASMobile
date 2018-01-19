@@ -26,7 +26,7 @@ PageMaker, el cual incluye versiones de Lorem Ipsum.</string>
     <string name="slide_1_title">Gestiona facturas</string>
     <string name="slide_1_desc">Lista los deudores y selecciona las facturas</string>
 
-    <string name="slide_2_title">Asgina los Status</string>
+    <string name="slide_2_title">Asigna los Status</string>
     <string name="slide_2_desc">Cambia el estatus a las facturas</string>
 
     <string name="slide_3_title">Escanea facturas</string>

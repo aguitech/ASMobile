@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/Users/hectoraguilar/.gradle/caches/transforms-1/files-1.1/support-core-utils-25.0.0.aar/be28e4b86d1e5db796752af46af6999d/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="3b61a70884adaf0be3fc06c70c801e3e6df13133">
+        <dex dex="/Users/hectoraguilar/Git/ASMobile/app/build/intermediates/transforms/preDex/release/30.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/hectoraguilar/.gradle/caches/transforms-1/files-1.1/support-fragment-25.0.0.aar/870164a79f9514a620bfed934bb75cab/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="ee5faf4dee5b6a4364bf51587871047dde7c703a">
+        <dex dex="/Users/hectoraguilar/Git/ASMobile/app/build/intermediates/transforms/preDex/release/24.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/hectoraguilar/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.6.0/98476622f10715998eacf9240d6b479f12c66143/okio-1.6.0.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="98476622f10715998eacf9240d6b479f12c66143">
+        <dex dex="/Users/hectoraguilar/Git/ASMobile/app/build/intermediates/transforms/preDex/release/36.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/hectoraguilar/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.0.0.aar/3205e1c08268c7e6914c3719b6ca9ef1/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="8bc45ce1f63d1a391fd38b32a201be5a42f9c95d">
+        <dex dex="/Users/hectoraguilar/Git/ASMobile/app/build/intermediates/transforms/preDex/release/3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/hectoraguilar/.gradle/caches/transforms-1/files-1.1/support-fragment-25.0.0.aar/870164a79f9514a620bfed934bb75cab/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="07daa0b6e1d455c82a38422ffe287c18823d339a">
+        <dex dex="/Users/hectoraguilar/Git/ASMobile/app/build/intermediates/transforms/preDex/release/23.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/hectoraguilar/.gradle/caches/transforms-1/files-1.1/support-core-utils-25.0.0.aar/be28e4b86d1e5db796752af46af6999d/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="4ccbcda5c72027c7f7c14be9ff8640d9cb0d8da0">
+        <dex dex="/Users/hectoraguilar/Git/ASMobile/app/build/intermediates/transforms/preDex/release/29.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/hectoraguilar/.gradle/caches/transforms-1/files-1.1/support-media-compat-25.0.0.aar/f312a87fb119b2e45ff3cd3ae5670a38/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="665d21a8a069c96b4d9e8b434f5096d865b4e261">
+        <dex dex="/Users/hectoraguilar/Git/ASMobile/app/build/intermediates/transforms/preDex/release/28.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/hectoraguilar/.gradle/caches/modules-2/files-2.1/com.google.zxing/core/3.2.1/2287494d4f5f9f3a9a2bb6980e3f32053721b315/core-3.2.1.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="2287494d4f5f9f3a9a2bb6980e3f32053721b315">
+        <dex dex="/Users/hectoraguilar/Git/ASMobile/app/build/intermediates/transforms/preDex/release/35.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/hectoraguilar/.gradle/caches/transforms-1/files-1.1/play-services-basement-9.8.0.aar/111963d86df3e96d0ebb0388cf140bef/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="9f6d236bac26d02b410e4ee186ba517ace5ee661">
+        <dex dex="/Users/hectoraguilar/Git/ASMobile/app/build/intermediates/transforms/preDex/release/14.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/hectoraguilar/.gradle/caches/transforms-1/files-1.1/support-media-compat-25.0.0.aar/f312a87fb119b2e45ff3cd3ae5670a38/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="76fb65a4b41ea42dab8a1310ed772a2420c96b52">
+        <dex dex="/Users/hectoraguilar/Git/ASMobile/app/build/intermediates/transforms/preDex/release/27.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/hectoraguilar/.gradle/caches/transforms-1/files-1.1/play-services-maps-9.8.0.aar/cca879131dd51157eeba0f71fd6a49cd/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="122ec9237acd8a57d974b9d529987f1ee6ca5aea">
+        <dex dex="/Users/hectoraguilar/Git/ASMobile/app/build/intermediates/transforms/preDex/release/8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Applications/android-sdk-macosx/extras/android/m2repository/com/android/support/support-annotations/25.0.0/support-annotations-25.0.0.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="a22d2cc94da87b254451fa8ed28afc30b4653773">
+        <dex dex="/Users/hectoraguilar/Git/ASMobile/app/build/intermediates/transforms/preDex/release/33.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/hectoraguilar/.gradle/caches/transforms-1/files-1.1/support-core-ui-25.0.0.aar/2f7836309a8de6b807e69ccdef9f60d6/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="26674000177e45447a0326a6ad84612761199a13">
+        <dex dex="/Users/hectoraguilar/Git/ASMobile/app/build/intermediates/transforms/preDex/release/25.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/hectoraguilar/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-25.0.0.aar/2c5c2b4f7c8d61a842191386ac179ec4/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="d29714cc76b38157e3cbd034c66e1ec808eb4c19">
+        <dex dex="/Users/hectoraguilar/Git/ASMobile/app/build/intermediates/transforms/preDex/release/20.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/hectoraguilar/.gradle/caches/transforms-1/files-1.1/zxing-1.8.4.aar/04bf9a5fc8863c92f941e5aa58640c7d/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="68ef1daf85c69fca8fddf7bbb947fc51cc9f8ca3">
+        <dex dex="/Users/hectoraguilar/Git/ASMobile/app/build/intermediates/transforms/preDex/release/11.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/hectoraguilar/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.7/751f548c85fa49f330cecbb1875893f971b33c4e/gson-2.7.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="751f548c85fa49f330cecbb1875893f971b33c4e">
+        <dex dex="/Users/hectoraguilar/Git/ASMobile/app/build/intermediates/transforms/preDex/release/5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/hectoraguilar/.gradle/caches/transforms-1/files-1.1/support-compat-25.0.0.aar/5c1aa8fc2c899d5a467e42d5dad5b48e/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="75b1f366ff0bbc78f8b1f7cf0dc82e7c53afef6a">
+        <dex dex="/Users/hectoraguilar/Git/ASMobile/app/build/intermediates/transforms/preDex/release/31.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/hectoraguilar/.gradle/caches/transforms-1/files-1.1/android-gif-drawable-1.1.7.aar/363c6807ad2dea3560241ec939252ade/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="d6825a79ca6c134dd6f26fc15eff443b5215dbdc">
+        <dex dex="/Users/hectoraguilar/Git/ASMobile/app/build/intermediates/transforms/preDex/release/6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/hectoraguilar/.gradle/caches/transforms-1/files-1.1/material-calendarview-1.4.2.aar/601f40c5de921b36c8425cd8a882ab80/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="0d86ad5b79ed5d4394b3f4011ec90a7d9b876fcb">
+        <dex dex="/Users/hectoraguilar/Git/ASMobile/app/build/intermediates/transforms/preDex/release/10.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/hectoraguilar/.gradle/caches/transforms-1/files-1.1/android-networking-0.3.0.aar/caf45ee9990c8cb5e20a7526f03fb061/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="2181055be8a630f727d41d4dc15adfad283474bb">
+        <dex dex="/Users/hectoraguilar/Git/ASMobile/app/build/intermediates/transforms/preDex/release/4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/hectoraguilar/.gradle/caches/transforms-1/files-1.1/support-core-ui-25.0.0.aar/2f7836309a8de6b807e69ccdef9f60d6/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
+        <dex dex="/Users/hectoraguilar/Git/ASMobile/app/build/intermediates/transforms/preDex/release/26.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/hectoraguilar/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.2.0/6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd/bolts-android-1.2.0.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd">
+        <dex dex="/Users/hectoraguilar/Git/ASMobile/app/build/intermediates/transforms/preDex/release/34.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/hectoraguilar/.gradle/caches/transforms-1/files-1.1/support-compat-25.0.0.aar/5c1aa8fc2c899d5a467e42d5dad5b48e/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="f2e3b9bc1ec25f652e8007ce7774c991e38f6a00">
+        <dex dex="/Users/hectoraguilar/Git/ASMobile/app/build/intermediates/transforms/preDex/release/32.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/hectoraguilar/.gradle/caches/transforms-1/files-1.1/support-v13-25.0.0.aar/5104727e7e0f9249d09434beaedb6695/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="67355078cd30daae43f62ba47a4663ee6edb976e">
+        <dex dex="/Users/hectoraguilar/Git/ASMobile/app/build/intermediates/transforms/preDex/release/16.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/hectoraguilar/.gradle/caches/transforms-1/files-1.1/core-0.9.1.0.aar/ea73476858408b4acc448034345c9336/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="16795a75616fe3ba9df9ae4af09202145e3a26dc">
+        <dex dex="/Users/hectoraguilar/Git/ASMobile/app/build/intermediates/transforms/preDex/release/1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/hectoraguilar/.gradle/caches/transforms-1/files-1.1/library-1.3.0.aar/2d5b4202d1afb0c6d2aa2045a5063b68/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="a846ddbf5bf88dee5f89d4dffe22c864f576d9b0">
+        <dex dex="/Users/hectoraguilar/Git/ASMobile/app/build/intermediates/transforms/preDex/release/2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/hectoraguilar/.gradle/caches/transforms-1/files-1.1/core-1.8.4.aar/d3eb2444d1d93a7d5259bccf6780abe4/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="af8d42f1f020e936b8cd9f5cb6c75993194895a3">
+        <dex dex="/Users/hectoraguilar/Git/ASMobile/app/build/intermediates/transforms/preDex/release/17.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/hectoraguilar/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="/Users/hectoraguilar/Git/ASMobile/app/build/intermediates/transforms/preDex/release/7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/hectoraguilar/.gradle/caches/transforms-1/files-1.1/support-v13-25.0.0.aar/5104727e7e0f9249d09434beaedb6695/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="6ac094121e75b4b87432beb9305d70c68ec6dcab">
+        <dex dex="/Users/hectoraguilar/Git/ASMobile/app/build/intermediates/transforms/preDex/release/15.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/hectoraguilar/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-25.0.0.aar/4bdbc564d7607e1e2410fd721a85037c/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="5e497d60f0cb6ce87c458ac5420a46d0fed49bd0">
+        <dex dex="/Users/hectoraguilar/Git/ASMobile/app/build/intermediates/transforms/preDex/release/22.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/hectoraguilar/.gradle/caches/transforms-1/files-1.1/play-services-base-9.8.0.aar/4500a055fad117ec804229d28fc4052b/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="7e92aadd0697922316d1395c1887a23aebec640a">
+        <dex dex="/Users/hectoraguilar/Git/ASMobile/app/build/intermediates/transforms/preDex/release/12.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/hectoraguilar/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.2.0/f7873a2ebde246a45c2a8d6f3247108b4c88a879/okhttp-3.2.0.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="f7873a2ebde246a45c2a8d6f3247108b4c88a879">
+        <dex dex="/Users/hectoraguilar/Git/ASMobile/app/build/intermediates/transforms/preDex/release/21.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/hectoraguilar/.gradle/caches/transforms-1/files-1.1/support-v4-25.0.0.aar/8bd4d334b03856371bb17ee35c8664cb/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/hectoraguilar/Git/ASMobile/app/build/intermediates/transforms/preDex/release/18.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/hectoraguilar/.gradle/caches/transforms-1/files-1.1/play-services-tasks-9.8.0.aar/27567032a22bac87e4c234e7df79cbf0/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="bf2e1838e4428616c1aa26edf43de72b5b99bf84">
+        <dex dex="/Users/hectoraguilar/Git/ASMobile/app/build/intermediates/transforms/preDex/release/13.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/hectoraguilar/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-25.0.0.aar/7db7058f99ea302ed416f63e68280ec7/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="53a420cd4f49274db6bd43475f8006ba67ef6bbd">
+        <dex dex="/Users/hectoraguilar/Git/ASMobile/app/build/intermediates/transforms/preDex/release/19.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/hectoraguilar/.gradle/caches/transforms-1/files-1.1/facebook-android-sdk-4.7.0.aar/996b78530d536823951e9c7ca0c6e2e5/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="5bdb38b7e4b6094891648c1dc4dc08589b460f97">
+        <dex dex="/Users/hectoraguilar/Git/ASMobile/app/build/intermediates/transforms/preDex/release/9.jar" />
+    </item>
+
+</items>
