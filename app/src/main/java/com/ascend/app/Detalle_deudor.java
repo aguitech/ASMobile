@@ -550,6 +550,30 @@ public class Detalle_deudor extends AppCompatActivity {
                     if(object.getString("pais").length() > 1){
                         txtDireccion_ += "  País " + object.getString("pais");
                     }
+                    if(object.getString("fecha_ingreso_revision").length() > 1){
+                        txtDireccion_ += "\nFecha " + object.getString("horario_ingreso_revision");
+                    }
+                    if(object.getString("horario_ingreso_revision").length() > 1){
+                        txtDireccion_ += " Horario " + object.getString("horario_ingreso_revision");
+                    }
+                    if(object.getString("responsable_asignado").length() > 1){
+                        txtDireccion_ += "\nResponsable asignado " + object.getString("responsable_asignado");
+                    }
+                    if(object.getString("departamento_contacto1").length() > 1){
+                        txtDireccion_ += "\nContacto " + object.getString("departamento_contacto1");
+                    }
+                    if(object.getString("telefono_contacto1").length() > 1){
+                        txtDireccion_ += "  Telefono " + object.getString("telefono_contacto1");
+                    }
+                    if(object.getString("extension_contacto1").length() > 1){
+                        txtDireccion_ += "  Ext. " + object.getString("extension_contacto1");
+                    }
+                    if(object.getString("movil_contacto1").length() > 1){
+                        txtDireccion_ += "  Movil " + object.getString("movil_contacto1");
+                    }
+
+
+
 
                     if(txtDireccion_.length() > 3)
                         txtDireccion.setText(txtDireccion_);

@@ -149,7 +149,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_marginLeft="20dp">
+                    android:layout_marginLeft="16dp">
                     <TextView
                         android:id="@+id/txtRazonSocial"
                         android:textSize="12dp"
@@ -166,7 +166,7 @@
                 android:orientation="vertical"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="0dp"
                 android:clipToPadding="false"
                 android:gravity="center"
                 android:paddingTop="0dp">
@@ -399,7 +399,7 @@
                     <ListView
                         android:id="@+id/list_facturas"
                         android:layout_width="match_parent"
-                        android:layout_height="170dp">
+                        android:layout_height="150dp">
                     </ListView>
                 </LinearLayout>
             </LinearLayout>
