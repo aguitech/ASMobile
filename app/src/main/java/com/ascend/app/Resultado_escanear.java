@@ -1,5 +1,6 @@
 package com.ascend.app;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,6 +16,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -35,7 +37,11 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
@@ -48,6 +54,8 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
 
 
     private ZXingScannerView mScannerView;
+
+    long restr;
 
     CharSequence[] items;
 
@@ -105,6 +113,12 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
     public ArrayList<String> _prefijo = new ArrayList<String>();
     public  ArrayList<Integer> _ids_prefijo = new ArrayList<Integer>();
 
+    Button btnMesDia;
+
+    String fechaValor;
+
+    Date date_seleccionada;
+    Date date_hoy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,6 +129,8 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
         detalleFolioFactura = (EditText) findViewById(R.id.detalleFolioFactura);
         detalleAtendioFactura = (EditText) findViewById(R.id.detalleAtendioFactura);
         historialGestion = (EditText) findViewById(R.id.historialGestion);
+
+        btnMesDia = (Button) findViewById(R.id.btnMesDia);
 
 
         //showMsg("test");
@@ -163,6 +179,186 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
         new Resultado_escanear.RetrieveFeedTask().execute();
 
         */
+
+        final Button btnMesDia = (Button) findViewById(R.id.btnMesDia);
+        final Button btnHora = (Button) findViewById(R.id.btnHora);
+
+        final Calendar c = Calendar.getInstance();
+        final int year = c.get(Calendar.YEAR);
+        final int month = c.get(Calendar.MONTH);
+        final int day = c.get(Calendar.DAY_OF_MONTH);
+        //c.add(Calendar.MONTH, 3);
+
+
+        final int hour = c.get(Calendar.HOUR_OF_DAY);
+        final int minute1 = c.get(Calendar.MINUTE);
+        final Calendar v = Calendar.getInstance();
+        final int year2 = v.get(Calendar.YEAR);
+        final int month2 = v.get(Calendar.MONTH);
+        final int day2 = v.get(Calendar.DAY_OF_MONTH);
+        final int hour2 = v.get(Calendar.HOUR_OF_DAY);
+        final int minute2 = v.get(Calendar.MINUTE);
+
+        if (savedInstanceState == null) {
+            //Bundle extras = getIntent().getExtras();
+            if(extras == null) {
+                //fechaValor = null;
+                fechaValor = "";
+                btnMesDia.setText("Mes/Día");
+            } else {
+                fechaValor = extras.getString("valor_fecha");
+                //showMsg(fechaValor);
+                btnMesDia.setText(fechaValor);
+                //btnMesDia.setText("hola");
+                btnMesDia.setText("Mes/Día");
+
+
+
+            }
+        }
+
+
+        btnMesDia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datepick = new DatePickerDialog(Resultado_escanear.this, new DatePickerDialog.OnDateSetListener() {
+
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+                        // Date results here
+                        //showMsg(String.valueOf(day));
+                        /*
+                        showMsg(String.valueOf(year));
+                        showMsg(String.valueOf(month));
+                        showMsg(String.valueOf(dayOfMonth));
+                        */
+
+
+
+                        Date fecha_hoy = new Date();
+                        //System.out.println(fecha_hoy);
+                        String valor_fecha = new SimpleDateFormat("yyyy-MM-dd").format(fecha_hoy);
+
+                        //String fecha_completa = String.valueOf(year) + "-" + String.valueOf(month + 1) + "-" + String.valueOf(dayOfMonth);
+                        //String fecha_completa = String.valueOf(year) + "-" + String.valueOf(month + 1) + "-" + String.valueOf(dayOfMonth + 30);
+                        String fecha_completa = String.valueOf(year) + "-" + String.valueOf(month + 1) + "-" + String.valueOf(dayOfMonth);
+
+
+                        //String dtStart = "2010-10-15T09:27:37Z";
+                        String dtStart = valor_fecha;
+                        //SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+                        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                        try {
+                            //Date date_hoy = format.parse(dtStart);
+                            date_hoy = format.parse(dtStart);
+                            //System.out.println(date);
+                            //Log.d("valor Inicio", date_hoy.toString());
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+
+                        String dtFin = fecha_completa;
+                        try {
+                            //Date date_seleccionada = format.parse(dtFin);
+                            date_seleccionada = format.parse(dtFin);
+                            //System.out.println(date);
+                            //Log.d("valor Fin", date_seleccionada.toString());
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+
+                        if(date_seleccionada.compareTo(date_hoy)>0){
+                            //ES MAYOR
+                            //showMsg("Test");
+                            btnMesDia.setText(String.valueOf(year) + "-" + String.valueOf(month + 1) + "-" + String.valueOf(dayOfMonth));
+                        }else if(date_seleccionada.compareTo(date_hoy)<0){
+                            //ES MENOR
+                            //showMsg("Test 2");
+                            btnMesDia.setText(valor_fecha);
+                        }else{
+                            //ES IGUAL
+                            //showMsg("Test 3");
+                            btnMesDia.setText(String.valueOf(year) + "-" + String.valueOf(month + 1) + "-" + String.valueOf(dayOfMonth));
+                        }
+
+
+                        /*
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                        Date convertedCurrentDate = sdf.parse("2013-09-18");
+
+                        //SimpleDateFormat.parse(String);
+
+                        String date=sdf.format(convertedCurrentDate );
+                        System.out.println(date);
+                        */
+
+
+                        //DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+
+
+                        //DateFormat formato = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+                        //DateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+                        //Date valor_fecha_final = formato.parse(valor_fecha);
+
+                        //Date valor_fecha_final = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).parse(valor_fecha);
+                        //Date valor_fecha_final = new SimpleDateFormat("yyyy-MM-dd").parse(valor_fecha);
+
+                        //Date valor_fecha_final = valor_fecha;
+/*
+                        if(valor_fecha_final.compareTo(fecha_completa_final)){
+
+                        }
+*/
+
+                        Log.d("res", valor_fecha);
+
+
+
+
+
+                        //btnMesDia.setText(String.valueOf(year) + "-" + String.valueOf(month + 1) + "-" + String.valueOf(dayOfMonth));
+
+
+
+                        /*
+                        Aqui la hora automatica
+                        TimePickerDialog timepick = new TimePickerDialog(Detalle_deudor.this, new TimePickerDialog.OnTimeSetListener() {
+                            @Override
+                            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+
+                                String minuto = "";
+
+                                // Time results here
+                                //showMsg(String.valueOf(hourOfDay));
+                                //showMsg(String.valueOf(minute));
+
+                                //if(minute.getText().toString().length() < 1){
+                                if(String.valueOf(minute).toString().length() == 1){
+                                    //showMsg(String.valueOf(minute));
+                                    minuto = "0" + String.valueOf(minute).toString();
+                                }else{
+                                    minuto = String.valueOf(minute);
+                                }
+
+                                //btnHora.setText(String.valueOf(hourOfDay) + ":" + String.valueOf(minute));
+                                //btnHora.setText(String.valueOf(hourOfDay) + ":" + minute);
+                                btnHora.setText(String.valueOf(hourOfDay) + ":" + minuto);
+
+                            }
+                        }, hour, minute1, true);
+                        timepick.setTitle("Selecciona Hora");
+                        timepick.show();
+                        */
+                    }
+                } ,year,month,day);
+                datepick.getDatePicker().setMinDate(restr);
+                datepick.setTitle("Selecciona Fecha");
+                datepick.show();
+            }
+        });
+
+
         onPause();
     }
 
@@ -303,6 +499,10 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
                 TextView txtRazonSocialEmisor = (TextView) findViewById(R.id.txtRazonSocialEmisor);
                 TextView txtRazonSocialReceptor = (TextView) findViewById(R.id.txtRazonSocialReceptor);
 
+                Button btnMesDia = (Button) findViewById(R.id.btnMesDia);
+
+
+
 
 
 
@@ -350,6 +550,9 @@ public class Resultado_escanear extends AppCompatActivity implements ZXingScanne
                     txtFolioFiscal.setText(_FolioFiscal);
                     txtRazonSocialEmisor.setText(_RazonSocialEmisor);
                     txtRazonSocialReceptor.setText(_RazonSocialReceptor);
+
+                    btnMesDia.setText(object.getString("fecha_manana"));
+
 
                     //str == null | str.length() == 0
                     //if(_RazonSocialReceptor.equals("") || _RazonSocialEmisor.equals("")){

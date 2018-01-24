@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@color/blanco"
     tools:context="com.ascend.app.Login">
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -64,7 +63,7 @@
                 android:layout_width="0dp"
                 android:maxLines="1"
                 android:hint="Correo electrónico"
-                android:text=""
+                android:text="gestor"
                 android:id="@+id/txtEmail"
                 android:layout_height="match_parent"
                 android:layout_weight=".8"
@@ -93,7 +92,7 @@
                 android:layout_width="0dp"
                 android:maxLines="1"
                 android:hint="Contraseña"
-                android:text=""
+                android:text="1234"
                 android:textSize="12dp"
                 android:layout_height="match_parent"
                 android:layout_weight=".8"

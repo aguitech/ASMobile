@@ -9,19 +9,10 @@
         android:gravity="center_vertical"
         android:weightSum="1"
         android:layout_marginBottom="4dp"
-        android:layout_height="40dp">
+        android:layout_height="22dp">
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight=".1"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
-
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight=".8"
+            android:layout_weight="1"
             android:gravity="center"
             android:orientation="horizontal"
             android:layout_height="wrap_content">
@@ -45,16 +36,7 @@
         android:layout_height="30dp">
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight=".1"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
-
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight=".81"
+            android:layout_weight="1"
             android:gravity="center"
             android:layout_height="wrap_content">
 
@@ -75,16 +57,8 @@
         android:gravity="center_vertical"
         android:weightSum="1"
         android:layout_marginBottom="4dp"
-        android:layout_height="30dp">
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight=".1"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
+        android:layout_height="14dp">
 
-
-        </LinearLayout>
         <!--
         <LinearLayout
             android:layout_width="0dp"
@@ -105,22 +79,18 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="0.70"
+            android:layout_weight="0.90"
             android:orientation="horizontal"
             android:gravity="center_vertical"
             android:layout_height="match_parent">
             <TextView
                 android:layout_width="match_parent"
-                android:text="Nombre de usuario"
+                android:text="Nombre de status"
                 android:textStyle="bold"
                 android:textColor="@color/gris_fuerte"
                 android:textSize="12dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/txtEstatusPagoDeudor" />
-
-
-
-
         </LinearLayout>
         <LinearLayout
             android:layout_width="0dp"
@@ -143,6 +113,31 @@
                     android:layout_height="15dp" />
             </LinearLayout>
 
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:weightSum="1"
+        android:layout_marginBottom="4dp"
+        android:layout_height="14dp">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="match_parent"
+                android:text="Dia y hora programacion"
+                android:textStyle="bold"
+                android:textColor="@color/gris_fuerte"
+                android:textSize="12dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtDiasHoras" />
         </LinearLayout>
 
 

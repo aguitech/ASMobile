@@ -16,6 +16,8 @@ import com.ascend.app.Detalle_deudor;
 import com.ascend.app.Lista_deudores;
 import com.ascend.app.R;
 
+import org.w3c.dom.Text;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -32,6 +34,7 @@ public class DeudoresAdapter extends BaseAdapter {
     ArrayList<String> _listaRazonSocialDeudores;
     ArrayList<String> _listaEstatus;
     ArrayList<String> _listaColor;
+    ArrayList<String> _listaDiaHora;
     ArrayList<String> _listaIdDeudor;
 
     Context context;
@@ -41,13 +44,14 @@ public class DeudoresAdapter extends BaseAdapter {
 
     private static LayoutInflater inflater=null;
 
-    public DeudoresAdapter(int valueID, Lista_deudores mainActivity, ArrayList<String> listaRFCDeudores, ArrayList<String> listaRazonSocialDeudores, ArrayList<String> listaEstatus, ArrayList<String> listaColor, ArrayList<String> listaIdDeudor){
+    public DeudoresAdapter(int valueID, Lista_deudores mainActivity, ArrayList<String> listaRFCDeudores, ArrayList<String> listaRazonSocialDeudores, ArrayList<String> listaEstatus, ArrayList<String> listaColor, ArrayList<String> listaDiaHora , ArrayList<String> listaIdDeudor){
 
         _listaIdDeudor = listaIdDeudor;
 
         _listaRFCDeudores = listaRFCDeudores;
         _listaRazonSocialDeudores = listaRazonSocialDeudores;
         _listaEstatus = listaEstatus;
+        _listaDiaHora = listaDiaHora;
         _listaColor = listaColor;
 
         _valueID = valueID;
@@ -75,6 +79,7 @@ public class DeudoresAdapter extends BaseAdapter {
         TextView RFCDeudor;
         TextView RazonSocialDeudor;
         TextView EstatusDeudor;
+        TextView DiasHoras;
         LinearLayout statusColor;
     }
 
@@ -92,11 +97,13 @@ public class DeudoresAdapter extends BaseAdapter {
         holder.RFCDeudor = (TextView) rowView.findViewById(R.id.txtRFCDeudor);
         holder.RazonSocialDeudor = (TextView) rowView.findViewById(R.id.txtRazonSocialDeudor);
         holder.EstatusDeudor = (TextView) rowView.findViewById(R.id.txtEstatusPagoDeudor);
+        holder.DiasHoras = (TextView) rowView.findViewById(R.id.txtDiasHoras);
         holder.statusColor = (LinearLayout) rowView.findViewById(R.id.statusColor);
 
         holder.RFCDeudor.setText(_listaRFCDeudores.get(i));
         holder.RazonSocialDeudor.setText(_listaRazonSocialDeudores.get(i));
         holder.EstatusDeudor.setText(_listaEstatus.get(i));
+        holder.DiasHoras.setText(_listaDiaHora.get(i));
 
 
 
